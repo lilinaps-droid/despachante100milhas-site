@@ -1566,3 +1566,120 @@ header{
   .ag-info img{margin-inline:auto}
   .ag-info > p{margin-inline:auto}
 }
+
+/* ===================== SIMULADOR DE DIREITOS PCD ===================== */
+.sp-conta{font-size:.82rem;color:var(--texto-suave);margin:-16px 0 20px;font-weight:500}
+
+.sp-acess{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}
+.sp-acess button{
+  background:#fff;border:1px solid var(--linha);border-radius:8px;padding:6px 12px;
+  font:inherit;font-size:.82rem;font-weight:700;color:var(--roxo);cursor:pointer;min-height:40px
+}
+.sp-acess button:hover{border-color:var(--roxo);background:#FCFAFE}
+
+.sp-item{
+  display:flex;gap:14px;align-items:flex-start;background:#fff;
+  border:1px solid var(--linha);border-radius:var(--r-md);padding:16px;margin-bottom:10px
+}
+.sp-luz{flex:none;width:12px;height:12px;border-radius:50%;margin-top:8px}
+.sp-verde .sp-luz{background:#0E7A4B}
+.sp-ambar .sp-luz{background:var(--dourado)}
+.sp-item h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;color:var(--roxo-fundo)}
+.sp-tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.sp-verde .sp-tag{color:#0E7A4B}
+.sp-ambar .sp-tag{color:#8A6100}
+.sp-sub{font-size:.86rem;color:var(--texto-suave);font-style:italic;margin-bottom:4px}
+.sp-item p:last-child{font-size:.93rem;color:var(--texto-suave)}
+
+.sp-passos{margin:24px 0}
+.sp-passos h3,.sp-honesto h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.05rem;color:var(--roxo-fundo);margin-bottom:14px}
+.sp-passos ol{list-style:none;counter-reset:sp;padding:0}
+.sp-passos li{counter-increment:sp;position:relative;padding-left:46px;margin-bottom:16px}
+.sp-passos li::before{
+  content:counter(sp);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+  background:var(--roxo);color:#fff;display:grid;place-items:center;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:.9rem
+}
+.sp-passos b{display:block;color:var(--roxo-fundo)}
+.sp-passos small{color:var(--texto-suave);font-size:.9rem}
+
+.sp-honesto{background:var(--claro);border-radius:var(--r-md);padding:20px;margin-bottom:24px}
+.sp-honesto ul{padding-left:20px;margin:0}
+.sp-honesto li{font-size:.93rem;color:var(--texto-suave);margin-bottom:6px}
+
+.sp-oferta{
+  background:linear-gradient(140deg,var(--roxo-escuro),#3D0A5C);
+  color:#fff;border-radius:var(--r-lg);padding:26px 22px;margin-bottom:8px
+}
+.sp-selo{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dourado);margin-bottom:10px
+}
+.sp-oferta h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.22rem;line-height:1.3;margin-bottom:10px;color:#fff}
+.sp-oferta p{color:var(--texto-inv);font-size:.95rem;margin-bottom:14px}
+.sp-preco{font-family:'Montserrat',sans-serif;font-weight:800;font-size:2rem;color:var(--dourado)!important;margin-bottom:16px!important}
+.sp-oferta .btn-linha{border:2px solid rgba(255,255,255,.45);color:#fff;background:transparent;margin-top:10px}
+.sp-oferta .btn-linha:hover{background:rgba(255,255,255,.1)}
+
+.sp-chamada{
+  display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(120deg,rgba(212,175,55,.14),rgba(106,13,173,.07));
+  border:1px solid var(--dourado);border-radius:var(--r-lg);padding:22px 24px;margin:8px auto 0;max-width:52rem
+}
+.sp-chamada b{display:block;font-family:'Montserrat',sans-serif;font-size:1.1rem;color:var(--roxo-fundo);margin-bottom:4px}
+.sp-chamada span{color:var(--texto-suave);font-size:.94rem}
+.sp-chamada .btn{flex:none}
+@media(max-width:720px){ .sp-chamada .btn{width:100%} }
+
+/* Direito vizinho (Imposto de Renda) dentro do Simulador PCD */
+.sp-vizinho{
+  border:1px solid var(--acento-ir);border-left:5px solid var(--acento-ir);
+  border-radius:var(--r-md);padding:20px;margin:0 0 24px;background:#F6FAFC
+}
+.sp-selo-v{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--acento-ir);margin-bottom:8px
+}
+.sp-vizinho h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.05rem;color:var(--roxo-fundo);margin-bottom:8px}
+.sp-vizinho p{font-size:.93rem;color:var(--texto-suave);margin-bottom:10px}
+.sp-vizinho .btn-linha{border:2px solid var(--acento-ir);color:var(--acento-ir);background:transparent}
+.sp-vizinho .btn-linha:hover{background:var(--acento-ir);color:#fff}
+
+/* ===================== PAINEL DA AGENDA (área da Lili) ===================== */
+.painel-agenda{max-width:44rem;margin:0 auto}
+.pa-porta{background:#fff;border:1px solid var(--linha);border-radius:var(--r-lg);padding:32px 26px;box-shadow:var(--sombra-forte);max-width:26rem;margin:0 auto}
+.pa-porta h2{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--roxo-fundo);font-size:1.4rem;margin-bottom:6px}
+.pa-porta p{color:var(--texto-suave);font-size:.93rem;margin-bottom:18px}
+.pa-erro{color:#B3261E;font-size:.88rem;margin-top:10px;min-height:1.2em}
+.pa-carregando,.pa-vazio{color:var(--texto-suave);text-align:center;padding:28px}
+
+.pa-topo{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  background:linear-gradient(140deg,var(--roxo-escuro),#3D0A5C);color:#fff;border-radius:var(--r-lg);padding:20px 22px;margin-bottom:18px}
+.pa-topo b{display:block;font-family:'Montserrat',sans-serif;font-size:1.1rem}
+.pa-topo span{font-size:.85rem;color:var(--texto-inv)}
+.pa-topo .btn-linha{border:2px solid rgba(255,255,255,.45);color:#fff;background:transparent;padding:8px 16px}
+
+.pa-novo{background:#fff;border:1px solid var(--linha);border-radius:var(--r-lg);padding:20px;margin-bottom:24px}
+.pa-novo h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;color:var(--roxo-fundo);margin-bottom:4px}
+.pa-novo>p{color:var(--texto-suave);font-size:.9rem;margin-bottom:14px}
+.pa-form{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;margin-bottom:12px}
+.pa-form input,.pa-form select{width:100%;padding:12px;border:1.5px solid var(--linha);border-radius:var(--r-sm);font:inherit;min-height:48px}
+@media(max-width:640px){ .pa-form{grid-template-columns:1fr} }
+
+.pa-dia{margin-bottom:22px}
+.pa-dia h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:var(--roxo);
+  text-transform:capitalize;padding-bottom:6px;border-bottom:2px solid var(--linha);margin-bottom:10px}
+.pa-item{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--linha);
+  border-left:4px solid var(--dourado);border-radius:var(--r-md);padding:14px;margin-bottom:8px;flex-wrap:wrap}
+.pa-item.pa-lili{border-left-color:var(--texto-suave);background:var(--claro)}
+.pa-hora{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--roxo-fundo);flex:none;min-width:52px}
+.pa-corpo{flex:1;min-width:180px}
+.pa-corpo b{display:block;color:var(--texto)}
+.pa-corpo small{color:var(--texto-suave);font-size:.85rem}
+.pa-corpo a{color:var(--roxo);font-weight:700}
+.pa-acoes{display:flex;gap:8px;flex:none}
+.pa-btn{background:#fff;border:1.5px solid var(--linha);border-radius:8px;padding:8px 12px;
+  font:inherit;font-size:.8rem;font-weight:700;color:var(--roxo);cursor:pointer;text-decoration:none;min-height:40px;display:grid;place-items:center}
+.pa-btn:hover{border-color:var(--roxo);background:#FCFAFE}
+.pa-del{color:#B3261E}
+.pa-del:hover{border-color:#B3261E;background:#FDF3F2}

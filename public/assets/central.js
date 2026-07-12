@@ -127,6 +127,7 @@
     // ---------- RESULTADOS ----------
     r_pcd: {
       fim:true, tom:'quente', canal:'pcd',
+      link:{href:'/isencaopcd/simulador', txt:'Ver o diagnóstico detalhado do meu caso'},
       titulo:'Seu caso apresenta elementos que merecem análise especializada.',
       texto:'As condições que você descreveu estão entre as que costumam dar direito à isenção de IPI, ICMS e IPVA. <strong>Isso não é uma aprovação</strong> — quem aprova é o órgão, com base no laudo. Mas é caminho suficiente para valer a análise.<br><br><strong>E existe um prazo:</strong> as regras atuais valem até 31/12/2026.',
       msg:'Olá Lili! Passei pela Central e quero a análise do meu caso de isenção PCD.'
@@ -184,9 +185,10 @@
         var linhas = Object.keys(resp).map(function(k){
           return '<div><span>'+rotulo(k)+'</span><b>'+resp[k]+'</b></div>';
         }).join('');
-        var texto = 'Meu caso, pela Central da Lili:\n\n' +
-          Object.keys(resp).map(function(k){ return '• '+rotulo(k)+': '+resp[k]; }).join('\n') +
-          '\n\n' + n.msg;
+        // LGPD: a URL do WhatsApp leva mensagem NEUTRA.
+        // Nada de condicao, laudo, diagnostico ou dado de saude na querystring.
+        // O resumo continua visivel na tela, para a propria pessoa.
+        var texto = n.msg;
 
         c.innerHTML =
           '<div class="barra"><i style="width:100%"></i></div>' +
@@ -195,6 +197,7 @@
               '<div class="selo-r">'+n.titulo+'</div><p>'+n.texto+'</p>' +
             '</div>' +
             (linhas ? '<div class="resumo"><h4>O que eu já entendi do seu caso</h4>'+linhas+'</div>' : '') +
+            (n.link ? '<a class="btn btn-roxo btn-bloco" href="'+n.link.href+'">'+n.link.txt+'</a>' : '') +
             '<a class="btn btn-ouro btn-bloco" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone='+zapNum+'&text='+encodeURIComponent(texto)+'">Continuar no WhatsApp — a Lili já sabe do seu caso</a>' +
             '<p class="aviso-legal">Esta é uma orientação preliminar de caráter geral, com base nas suas respostas. <strong>Não constitui parecer jurídico nem garantia de aprovação.</strong> Cada caso é analisado individualmente pela nossa equipe. A Despachante 100 Milhas é uma empresa privada de assessoria e não representa o DETRAN.</p>' +
             '<button class="voltar" data-voltar>← Refazer</button>' +

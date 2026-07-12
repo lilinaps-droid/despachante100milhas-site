@@ -20,14 +20,17 @@
   function fmt(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
   function mostraErro(msg){ erro.textContent=msg||''; }
 
-  // ---------- Passo 1: próximos 10 dias úteis ----------
+  // Dias em que a Lili atende: 3=qua, 4=qui, 5=sex. Seg e ter não entram.
+  var DIAS_ATENDIMENTO = [3,4,5];
+
+  // ---------- Passo 1: próximos dias de atendimento ----------
   function montaDias(){
     var d=new Date(); var feitos=0; var html='';
     while(feitos<10){
       d.setDate(d.getDate()+ (feitos===0 && montaDias.primeira!==false ? 0 : 1));
       montaDias.primeira=false;
       var dow=d.getDay();
-      if(dow===0||dow===6){ continue; }
+      if(DIAS_ATENDIMENTO.indexOf(dow)===-1){ continue; }
       var iso=fmt(d);
       html+='<button type="button" class="ag-chip" data-dia="'+iso+'">'+
         '<small>'+SEMANA[dow]+'</small><b>'+d.getDate()+'</b><small>'+MESES[d.getMonth()]+'</small></button>';
