@@ -6,6 +6,10 @@ import os, html
 SAIDA = "./public"
 BASE = "https://www.despachante100milhas.com.br"
 
+# Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
+# guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
+V = "?v=7"
+
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
 # pcd: isencao PCD, laudos, IMESC, IR doenca grave, cartao DEFIS
@@ -102,7 +106,7 @@ def head(titulo, desc, url, extra="", pilar="", canal="doc"):
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="image" href="/assets/lili-ia.webp" fetchpriority="high">
-<link rel="stylesheet" href="/assets/estilo.css">
+<link rel="stylesheet" href="/assets/estilo.css{V}">
 <script type="application/ld+json">
 {{
   "@context":"https://schema.org",
@@ -231,10 +235,10 @@ def rodape(canal="doc"):
 </div>
 </footer>
 <a class="zap-flut" href="{zap(msg_flut, canal)}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">{SVG_ZAP}</a>
-<script src="/assets/analytics.js" defer></script>
-<script src="/assets/script.js" defer></script>
-<script src="/assets/central.js" defer></script>
-<script src="/assets/agente.js" defer></script>
+<script src="/assets/analytics.js{V}" defer></script>
+<script src="/assets/script.js{V}" defer></script>
+<script src="/assets/central.js{V}" defer></script>
+<script src="/assets/agente.js{V}" defer></script>
 </body>
 </html>"""
 
