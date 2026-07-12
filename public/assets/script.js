@@ -21,7 +21,8 @@
   // Hoje: envia direto para o WhatsApp da 100 Milhas com os dados preenchidos.
   // Amanhã: trocar por um POST para o 100 Milhas OS (endpoint em ENDPOINT_OS).
   var ENDPOINT_OS = null; // ex.: 'https://seu-endpoint/lead'
-  var ZAP = '5513978144035';
+  // Canal por página: doc (documentação) ou pcd — definido no <body data-canal>.
+  var ZAP = document.body.dataset.canal === 'pcd' ? '5513978091064' : '5513978144035';
 
   document.querySelectorAll('.form-lead').forEach(function(f){
     f.addEventListener('submit', function(e){
@@ -63,7 +64,7 @@
    ========================================================================= */
 (function(){
   var f=document.getElementById('form-veiculo'); if(!f) return;
-  var ZAP='5513978144035';
+  var ZAP=document.body.dataset.canal === 'pcd' ? '5513978091064' : '5513978144035';
   var iP=document.getElementById('placa'), iR=document.getElementById('renavam');
   var eP=document.getElementById('erro-placa'), eR=document.getElementById('erro-renavam');
 

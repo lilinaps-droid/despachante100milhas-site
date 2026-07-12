@@ -977,3 +977,178 @@ header{border-bottom:2px solid var(--dourado)}
   .prova-topo{order:6;margin-top:var(--e-5)}
   .provas{order:7;margin-top:var(--e-3);justify-content:center}
 }
+
+/* =========================================================================
+   V7 — DOIS CANAIS, AGENTE LILI E SERVIÇOS COM CTA
+   ========================================================================= */
+
+/* ---------- RODAPÉ: DOIS CANAIS DE WHATSAPP ---------- */
+.canais{
+  display:grid;grid-template-columns:1fr 1.1fr 1.1fr;gap:var(--e-5);align-items:stretch;
+  padding-bottom:var(--e-10);margin-bottom:var(--e-10);
+  border-bottom:1px solid rgba(255,255,255,.1)
+}
+.canais-txt{align-self:center}
+.canais-sub{color:var(--texto-rodape);font-size:.94rem;max-width:26ch}
+.canal{
+  display:flex;flex-direction:column;gap:var(--e-2);
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-lg);padding:var(--e-5) var(--e-6);
+  transition:var(--transicao);position:relative;overflow:hidden
+}
+.canal::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--canal-cor,var(--dourado))}
+.canal:hover{background:rgba(255,255,255,.09);border-color:var(--canal-cor,var(--dourado));transform:translateY(-2px)}
+.canal-doc{--canal-cor:var(--vermelho)}
+.canal-pcd{--canal-cor:var(--dourado)}
+.canal-tag{
+  align-self:flex-start;font-family:var(--fonte-display);font-weight:700;font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  background:var(--canal-cor,var(--dourado));border-radius:var(--r-sm);padding:4px 10px
+}
+.canal-pcd .canal-tag{color:var(--roxo-fundo)}
+.canal-num{display:flex;align-items:center;gap:var(--e-2)}
+.canal-num b{color:#fff;font-family:var(--fonte-display);font-size:1.25rem;letter-spacing:.01em}
+.canal-desc{font-size:.84rem;color:var(--texto-rodape);line-height:1.5}
+@media(max-width:960px){ .canais{grid-template-columns:1fr 1fr} .canais-txt{grid-column:1/-1} .canais-sub{max-width:none} }
+@media(max-width:600px){ .canais{grid-template-columns:1fr;gap:var(--e-3)} }
+
+/* ---------- HOME: SERVIÇOS COM CTA DIRETO ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--e-4)}
+.svc{
+  background:#fff;border:1px solid var(--linha);border-radius:var(--r-lg);
+  padding:var(--e-6);display:flex;flex-direction:column;gap:var(--e-4);
+  box-shadow:var(--sombra);transition:var(--transicao)
+}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--sombra-forte);border-color:var(--roxo)}
+.svc-txt{flex:1}
+.svc h3{font-size:1.05rem;color:var(--roxo-fundo);margin-bottom:4px}
+.svc p{color:var(--texto-suave);font-size:.88rem;line-height:1.5}
+.btn-svc{padding:12px 16px;font-size:.88rem;width:100%}
+.svc-pcd{border-top:3px solid var(--dourado)}
+.svc-pcd:hover{border-color:var(--dourado)}
+.svc-lili{background:linear-gradient(170deg,#fff,#FBF8FE);border-top:3px solid var(--roxo)}
+@media(max-width:960px){ .svc-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:600px){ .svc-grid{grid-template-columns:1fr;gap:var(--e-3)} .svc{padding:var(--e-5)} }
+
+/* CTA dentro de cards de serviço (página de recursos) */
+.btn-card{margin-top:var(--e-4);padding:12px 20px;font-size:.9rem;align-self:flex-start}
+
+/* ---------- HOME: ATENDEMOS ---------- */
+.atende-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--e-4)}
+.atende{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-lg);padding:var(--e-6);transition:var(--transicao)
+}
+.atende:hover{background:rgba(255,255,255,.1);border-color:var(--dourado);transform:translateY(-3px)}
+.atende.destaque{border-color:rgba(212,175,55,.55);background:rgba(212,175,55,.09)}
+.atende-ico{
+  width:44px;height:44px;border-radius:var(--r-md);margin-bottom:var(--e-4);
+  background:linear-gradient(140deg,var(--dourado),var(--dourado-escuro));
+  display:grid;place-items:center;color:var(--roxo-fundo)
+}
+.atende-ico svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.atende h3{color:#fff;font-size:1.08rem;margin-bottom:6px}
+.atende p{color:var(--texto-inv);font-size:.9rem;line-height:1.55}
+@media(max-width:960px){ .atende-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:600px){ .atende-grid{grid-template-columns:1fr;gap:var(--e-3)} }
+
+/* ---------- AGENTE LILI (widget flutuante) ---------- */
+/* Launcher: canto inferior esquerdo (o WhatsApp fica à direita). */
+.lili-lan{
+  position:fixed;left:20px;bottom:20px;z-index:80;
+  display:flex;align-items:center;gap:var(--e-2);
+  background:linear-gradient(140deg,var(--roxo),var(--roxo-claro));color:#fff;
+  border:2px solid rgba(212,175,55,.65);border-radius:var(--r-pill);
+  padding:6px 18px 6px 6px;cursor:pointer;font-family:var(--fonte-corpo);
+  box-shadow:0 10px 30px rgba(106,13,173,.42);transition:var(--transicao)
+}
+.lili-lan:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(106,13,173,.5)}
+.lili-lan-foto{width:48px;height:48px;border-radius:50%;overflow:hidden;flex:none;border:2px solid var(--dourado);background:var(--roxo-fundo)}
+.lili-lan-foto img{width:100%;height:100%;object-fit:cover}
+.lili-lan-txt{font-size:.78rem;line-height:1.25;text-align:left;white-space:nowrap}
+.lili-lan-txt b{font-family:var(--fonte-display);font-size:.92rem}
+body.com-lgpd .lili-lan{bottom:calc(16px + 96px)}
+@media(max-width:600px){
+  .lili-lan{padding:5px;left:16px;bottom:16px}
+  .lili-lan-txt{display:none}
+  body.com-lgpd .lili-lan{bottom:262px}
+}
+
+/* Fundo escurecido (só participa da tela quando o painel está aberto) */
+.lili-fundo{
+  position:fixed;inset:0;z-index:10005;background:rgba(20,2,31,.55);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s,visibility 0s linear .28s
+}
+.lili-fundo.aberto{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .28s,visibility 0s}
+
+/* Painel: fechado é invisível e não intercepta nada */
+.lili-painel{
+  position:fixed;left:20px;bottom:88px;z-index:10010;padding:0;
+  width:min(400px,calc(100vw - 40px));
+  max-height:min(660px,calc(100dvh - 110px));
+  display:flex;flex-direction:column;overflow:hidden;
+  background:linear-gradient(150deg,#fff,#FAF7FD);
+  border:1px solid var(--linha);border-radius:var(--r-xl);
+  box-shadow:0 24px 70px rgba(20,2,31,.4);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(16px) scale(.98);transform-origin:bottom left;
+  transition:opacity .28s,transform .28s,visibility 0s linear .28s
+}
+.lili-painel.aberto{opacity:1;visibility:visible;pointer-events:auto;transform:none;
+  transition:opacity .28s,transform .28s,visibility 0s}
+.lili-topo{
+  background:linear-gradient(140deg,var(--roxo-escuro),var(--roxo-meio));
+  color:#fff;padding:var(--e-3) var(--e-5);display:flex;gap:var(--e-3);align-items:center;flex:none
+}
+.lili-topo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(212,175,55,.6);flex:none}
+.lili-topo-txt{flex:1;min-width:0;line-height:1.3}
+.lili-topo-txt b{display:block;font-family:var(--fonte-display);font-size:1rem}
+.lili-topo-txt span{font-size:.78rem;color:var(--texto-inv)}
+.lili-fechar{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;
+  width:36px;height:36px;border-radius:50%;font-size:1.4rem;line-height:1;cursor:pointer;
+  display:grid;place-items:center;flex:none;transition:var(--transicao)
+}
+.lili-fechar:hover{background:rgba(255,255,255,.24)}
+.lili-corpo{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.lili-corpo .central-corpo{padding:var(--e-5)}
+.lili-corpo .opcao{min-height:0;padding:var(--e-3) var(--e-4);gap:var(--e-3)}
+.lili-corpo .opcao b{font-size:.95rem}
+.lili-corpo .opcao small{font-size:.8rem}
+.lili-corpo .opcao .octa{font-size:.78rem;margin-top:3px}
+.lili-corpo .opcao .oico{width:38px;height:38px}
+.lili-corpo .pergunta{font-size:1.05rem}
+.lili-corpo .dica{font-size:.86rem;margin-bottom:var(--e-4)}
+.lili-pe{
+  flex:none;padding:var(--e-2) var(--e-5);font-size:.72rem;color:var(--texto-suave);
+  background:var(--claro);border-top:1px solid var(--linha);text-align:center
+}
+/* No desktop o fundo não precisa bloquear a página */
+@media(min-width:721px){ .lili-fundo{display:none} }
+/* No celular vira uma folha quase inteira */
+@media(max-width:720px){
+  .lili-painel{
+    left:12px;right:12px;bottom:12px;width:auto;
+    max-height:calc(100dvh - 24px);
+    transform:translateY(24px);transform-origin:bottom center
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .lili-painel,.lili-fundo,.lili-lan{transition:none}
+}
+
+/* Rodapé: rótulos de horário nunca quebram no meio da palavra */
+.horario span{white-space:nowrap}
+.horario b{text-align:right;overflow-wrap:anywhere}
+
+/* E-mail do rodapé: reduz para caber sem quebrar no meio */
+.horario a[href^="mailto"]{font-size:.8rem;letter-spacing:-.01em}
+
+/* Fallback visual do mapa: se o iframe não carregar, o endereço aparece no lugar */
+.mapa-box{position:relative;min-height:170px}
+.mapa-box::before{
+  content:"📍 R. Jacob Emmerich, 700 — Centro, São Vicente/SP";
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  padding:16px;font-size:.9rem;color:var(--texto-rodape)
+}
+.mapa-box iframe{position:relative;z-index:1;background:transparent}

@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Gera as 7 paginas HTML estaticas do site oficial da 100 Milhas."""
+"""Gera as paginas HTML estaticas do site oficial da 100 Milhas."""
 import os, html
 
 SAIDA = "./public"
 BASE = "https://www.despachante100milhas.com.br"
-ZAP = "5513978144035"
 
-def zap(msg):
+# --- CANAIS DE WHATSAPP ---
+# doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
+# pcd: isencao PCD, laudos, IMESC, IR doenca grave, cartao DEFIS
+ZAP_DOC = "5513978144035"
+ZAP_PCD = "5513978091064"
+FONE_DOC = "(13) 97814-4035"
+FONE_PCD = "(13) 97809-1064"
+
+def zap(msg, canal="doc"):
     from urllib.parse import quote
-    return f"https://api.whatsapp.com/send?phone={ZAP}&text={quote('#site' + chr(10)+chr(10) + msg)}"
+    num = ZAP_PCD if canal == "pcd" else ZAP_DOC
+    return f"https://api.whatsapp.com/send?phone={num}&text={quote('#site' + chr(10)+chr(10) + msg)}"
 
 
 # ---- Icones SVG (substituem os emoji: renderizam igual em todo sistema) ----
@@ -65,7 +73,7 @@ NAV = [
 
 SVG_ZAP = '<svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>'
 
-def head(titulo, desc, url, extra="", pilar=""):
+def head(titulo, desc, url, extra="", pilar="", canal="doc"):
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -86,10 +94,13 @@ def head(titulo, desc, url, extra="", pilar=""):
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{BASE}/assets/lili.webp">
 <meta name="theme-color" content="#6A0DAD">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="image" href="/assets/lili-ia.webp" fetchpriority="high">
 <link rel="stylesheet" href="/assets/estilo.css">
 <script type="application/ld+json">
@@ -111,15 +122,16 @@ def head(titulo, desc, url, extra="", pilar=""):
 </script>
 {extra}
 </head>
-<body{(' data-pilar="' + pilar + '"') if pilar else ''}>
+<body{(' data-pilar="' + pilar + '"') if pilar else ''} data-canal="{canal}">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 """
 
-def header(atual):
+def header(atual, canal="doc"):
     itens = ""
     for u, t in NAV:
         cur = ' aria-current="page"' if u == atual else ""
         itens += f'<a href="{u}"{cur}>{t}</a>'
+    msg_zap = 'Olá, quero atendimento sobre isenção PCD / Imposto de Renda.' if canal == "pcd" else 'Olá, estou no site e tenho uma dúvida.'
     return f"""<header>
 <div class="wrap nav">
   <a class="logo" href="/" aria-label="Despachante 100 Milhas — início">
@@ -128,7 +140,7 @@ def header(atual):
   <button class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger">&#9776;</button>
   <nav class="menu" id="menu">
     {itens}
-    <a class="btn-zap" href="{zap('Olá, estou no site e tenho uma dúvida.')}" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn-zap" href="{zap(msg_zap, canal)}" target="_blank" rel="noopener">WhatsApp</a>
   </nav>
 </div>
 </header>
@@ -136,8 +148,27 @@ def header(atual):
 
 SVG_ZAP_MINI = SVG_ZAP.replace('viewBox="0 0 24 24"','viewBox="0 0 24 24" style="width:22px;height:22px;fill:#25D366;flex:none"')
 
-RODAPE = f"""<footer>
+def rodape(canal="doc"):
+    msg_flut = 'Olá, quero atendimento sobre isenção PCD / Imposto de Renda.' if canal == "pcd" else 'Olá, quero falar com um especialista.'
+    return f"""<footer>
 <div class="wrap">
+  <div class="canais">
+    <div class="canais-txt">
+      <h2 class="foot-tit" style="margin-bottom:6px">Fale com a gente</h2>
+      <p class="canais-sub">Dois canais de WhatsApp, cada um com a equipe certa. Escolha o seu assunto:</p>
+    </div>
+    <a class="canal canal-doc" href="{zap('Olá! Preciso de ajuda com a documentação do meu veículo.')}" target="_blank" rel="noopener">
+      <span class="canal-tag">Documentação</span>
+      <span class="canal-num">{SVG_ZAP_MINI}<b>{FONE_DOC}</b></span>
+      <span class="canal-desc">Licenciamento &middot; transferência &middot; multas &middot; recursos &middot; CNH</span>
+    </a>
+    <a class="canal canal-pcd" href="{zap('Olá! Quero atendimento PCD (isenções, laudos, IR).', 'pcd')}" target="_blank" rel="noopener">
+      <span class="canal-tag">PCD</span>
+      <span class="canal-num">{SVG_ZAP_MINI}<b>{FONE_PCD}</b></span>
+      <span class="canal-desc">Isenção PCD &middot; laudos &middot; IMESC &middot; IR doença grave &middot; cartão DEFIS</span>
+    </a>
+  </div>
+
   <div class="rodape-central">
     <div>
       <h2 class="foot-tit">Onde estamos</h2>
@@ -147,10 +178,6 @@ RODAPE = f"""<footer>
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <p>R. Jacob Emmerich, 700 — Centro<br>São Vicente/SP</p>
-      <a class="zap-rodape" href="{zap('Olá, quero falar com a equipe da 100 Milhas.')}" target="_blank" rel="noopener">
-        {SVG_ZAP_MINI}
-        <span style="flex:1"><b>(13) 97814-4035</b><span>Fale agora no WhatsApp</span></span>
-      </a>
     </div>
 
     <div>
@@ -203,14 +230,16 @@ RODAPE = f"""<footer>
   </div>
 </div>
 </footer>
-<a class="zap-flut" href="{zap('Olá, quero falar com um especialista.')}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">{SVG_ZAP}</a>
+<a class="zap-flut" href="{zap(msg_flut, canal)}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">{SVG_ZAP}</a>
 <script src="/assets/analytics.js" defer></script>
 <script src="/assets/script.js" defer></script>
+<script src="/assets/central.js" defer></script>
+<script src="/assets/agente.js" defer></script>
 </body>
 </html>"""
 
-def pagina(arquivo, titulo, desc, url, corpo, extra="", pilar=""):
-    conteudo = head(titulo, desc, url, extra, pilar) + header(url) + '<main id="conteudo">' + corpo + '</main>' + RODAPE
+def pagina(arquivo, titulo, desc, url, corpo, extra="", pilar="", canal="doc"):
+    conteudo = head(titulo, desc, url, extra, pilar, canal) + header(url, canal) + '<main id="conteudo">' + corpo + '</main>' + rodape(canal)
     caminho = os.path.join(SAIDA, arquivo)
     os.makedirs(os.path.dirname(caminho), exist_ok=True)
     with open(caminho, "w", encoding="utf-8") as f:
@@ -218,7 +247,7 @@ def pagina(arquivo, titulo, desc, url, corpo, extra="", pilar=""):
     print(f"  {arquivo}  ({len(conteudo):,} bytes)")
 
 
-def faixa_lili(fala, cta_texto, cta_msg):
+def faixa_lili(fala, cta_texto, cta_msg, canal="doc"):
     return f"""<section style="padding-top:0">
   <div class="wrap" style="max-width:52rem">
     <div class="faixa-lili">
@@ -227,7 +256,7 @@ def faixa_lili(fala, cta_texto, cta_msg):
         <p>&ldquo;{fala}&rdquo;</p>
         <div class="quem">— <b>Lili</b> · Liliane Pereira Rosa, fundadora da 100 Milhas</div>
       </div>
-      <a class="btn btn-roxo" href="{zap(cta_msg)}" target="_blank" rel="noopener">{cta_texto}</a>
+      <a class="btn btn-roxo" href="{zap(cta_msg, canal)}" target="_blank" rel="noopener">{cta_texto}</a>
     </div>
   </div>
 </section>"""
@@ -331,7 +360,7 @@ home = f"""
           <h2 style="margin:0">Posso ter direito PCD?</h2>
         </div>
         <p class="expl">Responda algumas perguntas simples e descubra se o seu caso merece uma análise especializada.</p>
-        <a class="btn btn-roxo btn-grande" href="/central" style="margin-top:auto">COMEÇAR PRÉ-TRIAGEM</a>
+        <a class="btn btn-roxo btn-grande" href="/central" data-lili style="margin-top:auto">COMEÇAR PRÉ-TRIAGEM</a>
         <p class="apoio-min">Vale para <strong>condutor, não condutor, criança, dependente ou representado</strong>. São mais de 70 condições — e não é só para cadeirantes.</p>
       </div>
     </div>
@@ -382,6 +411,27 @@ home = f"""
   </div>
 </section>
 
+<!-- SERVIÇOS COM CTA DIRETO -->
+<section class="sec-clara">
+  <div class="wrap">
+    <div class="cabeca centro">
+      <span class="placa">Resolver agora</span>
+      <h2>Já sabe o que precisa? Vá direto ao ponto.</h2>
+      <p>Cada botão abre o canal certo, com a equipe certa esperando por você.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-txt"><h3>Licenciamento / CRLV</h3><p>Documento anual do veículo em dia, com parcelamento no cartão.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero licenciar meu veículo agora.')}" target="_blank" rel="noopener">Licenciar agora</a></div>
+      <div class="svc"><div class="svc-txt"><h3>Transferência de veículo</h3><p>Orçamento completo sem sair de casa, dentro do prazo de 30 dias.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero transferir um veículo agora.')}" target="_blank" rel="noopener">Transferir agora</a></div>
+      <div class="svc"><div class="svc-txt"><h3>Débitos, multas e IPVA</h3><p>Levantamento completo do que está em aberto no seu veículo.</p></div><a class="btn btn-roxo btn-svc" href="#form-veiculo">Consultar veículo</a></div>
+      <div class="svc"><div class="svc-txt"><h3>Situação da CNH</h3><p>Pontos, notificações e o que fazer para não perder o direito de dirigir.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero consultar a situação da minha CNH.')}" target="_blank" rel="noopener">Consultar minha CNH</a></div>
+      <div class="svc svc-pcd"><div class="svc-txt"><h3>Isenção PCD</h3><p>IPI, ICMS e IPVA para condutores e não condutores. Canal exclusivo.</p></div><a class="btn btn-ouro btn-svc" href="{zap('Olá, quero solicitar a isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Solicitar Isenção PCD</a></div>
+      <div class="svc svc-pcd"><div class="svc-txt"><h3>Imposto de Renda</h3><p>Isenção por doença grave e restituição dos últimos 5 anos.</p></div><a class="btn btn-ouro btn-svc" href="{zap('Olá, quero solicitar a análise de isenção de Imposto de Renda.', 'pcd')}" target="_blank" rel="noopener">Solicitar análise IR</a></div>
+      <div class="svc"><div class="svc-txt"><h3>Recurso de multa</h3><p>Defesa contra multas, bafômetro, suspensão e cassação.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero recorrer de uma multa.')}" target="_blank" rel="noopener">Recorrer de multa</a></div>
+      <div class="svc svc-lili"><div class="svc-txt"><h3>Não sei o que preciso</h3><p>A Lili te faz as perguntas certas e mostra o caminho.</p></div><a class="btn btn-linha btn-svc" href="/central" data-lili>Abrir a Lili</a></div>
+    </div>
+  </div>
+</section>
+
 <!-- NÃO SEI QUAL SERVIÇO PRECISO -->
 <section class="sec-clara">
   <div class="wrap">
@@ -389,9 +439,9 @@ home = f"""
       <img src="/assets/lili-ia.webp" width="132" height="132" alt="Lili, guia digital da Central da 100 Milhas">
       <div class="txt">
         <h2>Não sabe qual serviço precisa?</h2>
-        <p>Conte o que aconteceu. A Central da Lili ajuda você a encontrar o caminho certo — sem cadastro e sem compromisso.</p>
+        <p>Conte o que aconteceu. A Lili ajuda você a encontrar o caminho certo — sem cadastro e sem compromisso.</p>
       </div>
-      <a class="btn btn-ouro btn-grande" style="width:auto;min-width:260px" href="/central">QUERO AJUDA PARA DESCOBRIR</a>
+      <a class="btn btn-ouro btn-grande" style="width:auto;min-width:260px" href="/central" data-lili>ABRIR A LILI</a>
     </div>
   </div>
 </section>
@@ -534,6 +584,39 @@ home = f"""
   </div>
 </section>
 
+<!-- ATENDEMOS -->
+<section class="sec-escura">
+  <div class="wrap">
+    <div class="cabeca centro">
+      <span class="placa claro">Atendemos</span>
+      <h2>Perto de você — e onde você estiver</h2>
+      <p>Escritório físico em São Vicente e atendimento online para todo o Brasil.</p>
+    </div>
+    <div class="atende-grid">
+      <div class="atende destaque">
+        <div class="atende-ico">{ic("mapa")}</div>
+        <h3>São Vicente / SP</h3>
+        <p>Sede física: R. Jacob Emmerich, 700 — Centro.<br>Segunda a sexta, atendimento presencial.</p>
+      </div>
+      <div class="atende">
+        <div class="atende-ico">{ic("mapa")}</div>
+        <h3>Baixada Santista</h3>
+        <p>Santos, Praia Grande, Guarujá, Cubatão e região — atendidos pela sede de São Vicente e online.</p>
+      </div>
+      <div class="atende">
+        <div class="atende-ico">{ic("relogio")}</div>
+        <h3>São Paulo / SP</h3>
+        <p>Atendimento na capital aos sábados.</p>
+      </div>
+      <div class="atende">
+        <div class="atende-ico">{ic("envio")}</div>
+        <h3>Todo o Brasil</h3>
+        <p>Processos 100% online pelo WhatsApp — do primeiro contato ao documento na mão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="fecho">
@@ -568,7 +651,7 @@ pcd = f"""
     <div class="card-consulta">
       <h2>Consultar meu direito</h2>
       <p class="ajuda">Conte a sua condição e o seu estado. Fazemos a análise preliminar do seu caso.</p>
-      <a class="btn btn-ouro btn-bloco" href="{zap('Olá, quero consultar meu direito à isenção PCD.')}" target="_blank" rel="noopener">Consultar meu direito agora</a>
+      <a class="btn btn-ouro btn-bloco" href="{zap('Olá, quero consultar meu direito à isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Consultar meu direito agora</a>
       <p class="seguro">&#128274; Atendimento humano e sigiloso.</p>
     </div>
   </div>
@@ -591,13 +674,13 @@ pcd = f"""
     <p>Ao contrário do que muita gente pensa, o direito não se limita a deficiências visíveis. Pessoas com limitações físicas, doenças crônicas ou que passaram por cirurgias que limitam movimentos podem ter direito. E o benefício também alcança <strong style="color:var(--dourado)">não condutores</strong>, quando o beneficiário é transportado por terceiros.</p></div>
     <p style="margin-bottom:16px;font-weight:700;color:#fff">Algumas das mais de 70 condições que podem dar direito:</p>
     <div class="pilulas">{pat}</div>
-    <div style="margin-top:32px"><a class="btn btn-ouro" href="{zap('Olá, quero verificar se a minha condição dá direito à isenção PCD.')}" target="_blank" rel="noopener">Verificar minha condição</a></div>
+    <div style="margin-top:32px"><a class="btn btn-ouro" href="{zap('Olá, quero verificar se a minha condição dá direito à isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Verificar minha condição</a></div>
   </div>
 </section>
 
 {faixa_lili(
   "A maior parte das pessoas que chega até mim já ouviu de alguém que não tem direito. Muitas vezes, quem disse isso nem chegou a olhar o laudo. Eu olho. E te digo a verdade — mesmo quando a verdade é não.",
-  "Contar meu caso", "Olá Lili, quero contar meu caso de isenção PCD.")}
+  "Contar meu caso", "Olá Lili, quero contar meu caso de isenção PCD.", "pcd")}
 <section>
   <div class="wrap">
     <div class="cabeca centro"><span class="placa">O caminho</span><h2>Como funciona o processo</h2></div>
@@ -606,7 +689,7 @@ pcd = f"""
       <div class="passo"><div><h3>Laudo médico PCD</h3><p>Orientação completa para a obtenção do laudo junto aos órgãos credenciados.</p></div></div>
       <div class="passo"><div><h3>Protocolo das isenções</h3><p>Damos entrada nos pedidos de IPI, ICMS e IPVA de forma digital e ágil.</p></div></div>
     </div>
-    <div style="text-align:center;margin-top:34px"><a class="btn btn-roxo" href="{zap('Olá, quero iniciar meu processo de isenção PCD.')}" target="_blank" rel="noopener">Iniciar meu processo</a></div>
+    <div style="text-align:center;margin-top:34px"><a class="btn btn-roxo" href="{zap('Olá, quero iniciar meu processo de isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Iniciar meu processo</a></div>
   </div>
 </section>
 
@@ -622,7 +705,7 @@ pcd = f"""
           <li><strong>Prazo de troca:</strong> 3 anos para veículos adquiridos com IPI; 4 anos com IPI + ICMS.</li>
         </ul>
         <p style="color:var(--texto-suave);margin-top:18px;font-size:.95rem">O mercado PCD muda com frequência. Nossa equipe acompanha cada atualização para que você não perca o prazo nem o benefício por erro de preenchimento ou documento vencido.</p>
-        <a class="btn btn-linha" style="margin-top:20px" href="{zap('Olá, quero tirar dúvidas sobre valores e regras da isenção PCD.')}" target="_blank" rel="noopener">Tirar dúvidas sobre valores</a>
+        <a class="btn btn-linha" style="margin-top:20px" href="{zap('Olá, quero tirar dúvidas sobre valores e regras da isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Tirar dúvidas sobre valores</a>
       </div>
       <div class="card">
         <div class="icone ouro">{ic("presente")}</div>
@@ -633,7 +716,7 @@ pcd = f"""
           <li>Isenção de rodízio</li>
           <li>Livre acesso de circulação</li>
         </ul>
-        <a class="btn btn-roxo" style="margin-top:20px" href="{zap('Olá, quero solicitar os benefícios extras para PCD.')}" target="_blank" rel="noopener">Solicitar benefícios extras</a>
+        <a class="btn btn-roxo" style="margin-top:20px" href="{zap('Olá, quero solicitar os benefícios extras para PCD.', 'pcd')}" target="_blank" rel="noopener">Solicitar benefícios extras</a>
       </div>
     </div>
   </div>
@@ -655,7 +738,7 @@ pcd = f"""
   <div class="wrap"><div class="chamada">
     <h2>Atendimento especializado em PCD</h2>
     <p>Atuamos em processos PCD com transparência do primeiro contato até a entrega do carro.</p>
-    <a class="btn btn-ouro" href="{zap('Olá, quero falar com um especialista em isenção PCD.')}" target="_blank" rel="noopener">Falar com especialista agora</a>
+    <a class="btn btn-ouro" href="{zap('Olá, quero falar com um especialista em isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Falar com especialista agora</a>
   </div></div>
 </section>
 """
@@ -675,7 +758,7 @@ ir = f"""
     <div class="card-consulta">
       <h2>Analisar meu caso</h2>
       <p class="ajuda">Conte o seu diagnóstico e a sua situação. A análise preliminar é gratuita.</p>
-      <a class="btn btn-ouro btn-bloco" href="{zap('Olá, quero analisar meu direito à isenção de Imposto de Renda.')}" target="_blank" rel="noopener">Falar com especialista agora</a>
+      <a class="btn btn-ouro btn-bloco" href="{zap('Olá, quero analisar meu direito à isenção de Imposto de Renda.', 'pcd')}" target="_blank" rel="noopener">Falar com especialista agora</a>
       <p class="seguro">&#128274; Sigilo total sobre a sua condição de saúde.</p>
     </div>
   </div>
@@ -698,19 +781,19 @@ ir = f"""
     <p style="margin-top:12px">Um ponto importante: mesmo que a doença esteja controlada — um câncer em remissão, por exemplo — o entendimento dos tribunais superiores é de que a isenção deve ser mantida.</p></div>
     <p style="margin-bottom:16px;font-weight:700;color:#fff">Algumas doenças previstas em lei:</p>
     <div class="pilulas">{doe}</div>
-    <div style="margin-top:32px"><a class="btn btn-ouro" href="{zap('Olá, quero analisar meu caso de isenção de Imposto de Renda.')}" target="_blank" rel="noopener">Analisar meu caso</a></div>
+    <div style="margin-top:32px"><a class="btn btn-ouro" href="{zap('Olá, quero analisar meu caso de isenção de Imposto de Renda.', 'pcd')}" target="_blank" rel="noopener">Analisar meu caso</a></div>
   </div>
 </section>
 
 {faixa_lili(
   "Muita gente para de pagar imposto e nem sabe que podia ter parado há cinco anos. O retroativo existe. Vale a pena olhar o seu caso antes que o prazo corra.",
-  "Analisar meu caso", "Olá Lili, quero analisar meu caso de isenção de Imposto de Renda.")}
+  "Analisar meu caso", "Olá Lili, quero analisar meu caso de isenção de Imposto de Renda.", "pcd")}
 
 <section>
   <div class="wrap"><div class="chamada">
     <h2>Ainda tem dúvidas?</h2>
     <p>Fale com a nossa equipe pelo WhatsApp. Explicamos o seu caso em linguagem simples, sem enrolação.</p>
-    <a class="btn btn-ouro" href="{zap('Olá, tenho dúvidas sobre a isenção de Imposto de Renda.')}" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    <a class="btn btn-ouro" href="{zap('Olá, tenho dúvidas sobre a isenção de Imposto de Renda.', 'pcd')}" target="_blank" rel="noopener">Chamar no WhatsApp</a>
   </div></div>
 </section>
 """
@@ -724,7 +807,7 @@ SERVICOS_R = [
     ("Suspensão e cassação da CNH","Defesa administrativa para proteger o direito de dirigir e reverter suspensões e cassações."),
     ("Acidentes de trânsito","Atendimento em casos de acidente, buscando ressarcimento e proteção dos direitos dos envolvidos."),
 ]
-srv = "".join(f'<div class="card"><div class="icone">{ic("balanca")}</div><h3>{t}</h3><p>{d}</p></div>' for t, d in SERVICOS_R)
+srv = "".join(f'<div class="card"><div class="icone">{ic("balanca")}</div><h3>{t}</h3><p>{d}</p><a class="btn btn-linha btn-card" href="{zap("Olá, preciso de ajuda com: " + t + ".")}" target="_blank" rel="noopener">Analisar meu caso</a></div>' for t, d in SERVICOS_R)
 
 rec = f"""
 <section class="hero">
@@ -1026,7 +1109,7 @@ quem = f"""
     <p>Se você quiser olhar no olho, o endereço é este. Atendemos presencialmente em São Vicente.</p></div>
     <div class="grid g2" style="max-width:47rem;margin:0 auto">
       <div class="card"><div class="icone">{ic("mapa")}</div><h3>São Vicente / SP</h3><p>R. Jacob Emmerich, 700 — Centro<br>Atendimento em dias úteis.</p></div>
-      <div class="card"><div class="icone">{ic("fone")}</div><h3>Fale conosco</h3><p>Telefone: (13) 3466-7438<br>WhatsApp: (13) 97814-4035</p><a class="btn btn-roxo" style="margin-top:16px" href="{zap('Olá, quero falar com a equipe da 100 Milhas.')}" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+      <div class="card"><div class="icone">{ic("fone")}</div><h3>Fale conosco</h3><p>Telefone: (13) 3466-7438<br>Documentação: {FONE_DOC}<br>PCD e Imposto de Renda: {FONE_PCD}</p><a class="btn btn-roxo" style="margin-top:16px" href="{zap('Olá, quero falar com a equipe da 100 Milhas.')}" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
     </div>
   </div>
 </section>
@@ -1085,13 +1168,13 @@ mudanca2027 = f"""
 
 {faixa_lili(
   "Muita gente vai perder o prazo por não saber que existe prazo. Se você está pensando em carro PCD, essa conta precisa ser feita agora — não em dezembro.",
-  "Fazer minha conta", "Olá Lili, quero entender se compenso comprar agora ou esperar 2027.")}
+  "Fazer minha conta", "Olá Lili, quero entender se compensa comprar agora ou esperar 2027.", "pcd")}
 
 <section class="sec-clara">
   <div class="wrap"><div class="chamada">
     <h2>Descubra o que vale mais para o seu caso</h2>
     <p>Você pode ter direito. A gente verifica, faz a conta dos dois cenários e te diz a verdade.</p>
-    <a class="btn btn-ouro" href="{zap('Olá Lili, quero saber o que muda para mim em 2027.')}" target="_blank" rel="noopener">Falar com a Lili</a>
+    <a class="btn btn-ouro" href="{zap('Olá Lili, quero saber o que muda para mim em 2027.', 'pcd')}" target="_blank" rel="noopener">Falar com a Lili</a>
   </div></div>
 </section>
 """
@@ -1138,7 +1221,7 @@ ipva = f"""
 
 {faixa_lili(
   "Já vi cliente que pagou IPVA por seis anos seguidos tendo direito à isenção o tempo todo. Ninguém tinha olhado. É por isso que eu insisto: deixa eu olhar.",
-  "Consultar meu caso", "Olá Lili, quero saber se tenho direito à isenção de IPVA.")}
+  "Consultar meu caso", "Olá Lili, quero saber se tenho direito à isenção de IPVA (PCD).", "pcd")}
 
 <section>
   <div class="wrap"><div class="chamada">
@@ -1278,50 +1361,6 @@ central = f"""
 <section class="hero">
   <div class="wrap" style="max-width:50rem;text-align:center">
     <span class="placa claro">Central da Lili</span>
-    <h1 style="margin:20px 0 16px">Responda 3 perguntas. <em>A gente já entende o seu caso.</em></h1>
-    <p class="sub" style="margin:0 auto">Sem cadastro, sem e-mail, sem robô genérico. A Lili faz perguntas simples e te mostra o caminho — e quando você chegar no WhatsApp, a equipe já sabe do que se trata.</p>
-  </div>
-</section>
-
-<section style="margin-top:-40px;position:relative;z-index:5">
-  <div class="wrap">
-    <div class="central" id="central">
-      <div class="central-topo">
-        <img src="/assets/lili-ia.webp" width="56" height="56" alt="Lili, anfitriã da Central da 100 Milhas">
-        <div>
-          <b>Oi! Eu sou a Lili.</b>
-          <span>Vou te fazer algumas perguntas rápidas para entender o seu caso.</span>
-        </div>
-      </div>
-      <div class="central-corpo"><p style="color:var(--texto-suave)">Carregando…</p></div>
-    </div>
-    <p style="text-align:center;color:var(--texto-suave);font-size:.86rem;margin-top:20px;max-width:36rem;margin-left:auto;margin-right:auto">
-      Nada do que você responder aqui é enviado ou armazenado. As respostas só viram uma mensagem que <strong>você</strong> decide mandar.
-    </p>
-  </div>
-</section>
-
-<section class="sec-clara">
-  <div class="wrap">
-    <div class="cabeca centro"><span class="placa">Por que existe</span><h2>Você não deveria precisar explicar tudo três vezes</h2></div>
-    <div class="grid g3">
-      <div class="card"><div class="icone">{ic("lupa")}</div><h3>Entende antes de responder</h3><p>Em vez de você adivinhar o que perguntar, a gente pergunta o que importa — na ordem certa.</p></div>
-      <div class="card"><div class="icone">{ic("escudo")}</div><h3>Sem promessa</h3><p>A Central diz se existe caminho. Nunca diz que está aprovado — quem aprova é o órgão.</p></div>
-      <div class="card"><div class="icone">{ic("raio")}</div><h3>Atendimento mais rápido</h3><p>Você chega no WhatsApp com o caso resumido. A equipe já começa de onde importa.</p></div>
-    </div>
-  </div>
-</section>
-
-{faixa_lili(
-  "Criei essa Central porque cansei de ver gente desistir do próprio direito por não saber nem qual pergunta fazer. Responde aí. Se tiver caminho, eu te digo.",
-  "Falar direto comigo", "Olá Lili, prefiro falar direto com você.")}
-"""
-
-
-central = f"""
-<section class="hero">
-  <div class="wrap" style="max-width:50rem;text-align:center">
-    <span class="placa claro">Central da Lili</span>
     <h1 style="margin:20px 0 16px">Não sabe se tem direito? <em>Vamos descobrir juntas.</em></h1>
     <p class="sub" style="margin:0 auto">Cinco perguntas simples. No final, você sabe qual é o seu caminho — e a nossa equipe já chega sabendo do seu caso.</p>
   </div>
@@ -1338,7 +1377,12 @@ central = f"""
         </div>
       </div>
       <div class="central-corpo">
-        <p style="color:var(--texto-suave)">Carregando…</p>
+        <p style="color:var(--texto-suave)">Carregando as perguntas…</p>
+        <noscript>
+          <p style="color:var(--texto)"><strong>Seu navegador está sem JavaScript</strong>, então as perguntas não carregam — mas você não fica sem atendimento. Fale direto com a gente:</p>
+          <p style="margin-top:12px"><a class="btn btn-roxo btn-bloco" href="{zap('Olá! Preciso de ajuda com a documentação do meu veículo.')}">Documentação — (13) 97814-4035</a></p>
+          <p style="margin-top:8px"><a class="btn btn-ouro btn-bloco" href="{zap('Olá! Quero atendimento PCD (isenções, laudos, IR).', 'pcd')}">PCD e Imposto de Renda — (13) 97809-1064</a></p>
+        </noscript>
       </div>
     </div>
 
@@ -1348,7 +1392,18 @@ central = f"""
   </div>
 </section>
 
-<section class="sec-clara">
+<section class="sec-clara" style="padding-top:56px;padding-bottom:56px">
+  <div class="wrap">
+    <div class="cabeca centro"><span class="placa">Por que existe</span><h2>Você não deveria precisar explicar tudo três vezes</h2></div>
+    <div class="grid g3">
+      <div class="card"><div class="icone">{ic("lupa")}</div><h3>Entende antes de responder</h3><p>Em vez de você adivinhar o que perguntar, a gente pergunta o que importa — na ordem certa.</p></div>
+      <div class="card"><div class="icone">{ic("escudo")}</div><h3>Sem promessa</h3><p>A Central diz se existe caminho. Nunca diz que está aprovado — quem aprova é o órgão.</p></div>
+      <div class="card"><div class="icone">{ic("raio")}</div><h3>Atendimento mais rápido</h3><p>Você chega no WhatsApp com o caso resumido. A equipe já começa de onde importa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wrap lili">
     <div class="lili-foto">
       <img src="/assets/lili-retrato.webp" width="900" height="1125" loading="lazy" alt="Liliane Pereira Rosa, fundadora da Despachante 100 Milhas">
@@ -1370,15 +1425,14 @@ print("Gerando páginas:")
 pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home)
 pagina("transferencia/index.html","Transferência de Veículo Online | Despachante 100 Milhas","Orçamento de transferência veicular online. Documentos, prazos, valores e gravame explicados. Envie o veículo e receba o orçamento completo pelo WhatsApp.","/transferencia",trans,pilar="doc")
 pagina("debitos/index.html","Consultar Débitos do Veículo — IPVA, Multas e Licenciamento | 100 Milhas","Consulte IPVA, multas e licenciamento do seu veículo e parcele no cartão. Levantamento completo dos débitos e regularização com quem entende.","/debitos",deb,pilar="doc")
-pagina("isencaopcd/index.html","Isenção PCD: IPI, ICMS e IPVA para Carro 0km | Despachante 100 Milhas","Mais de 70 condições podem dar direito à isenção PCD — e não é só para cadeirantes. Vale para condutor e não condutor. Fazemos a análise do seu caso, sem compromisso.","/isencaopcd",pcd,pilar="pcd")
-pagina("impostoderenda/index.html","Isenção de Imposto de Renda para Aposentados com Doença Grave | 100 Milhas","Lei 7.713/88: aposentados e pensionistas com doenças graves podem ter direito à isenção do IR e à recuperação dos valores pagos nos últimos 5 anos.","/impostoderenda",ir,pilar="ir")
+pagina("isencaopcd/index.html","Isenção PCD: IPI, ICMS e IPVA para Carro 0km | Despachante 100 Milhas","Mais de 70 condições podem dar direito à isenção PCD — e não é só para cadeirantes. Vale para condutor e não condutor. Fazemos a análise do seu caso, sem compromisso.","/isencaopcd",pcd,pilar="pcd",canal="pcd")
+pagina("impostoderenda/index.html","Isenção de Imposto de Renda para Aposentados com Doença Grave | 100 Milhas","Lei 7.713/88: aposentados e pensionistas com doenças graves podem ter direito à isenção do IR e à recuperação dos valores pagos nos últimos 5 anos.","/impostoderenda",ir,pilar="ir",canal="pcd")
 pagina("recursos/index.html","Recurso de Multa, Suspensão e Cassação da CNH | Despachante 100 Milhas","Defesa especializada em direito de trânsito: recurso de multa, bafômetro, suspensão e cassação da CNH. Não perca o seu direito de dirigir.","/recursos",rec,pilar="cnh")
 pagina("quem-somos/index.html","Quem Somos — Liliane Pereira Rosa | Despachante 100 Milhas","Conheça a Lili, fundadora da Despachante 100 Milhas e Despachante Documentalista. Atuação desde 2011 na Baixada Santista, com escritório em São Vicente/SP.","/quem-somos",quem)
-pagina("isencaopcd/2027/index.html","Isenção PCD em 2027: o que muda com a reforma tributária | 100 Milhas","As regras atuais de isenção PCD (IPI e ICMS) valem até 31/12/2026. Entenda o novo escalonamento, o prazo de troca e se compensa comprar agora ou esperar.","/isencaopcd/2027",mudanca2027,pilar="pcd")
+pagina("isencaopcd/2027/index.html","Isenção PCD em 2027: o que muda com a reforma tributária | 100 Milhas","As regras atuais de isenção PCD (IPI e ICMS) valem até 31/12/2026. Entenda o novo escalonamento, o prazo de troca e se compensa comprar agora ou esperar.","/isencaopcd/2027",mudanca2027,pilar="pcd",canal="pcd")
 pagina("ipva/index.html","IPVA Atrasado: como regularizar e quem tem isenção | Despachante 100 Milhas","IPVA em atraso gera acréscimo diário, dívida ativa e impede o licenciamento. Consulte, parcele e descubra se você tem direito à isenção.","/ipva",ipva,pilar="doc")
 pagina("cnh-suspensa/index.html","CNH Suspensa ou Cassada: existe defesa e existe prazo | 100 Milhas","Recebeu notificação de suspensão ou cassação da CNH? O prazo de defesa é curto. Entenda a diferença, quando cabe recurso e o que fazer agora.","/cnh-suspensa",cnh,pilar="cnh")
 pagina("licenciamento/index.html","Licenciamento e CRLV: documento do veículo em dia | Despachante 100 Milhas","Licenciamento anual e emissão do CRLV-e. Levantamos os débitos, parcelamos no cartão e colocamos o documento do seu veículo em dia. O serviço que mais fazemos.","/licenciamento",licenciamento,pilar="doc")
-pagina("central/index.html","Central da Lili — descubra em 1 minuto se você tem direito | 100 Milhas","Responda algumas perguntas simples e descubra se você pode ter direito à isenção PCD, à isenção de Imposto de Renda ou a recurso de CNH. Sem cadastro. Sem promessa.","/central",central,extra='<script src="/assets/central.js" defer></script>')
-pagina("central/index.html","Central da Lili — descubra se você tem direito | Despachante 100 Milhas","Responda cinco perguntas simples e descubra em qual direito o seu caso se encaixa: isenção PCD, Imposto de Renda, CNH ou documentação. Orientação preliminar, sem compromisso.","/central",central,extra='<script src="/assets/central.js" defer></script>')
+pagina("central/index.html","Central da Lili — descubra se você tem direito | Despachante 100 Milhas","Responda cinco perguntas simples e descubra em qual direito o seu caso se encaixa: isenção PCD, Imposto de Renda, CNH ou documentação. Orientação preliminar, sem compromisso.","/central",central)
 pagina("privacidade/index.html","Política de Privacidade | Despachante 100 Milhas","Como a Despachante 100 Milhas coleta, usa e protege os seus dados. Seus direitos sob a LGPD.","/privacidade",priv)
 print("\nOK.")

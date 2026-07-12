@@ -3,16 +3,16 @@
    Faz perguntas simples, entende o caso e leva a pessoa ao WhatsApp
    com o caso já resumido. Nunca promete resultado.
    Zero dependência externa. Roda offline.
+
+   O motor é montável em qualquer container (página /central e o painel
+   da Agente Lili usam o mesmo código): window.montarCentralLili(elemento).
+   Cada resultado sai pelo canal certo: doc = documentação, pcd = PCD/IR.
    ========================================================================= */
 (function(){
-  var raiz = document.getElementById('central');
-  if(!raiz) return;
+  if(window.montarCentralLili) return; // já carregado
 
-  var ZAP = '5513978144035';
+  var ZAPS = { doc:'5513978144035', pcd:'5513978091064' };
   var ICO={carro:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/><path d="M3 17v-4l2-5h14l2 5v4"/></svg>',moeda:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5A2.5 2.5 0 0 1 12 8h1a2 2 0 0 1 0 4h-2a2 2 0 0 0 0 4h1a2.5 2.5 0 0 0 2.5-1.5"/></svg>',balanca:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M7 20h10M5 8h14M5 8l-3 6a3 3 0 0 0 6 0L5 8Zm14 0-3 6a3 3 0 0 0 6 0l-3-6Z"/></svg>',doc:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>',chat:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>'};
-
-  var hist = [];      // pilha de navegação
-  var resp = {};      // respostas coletadas
 
   // ---------- ÁRVORE DE TRIAGEM ----------
   var F = {
@@ -126,13 +126,13 @@
 
     // ---------- RESULTADOS ----------
     r_pcd: {
-      fim:true, tom:'quente',
+      fim:true, tom:'quente', canal:'pcd',
       titulo:'Seu caso apresenta elementos que merecem análise especializada.',
       texto:'As condições que você descreveu estão entre as que costumam dar direito à isenção de IPI, ICMS e IPVA. <strong>Isso não é uma aprovação</strong> — quem aprova é o órgão, com base no laudo. Mas é caminho suficiente para valer a análise.<br><br><strong>E existe um prazo:</strong> as regras atuais valem até 31/12/2026.',
       msg:'Olá Lili! Passei pela Central e quero a análise do meu caso de isenção PCD.'
     },
     r_ir: {
-      fim:true, tom:'quente',
+      fim:true, tom:'quente', canal:'pcd',
       titulo:'Vale a pena olhar o seu caso.',
       texto:'A Lei 7.713/88 prevê isenção de Imposto de Renda para aposentados e pensionistas com doenças graves — e o entendimento dos tribunais é de que a isenção se mantém mesmo com a doença controlada. Pode haver, ainda, valores dos últimos 5 anos a recuperar.<br><br><strong>Não é promessa.</strong> É um caminho que precisa ser analisado com a sua documentação.',
       msg:'Olá Lili! Passei pela Central e quero analisar meu caso de isenção de Imposto de Renda.'
@@ -157,69 +157,6 @@
     }
   };
 
-  // ---------- RENDER ----------
-  function pintar(id){
-    var n = F[id];
-    if(!n) return;
-    var c = raiz.querySelector('.central-corpo');
-    var passo = Math.min(hist.length, 4);
-    var pct = n.fim ? 100 : (passo/4)*100;
-
-    if(n.fim){
-      var linhas = Object.keys(resp).map(function(k){
-        return '<div><span>'+rotulo(k)+'</span><b>'+resp[k]+'</b></div>';
-      }).join('');
-      var texto = 'Meu caso, pela Central da Lili:\n\n' +
-        Object.keys(resp).map(function(k){ return '• '+rotulo(k)+': '+resp[k]; }).join('\n') +
-        '\n\n' + n.msg;
-
-      c.innerHTML =
-        '<div class="barra"><i style="width:100%"></i></div>' +
-        '<div class="resultado">' +
-          '<div class="veredito'+(n.tom==='frio'?' frio':'')+'">' +
-            '<div class="selo-r">'+n.titulo+'</div><p>'+n.texto+'</p>' +
-          '</div>' +
-          (linhas ? '<div class="resumo"><h4>O que eu já entendi do seu caso</h4>'+linhas+'</div>' : '') +
-          '<a class="btn btn-ouro btn-bloco" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone='+ZAP+'&text='+encodeURIComponent(texto)+'">Continuar no WhatsApp — a Lili já sabe do seu caso</a>' +
-          '<p class="aviso-legal">Esta é uma orientação preliminar de caráter geral, com base nas suas respostas. <strong>Não constitui parecer jurídico nem garantia de aprovação.</strong> Cada caso é analisado individualmente pela nossa equipe. A Despachante 100 Milhas é uma empresa privada de assessoria e não representa o DETRAN.</p>' +
-          '<button class="voltar" data-voltar>← Refazer</button>' +
-        '</div>';
-    } else {
-      c.innerHTML =
-        '<div class="barra"><i style="width:'+pct+'%"></i></div>' +
-        (n.fala
-          ? '<div class="fala-lili"><img src="/assets/lili-ia.webp" width="52" height="52" alt="Lili">' +
-            '<div class="balao"><p>'+n.fala+'</p><p>'+(n.fala2||'')+'</p></div></div>'
-          : '<div class="pergunta">'+n.p+'</div><div class="dica">'+n.d+'</div>') +
-        '<div class="opcoes">' +
-          n.o.map(function(o,i){
-            return '<button class="opcao" data-i="'+i+'">' +
-              (o.i ? '<span class="oico">'+ICO[o.i]+'</span>' : '') +
-              '<span class="otxt"><b>'+o.t+'</b>' + (o.s?'<small>'+o.s+'</small>':'') +
-              (o.c?'<span class="octa">'+o.c+' →</span>':'') + '</span></button>';
-          }).join('') +
-        '</div>' +
-        (hist.length ? '<button class="voltar" data-voltar>← Voltar</button>' : '');
-    }
-
-    c.querySelectorAll('.opcao').forEach(function(b){
-      b.addEventListener('click', function(){
-        var o = n.o[+b.dataset.i];
-        if(o.set) Object.keys(o.set).forEach(function(k){ resp[k]=o.set[k]; });
-        hist.push(id);
-        pintar(o.ir);
-        raiz.scrollIntoView({behavior:'smooth', block:'nearest'});
-      });
-    });
-    var v = c.querySelector('[data-voltar]');
-    if(v) v.addEventListener('click', function(){
-      if(!hist.length){ return; }
-      var ant = hist.pop();
-      if(F[ant] && F[ant].fim===undefined && !hist.length){ resp={}; }
-      pintar(ant);
-    });
-  }
-
   function rotulo(k){
     var m = {beneficiario:'Beneficiário', dirige:'Dirige?', condicao:'Condição',
              laudo:'Laudo médico', diagnostico:'Diagnóstico', situacao:'Situação do imposto',
@@ -227,5 +164,82 @@
     return m[k] || k;
   }
 
-  pintar('inicio');
+  // ---------- MOTOR (uma instância por container) ----------
+  function montar(raiz){
+    if(!raiz || raiz.dataset.centralMontada) return;
+    raiz.dataset.centralMontada = '1';
+
+    var hist = [];      // pilha de navegação
+    var resp = {};      // respostas coletadas
+
+    function pintar(id){
+      var n = F[id];
+      if(!n) return;
+      var c = raiz.querySelector('.central-corpo');
+      var passo = Math.min(hist.length, 4);
+      var pct = n.fim ? 100 : (passo/4)*100;
+
+      if(n.fim){
+        var zapNum = ZAPS[n.canal] || ZAPS.doc;
+        var linhas = Object.keys(resp).map(function(k){
+          return '<div><span>'+rotulo(k)+'</span><b>'+resp[k]+'</b></div>';
+        }).join('');
+        var texto = 'Meu caso, pela Central da Lili:\n\n' +
+          Object.keys(resp).map(function(k){ return '• '+rotulo(k)+': '+resp[k]; }).join('\n') +
+          '\n\n' + n.msg;
+
+        c.innerHTML =
+          '<div class="barra"><i style="width:100%"></i></div>' +
+          '<div class="resultado">' +
+            '<div class="veredito'+(n.tom==='frio'?' frio':'')+'">' +
+              '<div class="selo-r">'+n.titulo+'</div><p>'+n.texto+'</p>' +
+            '</div>' +
+            (linhas ? '<div class="resumo"><h4>O que eu já entendi do seu caso</h4>'+linhas+'</div>' : '') +
+            '<a class="btn btn-ouro btn-bloco" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone='+zapNum+'&text='+encodeURIComponent(texto)+'">Continuar no WhatsApp — a Lili já sabe do seu caso</a>' +
+            '<p class="aviso-legal">Esta é uma orientação preliminar de caráter geral, com base nas suas respostas. <strong>Não constitui parecer jurídico nem garantia de aprovação.</strong> Cada caso é analisado individualmente pela nossa equipe. A Despachante 100 Milhas é uma empresa privada de assessoria e não representa o DETRAN.</p>' +
+            '<button class="voltar" data-voltar>← Refazer</button>' +
+          '</div>';
+      } else {
+        c.innerHTML =
+          '<div class="barra"><i style="width:'+pct+'%"></i></div>' +
+          (n.fala
+            ? '<div class="fala-lili"><img src="/assets/lili-ia.webp" width="52" height="52" alt="Lili">' +
+              '<div class="balao"><p>'+n.fala+'</p><p>'+(n.fala2||'')+'</p></div></div>'
+            : '<div class="pergunta">'+n.p+'</div><div class="dica">'+n.d+'</div>') +
+          '<div class="opcoes">' +
+            n.o.map(function(o,i){
+              return '<button class="opcao" data-i="'+i+'">' +
+                (o.i ? '<span class="oico">'+ICO[o.i]+'</span>' : '') +
+                '<span class="otxt"><b>'+o.t+'</b>' + (o.s?'<small>'+o.s+'</small>':'') +
+                (o.c?'<span class="octa">'+o.c+' →</span>':'') + '</span></button>';
+            }).join('') +
+          '</div>' +
+          (hist.length ? '<button class="voltar" data-voltar>← Voltar</button>' : '');
+      }
+
+      c.querySelectorAll('.opcao').forEach(function(b){
+        b.addEventListener('click', function(){
+          var o = n.o[+b.dataset.i];
+          if(o.set) Object.keys(o.set).forEach(function(k){ resp[k]=o.set[k]; });
+          hist.push(id);
+          pintar(o.ir);
+          raiz.scrollIntoView({behavior:'smooth', block:'nearest'});
+        });
+      });
+      var v = c.querySelector('[data-voltar]');
+      if(v) v.addEventListener('click', function(){
+        if(!hist.length){ return; }
+        var ant = hist.pop();
+        if(F[ant] && F[ant].fim===undefined && !hist.length){ resp={}; }
+        pintar(ant);
+      });
+    }
+
+    pintar('inicio');
+  }
+
+  window.montarCentralLili = montar;
+
+  // Monta automaticamente na página /central
+  montar(document.getElementById('central'));
 })();
