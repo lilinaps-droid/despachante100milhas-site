@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=7"
+V = "?v=8"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -156,6 +156,11 @@ def rodape(canal="doc"):
     msg_flut = 'Olá, quero atendimento sobre isenção PCD / Imposto de Renda.' if canal == "pcd" else 'Olá, quero falar com um especialista.'
     return f"""<footer>
 <div class="wrap">
+  <div class="foot-marca">
+    <span class="foot-logo"><img src="/assets/logo.webp" alt="Despachante 100 Milhas" width="170" height="49"></span>
+    <p>Documentação veicular e direitos, com análise honesta caso a caso — desde 2011, em São Vicente/SP.</p>
+  </div>
+
   <div class="canais">
     <div class="canais-txt">
       <h2 class="foot-tit" style="margin-bottom:6px">Fale com a gente</h2>
@@ -307,7 +312,10 @@ home = f"""
   <span class="halo" aria-hidden="true"></span>
   <img class="hero-lili" src="/assets/lili-ia.webp" width="430" height="430" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
   <div class="wrap">
-    <span class="placa claro">São Vicente/SP</span>
+    <div class="hero-marca">
+      <img src="/assets/lili-ia-mini.webp" width="44" height="44" alt="Lili, da Despachante 100 Milhas">
+      <span><b>Despachante 100 Milhas</b><em>Documentação veicular e direitos PCD · desde 2011</em></span>
+    </div>
     <h1>Resolva sua documentação <em>sem sair de casa</em>.</h1>
     <p class="sub">Consulte seu veículo, descubra seus direitos e receba orientação especializada da 100 Milhas.</p>
     <p class="apoio">Você conta o problema. A gente mostra o caminho.</p>

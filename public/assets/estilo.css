@@ -1152,3 +1152,40 @@ body.com-lgpd .lili-lan{bottom:calc(16px + 96px)}
   padding:16px;font-size:.9rem;color:var(--texto-rodape)
 }
 .mapa-box iframe{position:relative;z-index:1;background:transparent}
+
+/* =========================================================================
+   V8 — ACABAMENTO DO TOPO E DO RODAPÉ
+   ========================================================================= */
+
+/* BUG FIX: ícones SVG soltos (fora de .icone/.pico) herdavam tamanho gigante
+   e fill preto. Ex.: o pin de mapa no fechamento da Home. */
+.local svg{width:16px;height:16px;stroke:var(--dourado);fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Assinatura humana no topo da Home (substitui a placa "São Vicente/SP") */
+.hero-marca{display:inline-flex;align-items:center;gap:var(--e-3)}
+.hero-marca img{width:44px;height:44px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--dourado);flex:none;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.hero-marca span{line-height:1.3}
+.hero-marca b{display:block;font-family:var(--fonte-display);font-size:.95rem;color:#fff;letter-spacing:.02em}
+.hero-marca em{font-style:normal;font-size:.8rem;color:var(--texto-inv-suave)}
+
+/* Rodapé: assinatura da marca antes de tudo */
+.foot-marca{
+  display:flex;align-items:center;gap:var(--e-6);flex-wrap:wrap;
+  padding-bottom:var(--e-8);margin-bottom:var(--e-8);
+  border-bottom:1px solid rgba(255,255,255,.1)
+}
+.foot-logo{background:#fff;border-radius:var(--r-md);padding:10px 16px;display:inline-flex;flex:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.foot-logo img{height:40px;width:auto}
+.foot-marca p{color:var(--texto-rodape);font-size:.95rem;max-width:52ch;margin:0}
+@media(max-width:600px){
+  .foot-marca{gap:var(--e-4)}
+  .foot-logo img{height:32px}
+  .foot-marca p{font-size:.88rem}
+}
+/* No mobile, a assinatura do topo fica na ordem certa do hero */
+@media(max-width:720px){
+  .dobra .hero-marca{order:1;align-self:flex-start;margin-bottom:var(--e-2)}
+}
