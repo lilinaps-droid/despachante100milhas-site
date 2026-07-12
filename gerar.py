@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=9"
+V = "?v=10"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -152,6 +152,11 @@ def header(atual, canal="doc"):
 
 SVG_ZAP_MINI = SVG_ZAP.replace('viewBox="0 0 24 24"','viewBox="0 0 24 24" style="width:22px;height:22px;fill:#25D366;flex:none"')
 
+# Ícones de redes sociais (mesmo traço dos demais ícones do site)
+IC_INSTA = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>'
+IC_FACE  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h2.5V4.5H14A4.5 4.5 0 0 0 9.5 9v2.5H7V15h2.5v6H13v-6h2.6l.6-3.5H13V9a1 1 0 0 1 1-1Z"/></svg>'
+IC_GOOGLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.2l5.9-.8L12 3Z"/></svg>'
+
 def rodape(canal="doc"):
     msg_flut = 'Olá, quero atendimento sobre isenção PCD / Imposto de Renda.' if canal == "pcd" else 'Olá, quero falar com um especialista.'
     return f"""<footer>
@@ -180,21 +185,20 @@ def rodape(canal="doc"):
 
   <div class="rodape-central">
     <div>
-      <h2 class="foot-tit">Onde estamos</h2>
+      <h2 class="foot-tit">Unidade São Vicente — Centro</h2>
       <div class="mapa-box">
         <iframe loading="lazy" title="Mapa: R. Jacob Emmerich, 700, São Vicente/SP"
           src="https://www.google.com/maps?q=R.+Jacob+Emmerich,+700,+Centro,+S%C3%A3o+Vicente+-+SP&output=embed"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <p>R. Jacob Emmerich, 700 — Centro<br>São Vicente/SP</p>
+      <div class="end-bloco">
+        <b>R. Jacob Emmerich, 700 &middot; CEP 11310-070</b>
+        <span>Atendimento presencial de segunda a sexta</span>
+      </div>
     </div>
 
     <div>
       <h2 class="foot-tit">Atendimento</h2>
-      <div class="end-bloco">
-        <b>Segunda a sexta &middot; São Vicente/SP</b>
-        <span>R. Jacob Emmerich, 700 — Centro &middot; CEP 11310-070</span>
-      </div>
       <div class="end-bloco">
         <b>Sábado &middot; São Paulo/SP</b>
         <span>Av. Atlântica, 2905 — Jd. Santa Helena</span>
@@ -322,24 +326,31 @@ home = f"""
       <img src="/assets/lili-ia-mini.webp" width="44" height="44" alt="Lili, da Despachante 100 Milhas">
       <span><b>Despachante 100 Milhas</b><em>Um despachante muito mais digital</em></span>
     </div>
-    <h1>Resolva sua documentação <em>sem sair de casa</em>.</h1>
-    <p class="sub">Licenciamento, transferência, multas, CNH e Isenção PCD — tudo pelo WhatsApp, com gente de verdade do outro lado.</p>
-    <p class="apoio">Você conta o problema. A gente mostra o caminho.</p>
+    <h1>Faça a documentação do seu veículo <em>sem sair de casa</em>.</h1>
+    <p class="sub">Consulte placa e RENAVAM, solicite orçamento, faça transferência, ATPV-e, comunicação de venda e emissão de documento atualizado.</p>
+
+    <!-- ACESSOS RÁPIDOS: o cliente age já no início -->
+    <nav class="acessos" aria-label="Acessos rápidos aos serviços">
+      <a class="acesso" href="#form-veiculo">{ic("lupa")}Consultar placa e RENAVAM</a>
+      <a class="acesso" href="{zap('Olá! Quero solicitar um orçamento.')}" target="_blank" rel="noopener">{ic("moeda")}Solicitar orçamento</a>
+      <a class="acesso" href="/transferencia">{ic("carro")}Transferência de Veículo</a>
+      <a class="acesso" href="{zap('Olá, eu quero fazer o ATPV-e online. Pode me ajudar?')}" target="_blank" rel="noopener">{ic("doc")}Emitir ATPV-e</a>
+      <a class="acesso" href="/licenciamento">{ic("check")}Documento Atualizado</a>
+      <a class="acesso" href="{zap('Olá, eu quero fazer a comunicação de venda online. Pode me ajudar?')}" target="_blank" rel="noopener">{ic("envio")}Comunicação de Venda</a>
+      <a class="acesso" href="/debitos">{ic("cartao")}Licenciamento e Débitos</a>
+      <a class="acesso" href="/isencaopcd">{ic("escudo")}Serviços PCD</a>
+      <a class="acesso acesso-zap" href="{zap('Olá, estou no site e tenho uma dúvida.')}" target="_blank" rel="noopener">{SVG_ZAP}Falar no WhatsApp</a>
+    </nav>
+
     <div class="prova-topo">
       <div class="pt-item">
         <div class="pt-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <b>4,9</b><span>NO GOOGLE</span>
       </div>
       <span class="pt-div"></span>
-      <div class="pt-item"><b>657</b><span>AVALIAÇÕES</span></div>
-      <span class="pt-div"></span>
       <div class="pt-item"><b>+5.000</b><span>PROCESSOS</span></div>
       <span class="pt-div"></span>
       <div class="pt-item"><b>15 anos</b><span>DE MERCADO</span></div>
-    </div>
-    <div class="provas">
-      <span class="prova">{ic("check")} Presencial e online</span>
-      <span class="prova">{ic("check")} Atendimento humano</span>
     </div>
 
     <div class="duplo">
@@ -429,26 +440,6 @@ home = f"""
   </div>
 </section>
 
-<!-- SERVIÇOS COM CTA DIRETO -->
-<section class="sec-clara">
-  <div class="wrap">
-    <div class="cabeca centro">
-      <span class="placa">Resolver agora</span>
-      <h2>Já sabe o que precisa? Vá direto ao ponto.</h2>
-      <p>Cada botão abre o canal certo, com a equipe certa esperando por você.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc"><div class="svc-txt"><h3>Licenciamento / CRLV</h3><p>Documento anual do veículo em dia, com parcelamento no cartão.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero licenciar meu veículo agora.')}" target="_blank" rel="noopener">Licenciar agora</a></div>
-      <div class="svc"><div class="svc-txt"><h3>Transferência de veículo</h3><p>Orçamento completo sem sair de casa, dentro do prazo de 30 dias.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero transferir um veículo agora.')}" target="_blank" rel="noopener">Transferir agora</a></div>
-      <div class="svc"><div class="svc-txt"><h3>Débitos, multas e IPVA</h3><p>Levantamento completo do que está em aberto no seu veículo.</p></div><a class="btn btn-roxo btn-svc" href="#form-veiculo">Consultar veículo</a></div>
-      <div class="svc"><div class="svc-txt"><h3>Situação da CNH</h3><p>Pontos, notificações e o que fazer para não perder o direito de dirigir.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero consultar a situação da minha CNH.')}" target="_blank" rel="noopener">Consultar minha CNH</a></div>
-      <div class="svc svc-pcd"><div class="svc-txt"><h3>Isenção PCD</h3><p>IPI, ICMS e IPVA para condutores e não condutores. Canal exclusivo.</p></div><a class="btn btn-ouro btn-svc" href="{zap('Olá, quero solicitar a isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Solicitar Isenção PCD</a></div>
-      <div class="svc svc-pcd"><div class="svc-txt"><h3>Imposto de Renda</h3><p>Isenção por doença grave e restituição dos últimos 5 anos.</p></div><a class="btn btn-ouro btn-svc" href="{zap('Olá, quero solicitar a análise de isenção de Imposto de Renda.', 'pcd')}" target="_blank" rel="noopener">Solicitar análise IR</a></div>
-      <div class="svc"><div class="svc-txt"><h3>Recurso de multa</h3><p>Defesa contra multas, bafômetro, suspensão e cassação.</p></div><a class="btn btn-roxo btn-svc" href="{zap('Olá, quero recorrer de uma multa.')}" target="_blank" rel="noopener">Recorrer de multa</a></div>
-      <div class="svc svc-lili"><div class="svc-txt"><h3>Não sei o que preciso</h3><p>A Lili te faz as perguntas certas e mostra o caminho.</p></div><a class="btn btn-linha btn-svc" href="/central" data-lili>Abrir a Lili</a></div>
-    </div>
-  </div>
-</section>
 
 <!-- NÃO SEI QUAL SERVIÇO PRECISO -->
 <section class="sec-clara">
@@ -561,13 +552,13 @@ home = f"""
     <div class="grid g2">
       <div class="card">
         <div class="icone">{ic("doc")}</div>
-        <h3>ATPV-e online</h3>
+        <h3>ATPV-e</h3>
         <p>Para transferir um veículo, é preciso preencher o ATPV-e. Cuidamos disso com você, do começo ao fim.</p>
         <a class="btn btn-roxo" style="margin-top:18px" href="{zap('Olá, eu quero fazer o ATPV-e online. Pode me ajudar?')}" target="_blank" rel="noopener">Iniciar ATPV-e</a>
       </div>
       <div class="card">
         <div class="icone">{ic("envio")}</div>
-        <h3>Comunicação de venda</h3>
+        <h3>Comunicação de Venda</h3>
         <p>Sempre que vender um veículo, comunique a venda imediatamente. Sem isso, qualquer infração cometida antes da transferência recai sobre você.</p>
         <a class="btn btn-roxo" style="margin-top:18px" href="{zap('Olá, eu quero fazer a comunicação de venda online. Pode me ajudar?')}" target="_blank" rel="noopener">Comunicar venda</a>
       </div>
@@ -608,28 +599,59 @@ home = f"""
     <div class="cabeca centro">
       <span class="placa claro">Atendemos</span>
       <h2>Perto de você — e onde você estiver</h2>
-      <p>Escritório físico em São Vicente e atendimento online para todo o Brasil.</p>
+      <p>Unidade própria, regiões atendidas e atendimento online para todo o Brasil.</p>
     </div>
     <div class="atende-grid">
       <div class="atende destaque">
+        <span class="atende-tag">Unidade própria</span>
         <div class="atende-ico">{ic("mapa")}</div>
-        <h3>São Vicente / SP</h3>
-        <p>Sede: R. Jacob Emmerich, 700 — Centro &middot; CEP 11310-070.<br>Segunda a sexta, atendimento presencial.</p>
+        <h3>São Vicente / SP — Centro</h3>
+        <p>R. Jacob Emmerich, 700 &middot; CEP 11310-070.<br>Atendimento presencial de segunda a sexta.</p>
       </div>
       <div class="atende">
+        <span class="atende-tag">Região atendida</span>
         <div class="atende-ico">{ic("mapa")}</div>
         <h3>Baixada Santista</h3>
-        <p>Santos, Praia Grande, Guarujá, Cubatão e região — atendidos pela sede de São Vicente e online.</p>
+        <p>Santos, Praia Grande, Guarujá, Cubatão e demais cidades — presencial na sede ou online.</p>
       </div>
       <div class="atende">
+        <span class="atende-tag">Aos sábados</span>
         <div class="atende-ico">{ic("relogio")}</div>
         <h3>São Paulo / SP</h3>
-        <p>Av. Atlântica, 2905 — Jd. Santa Helena.<br>Atendimento aos sábados.</p>
+        <p>Av. Atlântica, 2905 — Jd. Santa Helena.</p>
       </div>
       <div class="atende">
+        <span class="atende-tag">Online</span>
         <div class="atende-ico">{ic("envio")}</div>
         <h3>Todo o Brasil</h3>
         <p>Processos 100% online pelo WhatsApp — do primeiro contato ao documento na mão.</p>
+      </div>
+    </div>
+
+    <div class="parceiros">
+      <div class="parceiros-txt">
+        <span class="parceiro-tag">Mediante agendamento</span>
+        <h3>Também atendemos em lojas e concessionárias parceiras</h3>
+        <p>Comprando o seu 0km? A 100 Milhas cuida da documentação e da isenção direto com a loja, por parceria e com hora marcada.</p>
+      </div>
+      <a class="btn btn-ouro" href="{zap('Olá! Quero agendar atendimento em uma loja ou concessionária parceira.')}" target="_blank" rel="noopener">Agendar atendimento</a>
+    </div>
+  </div>
+</section>
+
+<!-- REDES E CONTATO -->
+<section class="sec-clara" style="padding-top:48px;padding-bottom:48px">
+  <div class="wrap">
+    <div class="redes-bloco">
+      <div>
+        <h2>Acompanhe a 100 Milhas</h2>
+        <p>Conteúdo real sobre documentação, isenção PCD e direitos — direto de quem faz.</p>
+      </div>
+      <div class="redes-links">
+        <a class="rede-link" href="https://www.instagram.com/despachante100milhas/" target="_blank" rel="noopener">{IC_INSTA}Instagram</a>
+        <a class="rede-link" href="https://www.facebook.com/100milhasdespachante" target="_blank" rel="noopener">{IC_FACE}Facebook</a>
+        <a class="rede-link" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">{IC_GOOGLE}Avaliações no Google</a>
+        <a class="rede-link rl-zap" href="{zap('Olá, estou no site e tenho uma dúvida.')}" target="_blank" rel="noopener">{SVG_ZAP}WhatsApp</a>
       </div>
     </div>
   </div>
@@ -642,7 +664,7 @@ home = f"""
       <h2>Ainda não sabe por onde começar?</h2>
       <p>Conversa comigo. Você conta o que aconteceu, eu olho o seu caso e te digo a verdade — mesmo quando a verdade é não.</p>
       <a class="btn btn-ouro" href="{zap('Olá Lili! Não sei bem por onde começar, quero conversar.')}" target="_blank" rel="noopener">Falar com a Lili agora</a>
-      <div class="local">{ic("mapa")} São Vicente/SP &middot; Atendimento presencial e online</div>
+      <div class="local">{ic("mapa")} Atendimento presencial e online</div>
     </div>
   </div>
 </section>

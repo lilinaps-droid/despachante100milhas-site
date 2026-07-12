@@ -1215,3 +1215,91 @@ header{box-shadow:0 2px 20px rgba(42,6,64,.07)}
 .end-bloco b{display:block;color:#fff;font-weight:600;font-size:.92rem}
 .end-bloco span{font-size:.86rem;color:var(--texto-rodape);line-height:1.5}
 .horario{margin-top:var(--e-2)}
+
+/* =========================================================================
+   V10 — HOME REORGANIZADA: AGIR PRIMEIRO
+   ========================================================================= */
+
+/* Hierarquia do topo: título forte porém contido, texto de apoio legível */
+.dobra h1{font-size:clamp(1.85rem,3.4vw,2.7rem);max-width:24ch;margin:var(--e-4) 0 var(--e-3)}
+.dobra .sub{font-size:1.05rem;color:#EDE4F6;max-width:56ch;margin-bottom:var(--e-5);line-height:1.6}
+
+/* ACESSOS RÁPIDOS: nove ações reais, compactas */
+.acessos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--e-2);max-width:56rem}
+.acesso{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.17);
+  border-radius:var(--r-md);padding:11px 14px;
+  font-family:var(--fonte-display);font-weight:600;font-size:.86rem;color:#fff;
+  line-height:1.25;transition:var(--transicao);min-height:48px
+}
+.acesso:hover{background:rgba(255,255,255,.15);border-color:var(--dourado);transform:translateY(-2px)}
+.acesso svg{width:18px;height:18px;stroke:var(--dourado);fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.acesso-zap{background:rgba(37,211,102,.16);border-color:rgba(37,211,102,.45)}
+.acesso-zap:hover{background:rgba(37,211,102,.26);border-color:var(--verde-zap)}
+.acesso-zap svg{fill:var(--verde-zap);stroke:none}
+@media(max-width:960px){.acessos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+  .dobra .acessos{order:4;margin-top:var(--e-2)}
+  .dobra .duplo{order:5}
+  .acesso{font-size:.8rem;padding:10px 12px;min-height:44px;gap:8px}
+  .acesso svg{width:16px;height:16px}
+}
+@media(max-width:400px){.acessos{grid-template-columns:1fr 1fr}}
+
+/* Cards das quatro portas: sem desperdício de altura */
+.porta{min-height:0;padding:var(--e-5) var(--e-6);gap:var(--e-4)}
+.porta p{margin-bottom:var(--e-2);font-size:.92rem}
+.porta h3{font-size:1.1rem}
+.porta .pico{width:48px;height:48px}
+.porta .pico svg{width:24px;height:24px}
+
+/* Parceiros: atendimento em lojas e concessionárias (sem inventar nomes) */
+.parceiros{
+  margin-top:var(--e-6);display:flex;align-items:center;gap:var(--e-6);flex-wrap:wrap;
+  background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.45);
+  border-radius:var(--r-lg);padding:var(--e-6)
+}
+.parceiros-txt{flex:1;min-width:260px}
+.parceiro-tag{
+  display:inline-block;font-family:var(--fonte-display);font-weight:700;font-size:.64rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-fundo);
+  background:var(--dourado);border-radius:var(--r-sm);padding:4px 10px;margin-bottom:var(--e-2)
+}
+.parceiros h3{color:#fff;font-size:1.15rem;margin-bottom:6px}
+.parceiros p{color:var(--texto-inv);font-size:.92rem;max-width:60ch}
+.parceiros .btn{flex:none}
+
+/* Bloco de redes: siga a marca */
+.redes-bloco{display:flex;align-items:center;justify-content:space-between;gap:var(--e-6);flex-wrap:wrap}
+.redes-bloco h2{font-size:1.35rem;color:var(--roxo-fundo);margin-bottom:4px}
+.redes-bloco p{color:var(--texto-suave);font-size:.94rem}
+.redes-links{display:flex;gap:var(--e-2);flex-wrap:wrap}
+.rede-link{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--linha);border-radius:var(--r-pill);
+  padding:11px 18px;font-family:var(--fonte-display);font-weight:600;font-size:.88rem;
+  color:var(--texto);transition:var(--transicao)
+}
+.rede-link:hover{border-color:var(--roxo);color:var(--roxo);transform:translateY(-2px);box-shadow:var(--sombra)}
+.rede-link svg{width:18px;height:18px;stroke:var(--roxo);fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.rede-link.rl-zap svg{fill:var(--verde-zap);stroke:none}
+@media(max-width:720px){
+  .redes-bloco{flex-direction:column;align-items:flex-start}
+  .redes-links{width:100%}
+  .rede-link{flex:1;justify-content:center;min-width:calc(50% - 8px)}
+}
+
+/* Etiquetas dos cards de atendimento: unidade × região × sábado × online */
+.atende{position:relative;padding-top:var(--e-8)}
+.atende-tag{
+  position:absolute;top:0;left:var(--e-6);transform:translateY(-50%);
+  font-family:var(--fonte-display);font-weight:700;font-size:.62rem;
+  letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;
+  background:var(--roxo-meio);color:var(--texto-inv);border:1px solid rgba(255,255,255,.25);
+  border-radius:var(--r-pill);padding:4px 12px
+}
+.atende.destaque .atende-tag{background:var(--dourado);color:var(--roxo-fundo);border-color:var(--dourado)}
+.atende-grid{margin-top:var(--e-4)}
