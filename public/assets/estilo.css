@@ -1303,3 +1303,169 @@ header{box-shadow:0 2px 20px rgba(42,6,64,.07)}
 }
 .atende.destaque .atende-tag{background:var(--dourado);color:var(--roxo-fundo);border-color:var(--dourado)}
 .atende-grid{margin-top:var(--e-4)}
+
+/* =========================================================================
+   V11 — TOPO REESTRUTURADO: COMPOSIÇÃO ÚNICA E CENTRALIZADA
+   ========================================================================= */
+
+/* Hero centralizado, sem massa roxa vazia à direita */
+.topo7{padding:var(--e-12) 0 var(--e-14);text-align:center}
+.topo7 .wrap{display:flex;flex-direction:column;align-items:center}
+.topo7 .hero-marca{margin-bottom:var(--e-2)}
+.topo7 h1{
+  font-size:clamp(1.8rem,3.2vw,2.55rem);font-weight:800;
+  max-width:24ch;margin:var(--e-4) auto var(--e-3)
+}
+.topo7 .sub{
+  font-size:clamp(.98rem,1.4vw,1.08rem);color:#EDE4F6;
+  max-width:62ch;margin:0 auto var(--e-6);line-height:1.65
+}
+/* luz suave central atrás do painel de serviços */
+.topo7::after{content:none}
+.topo7::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(720px 340px at 50% 30%,rgba(155,63,212,.25),transparent 70%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 96px)
+}
+.topo7 > .wrap{position:relative;z-index:2}
+
+.pergunta7{
+  font-family:var(--fonte-display);font-weight:700;font-size:1.06rem;color:var(--dourado);
+  letter-spacing:.06em;margin:0 0 var(--e-5)
+}
+
+/* Painel dos sete serviços: 4 + 3 centralizado, mesma altura */
+.svc7{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--e-3);max-width:66rem}
+.s7{
+  position:relative;flex:0 1 calc(25% - var(--e-3));min-width:212px;
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:6px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--r-lg);padding:var(--e-5);
+  transition:var(--transicao)
+}
+.s7:hover{background:rgba(255,255,255,.12);border-color:rgba(212,175,55,.6);transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.28)}
+.s7-ico{
+  width:38px;height:38px;border-radius:var(--r-md);display:grid;place-items:center;
+  background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.35);margin-bottom:2px
+}
+.s7-ico svg{width:20px;height:20px;stroke:var(--dourado);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.s7 h3{font-size:.99rem;color:#fff;line-height:1.25}
+.s7 p{font-size:.8rem;color:var(--texto-inv);line-height:1.45;flex:1}
+.s7-cta{font-family:var(--fonte-display);font-weight:700;font-size:.78rem;color:var(--dourado);margin-top:2px}
+.s7:hover .s7-cta{text-decoration:underline}
+/* destaque discreto: PCD e Imposto de Renda */
+.s7-direito{border-color:rgba(212,175,55,.5);background:linear-gradient(165deg,rgba(212,175,55,.10),rgba(255,255,255,.06))}
+.s7-selo{
+  position:absolute;top:10px;right:10px;
+  font-family:var(--fonte-display);font-weight:700;font-size:.56rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--roxo-fundo);background:var(--dourado);
+  border-radius:var(--r-pill);padding:3px 8px
+}
+
+/* Selo de prova: bloco compacto e centralizado */
+.selo-prova{
+  margin-top:var(--e-8);display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-lg);padding:var(--e-4) var(--e-8)
+}
+.sp-linha{display:flex;align-items:center;gap:var(--e-5);flex-wrap:wrap;justify-content:center}
+.sp-item{display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.sp-item b{font-family:var(--fonte-display);font-weight:800;font-size:1.3rem;color:var(--dourado)}
+.sp-item > span:last-child{font-size:.68rem;color:var(--texto-inv-suave);letter-spacing:.05em;text-transform:uppercase}
+.sp-estrelas{color:var(--dourado);font-size:.68rem;letter-spacing:1.5px}
+.sp-div{width:1px;height:30px;background:rgba(255,255,255,.16)}
+.sp-link{font-size:.8rem;color:var(--texto-inv);text-decoration:underline;text-underline-offset:3px}
+.sp-link:hover{color:var(--dourado)}
+
+/* Consulta veicular: ferramenta do sistema */
+.consulta2{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:var(--e-10);align-items:center;
+  background:linear-gradient(150deg,var(--roxo-escuro),var(--roxo-meio));
+  border:1px solid rgba(212,175,55,.35);border-radius:var(--r-xl);
+  padding:var(--e-10);color:#fff;position:relative;overflow:hidden;
+  box-shadow:var(--sombra-forte)
+}
+.consulta2::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(520px 260px at 18% 0,rgba(212,175,55,.16),transparent 70%)}
+.consulta2 > *{position:relative}
+.c2-placa{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fonte-display);font-weight:800;font-size:1.15rem;letter-spacing:.14em;
+  background:#fff;color:var(--texto);border:2px solid #9AA1AC;border-radius:8px;
+  padding:7px 16px;margin-bottom:var(--e-4);box-shadow:0 6px 18px rgba(0,0,0,.3)
+}
+.c2-placa i{
+  font-style:normal;font-size:.6rem;letter-spacing:.1em;color:#fff;
+  background:#1D4ED8;border-radius:4px;padding:3px 6px
+}
+.c2-info h2{font-size:clamp(1.45rem,2.4vw,1.9rem);color:#fff;margin-bottom:var(--e-3)}
+.c2-info > p{color:var(--texto-hero);font-size:.98rem;max-width:44ch}
+.c2-itens{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:var(--e-4) 0}
+.c2-itens li{
+  display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--texto-inv);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--r-pill);padding:6px 12px
+}
+.c2-itens li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dourado)}
+.c2-nota{font-size:.8rem;color:var(--texto-inv-suave)}
+.c2-form{
+  background:#fff;border-radius:var(--r-lg);padding:var(--e-6);
+  display:flex;flex-direction:column;gap:var(--e-3);box-shadow:0 18px 50px rgba(0,0,0,.35)
+}
+.c2-form .campo-g label{color:var(--roxo-fundo)}
+.c2-form .btn{margin-top:var(--e-1)}
+.c2-form button[disabled]{opacity:.75;cursor:progress;transform:none}
+@media(max-width:960px){
+  .consulta2{grid-template-columns:1fr;gap:var(--e-6);padding:var(--e-6)}
+  .c2-info h2{font-size:1.4rem}
+}
+
+/* Selos discretos na seção "quem cuida" */
+.selos-mini{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--e-4)}
+.selos-mini span{
+  font-family:var(--fonte-display);font-weight:700;font-size:.74rem;color:var(--roxo);
+  background:var(--claro);border:1px solid var(--linha);border-radius:var(--r-pill);padding:6px 14px
+}
+
+/* Mobile: DOM na ordem certa, sem truques de order antigos */
+@media(max-width:720px){
+  .topo7 .wrap{display:flex}
+  .topo7{padding:var(--e-8) 0 var(--e-10)}
+  .topo7 h1{font-size:clamp(1.55rem,6.6vw,1.9rem)}
+  .topo7 .sub{font-size:.94rem;margin-bottom:var(--e-4)}
+  .pergunta7{font-size:.95rem;margin-bottom:var(--e-3)}
+  .svc7{gap:var(--e-2)}
+  .s7{flex:0 1 calc(50% - var(--e-2));min-width:0;padding:var(--e-4)}
+  .s7 h3{font-size:.9rem}
+  .s7 p{font-size:.75rem}
+  .selo-prova{padding:var(--e-3) var(--e-4);width:100%}
+  .sp-linha{gap:var(--e-4)}
+  .sp-item b{font-size:1.05rem}
+  .sp-div{height:24px}
+}
+@media(max-width:400px){
+  .s7{flex-basis:100%}
+}
+
+/* Telas estreitas: card vira linha compacta (ícone ao lado), sem altura desperdiçada */
+@media(max-width:400px){
+  .s7{
+    flex-basis:100%;display:grid;grid-template-columns:42px 1fr;
+    column-gap:var(--e-3);row-gap:3px;align-items:start;
+    padding:var(--e-3) var(--e-4)
+  }
+  .s7-ico{grid-row:1/4;width:42px;height:42px;margin:2px 0 0}
+  .s7 h3,.s7 p,.s7-cta{grid-column:2}
+  .s7 p{font-size:.78rem}
+  .s7-selo{top:8px;right:8px}
+}
+
+/* Selo "Direitos" não pode cobrir o título em telas estreitas */
+@media(max-width:400px){ .s7-direito h3{padding-right:82px} }
+@media(min-width:401px) and (max-width:720px){ .s7-direito h3{padding-right:0;margin-top:14px} }
+
+/* Neutraliza os "order" legados do hero antigo: no topo novo a ordem é a do HTML */
+@media(max-width:720px){
+  .topo7 .wrap > *{order:0}
+}

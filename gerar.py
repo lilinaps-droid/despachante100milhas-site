@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=10"
+V = "?v=11"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -318,124 +318,110 @@ FAQ_DEBITOS = [
 faq_html = "".join(f'<details><summary>{p}</summary><div class="corpo">{r}</div></details>' for p, r in FAQ_DEBITOS)
 
 home = f"""
-<section class="dobra">
-  <span class="halo" aria-hidden="true"></span>
-  <img class="hero-lili" src="/assets/lili-ia.webp" width="430" height="430" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+<section class="dobra topo7">
   <div class="wrap">
     <div class="hero-marca">
       <img src="/assets/lili-ia-mini.webp" width="44" height="44" alt="Lili, da Despachante 100 Milhas">
       <span><b>Despachante 100 Milhas</b><em>Um despachante muito mais digital</em></span>
     </div>
-    <h1>Faça a documentação do seu veículo <em>sem sair de casa</em>.</h1>
-    <p class="sub">Consulte placa e RENAVAM, solicite orçamento, faça transferência, ATPV-e, comunicação de venda e emissão de documento atualizado.</p>
+    <h1>Resolva a documentação do seu veículo <em>sem sair de casa</em></h1>
+    <p class="sub">Licenciamento, transferência, ATPV-e, veículo 0 km, defesa da CNH, isenções PCD e Imposto de Renda, com acompanhamento especializado do início ao fim.</p>
 
-    <!-- ACESSOS RÁPIDOS: o cliente age já no início -->
-    <nav class="acessos" aria-label="Acessos rápidos aos serviços">
-      <a class="acesso" href="#form-veiculo">{ic("lupa")}Consultar placa e RENAVAM</a>
-      <a class="acesso" href="{zap('Olá! Quero solicitar um orçamento.')}" target="_blank" rel="noopener">{ic("moeda")}Solicitar orçamento</a>
-      <a class="acesso" href="/transferencia">{ic("carro")}Transferência de Veículo</a>
-      <a class="acesso" href="{zap('Olá, eu quero fazer o ATPV-e online. Pode me ajudar?')}" target="_blank" rel="noopener">{ic("doc")}Emitir ATPV-e</a>
-      <a class="acesso" href="/licenciamento">{ic("check")}Documento Atualizado</a>
-      <a class="acesso" href="{zap('Olá, eu quero fazer a comunicação de venda online. Pode me ajudar?')}" target="_blank" rel="noopener">{ic("envio")}Comunicação de Venda</a>
-      <a class="acesso" href="/debitos">{ic("cartao")}Licenciamento e Débitos</a>
-      <a class="acesso" href="/isencaopcd">{ic("escudo")}Serviços PCD</a>
-      <a class="acesso acesso-zap" href="{zap('Olá, estou no site e tenho uma dúvida.')}" target="_blank" rel="noopener">{SVG_ZAP}Falar no WhatsApp</a>
-    </nav>
+    <h2 class="pergunta7">O que você precisa resolver hoje?</h2>
 
-    <div class="prova-topo">
-      <div class="pt-item">
-        <div class="pt-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <b>4,9</b><span>NO GOOGLE</span>
-      </div>
-      <span class="pt-div"></span>
-      <div class="pt-item"><b>+5.000</b><span>PROCESSOS</span></div>
-      <span class="pt-div"></span>
-      <div class="pt-item"><b>15 anos</b><span>DE MERCADO</span></div>
+    <div class="svc7">
+      <a class="s7" href="/licenciamento">
+        <span class="s7-ico">{ic("doc")}</span>
+        <h3>Licenciar veículo</h3>
+        <p>Licenciamento, débitos e emissão do documento atualizado.</p>
+        <span class="s7-cta">Iniciar &rarr;</span>
+      </a>
+      <a class="s7" href="/transferencia">
+        <span class="s7-ico">{ic("carro")}</span>
+        <h3>Transferência</h3>
+        <p>Transferência de propriedade com orientação completa.</p>
+        <span class="s7-cta">Iniciar &rarr;</span>
+      </a>
+      <a class="s7" href="{zap('Olá, preciso emitir o ATPV-e para compra ou venda de um veículo.')}" target="_blank" rel="noopener">
+        <span class="s7-ico">{ic("envio")}</span>
+        <h3>ATPV-e</h3>
+        <p>Emissão e orientação para compra ou venda do veículo.</p>
+        <span class="s7-cta">Iniciar &rarr;</span>
+      </a>
+      <a class="s7" href="{zap('Olá, preciso da documentação e do primeiro registro de um veículo 0 km.')}" target="_blank" rel="noopener">
+        <span class="s7-ico">{ic("raio")}</span>
+        <h3>Veículo 0 km</h3>
+        <p>Documentação e primeiro registro do veículo novo.</p>
+        <span class="s7-cta">Iniciar &rarr;</span>
+      </a>
+      <a class="s7" href="/cnh-suspensa">
+        <span class="s7-ico">{ic("balanca")}</span>
+        <h3>Suspensão da CNH</h3>
+        <p>Análise de suspensão, cassação, pontuação e defesa.</p>
+        <span class="s7-cta">Analisar &rarr;</span>
+      </a>
+      <a class="s7 s7-direito" href="/isencaopcd">
+        <span class="s7-selo">Direitos</span>
+        <span class="s7-ico">{ic("escudo")}</span>
+        <h3>Isenção PCD</h3>
+        <p>Análise de direito e acompanhamento de laudo, IPI, ICMS e IPVA.</p>
+        <span class="s7-cta">Verificar direito &rarr;</span>
+      </a>
+      <a class="s7 s7-direito" href="/impostoderenda">
+        <span class="s7-selo">Direitos</span>
+        <span class="s7-ico">{ic("moeda")}</span>
+        <h3>Isenção de Imposto de Renda</h3>
+        <p>Análise para doenças previstas em lei e rendimentos abrangidos.</p>
+        <span class="s7-cta">Verificar direito &rarr;</span>
+      </a>
     </div>
 
-    <div class="duplo">
-      <!-- CARD A — CONSULTAR VEÍCULO -->
-      <div class="acao principal">
-        <h2>Consultar meu veículo</h2>
-        <p class="expl"><strong>Descubra a situação do seu veículo em poucos passos.</strong> Informe a placa ou o RENAVAM e a nossa equipe levanta débitos, multas, IPVA, licenciamento e restrições.</p>
-        <form id="form-veiculo" novalidate>
-          <div class="dois-campos">
-            <div class="campo-g">
-              <label for="placa">Placa</label>
-              <input id="placa" name="placa" placeholder="ABC1D23" autocomplete="off"
-                     inputmode="text" maxlength="8" aria-describedby="erro-placa">
-              <div class="erro-campo" id="erro-placa" role="alert"></div>
-            </div>
-            <div class="campo-g">
-              <label for="renavam">RENAVAM</label>
-              <input id="renavam" name="renavam" placeholder="Digite o RENAVAM" autocomplete="off"
-                     inputmode="numeric" maxlength="11" aria-describedby="erro-renavam">
-              <div class="erro-campo" id="erro-renavam" role="alert"></div>
-            </div>
-          </div>
-          <p class="ou">Informe a placa <strong>ou</strong> o RENAVAM. Se tiver os dois, melhor ainda.</p>
-          <button class="btn btn-ouro btn-grande" type="submit">CONSULTAR AGORA</button>
-        </form>
-        <div class="cobre">
-          <span>Débitos</span><span>Multas</span><span>IPVA</span><span>Licenciamento</span>
-          <span>CRLV</span><span>Restrições</span><span>Orientação humana</span>
-        </div>
+    <div class="selo-prova">
+      <div class="sp-linha">
+        <div class="sp-item"><span class="sp-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>4,9</b><span>no Google</span></div>
+        <span class="sp-div"></span>
+        <div class="sp-item"><b>657</b><span>avaliações</span></div>
+        <span class="sp-div"></span>
+        <div class="sp-item"><b>+5.000</b><span>processos</span></div>
+        <span class="sp-div"></span>
+        <div class="sp-item"><b>15 anos</b><span>de experiência</span></div>
       </div>
-
-      <!-- CARD B — DIREITOS PCD -->
-      <div class="acao secundaria">
-        <div class="ia-topo">
-          <img src="/assets/lili-ia.webp" width="76" height="76" alt="Lili, guia digital da 100 Milhas">
-          <h2 style="margin:0">Posso ter direito PCD?</h2>
-        </div>
-        <p class="expl">Responda algumas perguntas simples e descubra se o seu caso merece uma análise especializada.</p>
-        <a class="btn btn-roxo btn-grande" href="/central" data-lili style="margin-top:auto">COMEÇAR PRÉ-TRIAGEM</a>
-        <p class="apoio-min">Vale para <strong>condutor, não condutor, criança, dependente ou representado</strong>. São mais de 70 condições — e não é só para cadeirantes.</p>
-      </div>
+      <a class="sp-link" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">Ver avaliações no Google &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- QUATRO PORTAS -->
-<section>
+<!-- CONSULTA VEICULAR: a ferramenta do sistema -->
+<section class="sec-clara" style="padding:56px 0">
   <div class="wrap">
-    <div class="cabeca centro">
-      <span class="placa">Escolha o seu problema</span>
-      <h2>Por onde você quer começar?</h2>
-    </div>
-    <div class="portas">
-      <a class="porta p-doc" href="/licenciamento">
-        <div class="pico">{ic("doc")}</div>
-        <div>
-          <h3>Preciso resolver documentos do meu veículo</h3>
-          <p>Transferência, licenciamento, IPVA, multas, segunda via e regularização.</p>
-          <span class="pcta">Ver soluções</span>
+    <div class="consulta2">
+      <div class="c2-info">
+        <span class="c2-placa" aria-hidden="true"><i>BR</i>ABC&middot;1D23</span>
+        <h2>Consulte a situação do seu veículo</h2>
+        <p>Informe a placa e o RENAVAM para solicitar o levantamento da documentação, débitos e possíveis pendências do veículo.</p>
+        <ul class="c2-itens">
+          <li>Débitos e multas</li>
+          <li>Licenciamento</li>
+          <li>IPVA</li>
+          <li>Restrições e pendências</li>
+        </ul>
+        <p class="c2-nota">O levantamento é feito pela nossa equipe e devolvido a você pelo WhatsApp.</p>
+      </div>
+      <form id="form-veiculo" class="c2-form" novalidate>
+        <div class="campo-g">
+          <label for="placa">Placa</label>
+          <input id="placa" name="placa" placeholder="ABC1D23" autocomplete="off"
+                 inputmode="text" maxlength="8" aria-describedby="erro-placa" required>
+          <div class="erro-campo" id="erro-placa" role="alert"></div>
         </div>
-      </a>
-      <a class="porta p-pcd" href="/isencaopcd">
-        <div class="pico">{ic("carro")}</div>
-        <div>
-          <h3>Quero saber se tenho direito PCD</h3>
-          <p>Condutor e não condutor. Isenção de IPI, ICMS e IPVA, laudos e CNH especial.</p>
-          <span class="pcta">Fazer pré-triagem</span>
+        <div class="campo-g">
+          <label for="renavam">RENAVAM</label>
+          <input id="renavam" name="renavam" placeholder="Digite o RENAVAM" autocomplete="off"
+                 inputmode="numeric" maxlength="11" aria-describedby="erro-renavam" required>
+          <div class="erro-campo" id="erro-renavam" role="alert"></div>
         </div>
-      </a>
-      <a class="porta p-cnh" href="/cnh-suspensa">
-        <div class="pico">{ic("balanca")}</div>
-        <div>
-          <h3>Minha CNH foi suspensa ou cassada</h3>
-          <p>Notificações, pontos, recursos, suspensão, cassação e orientação inicial.</p>
-          <span class="pcta">Analisar minha situação</span>
-        </div>
-      </a>
-      <a class="porta p-ir" href="/impostoderenda">
-        <div class="pico">{ic("moeda")}</div>
-        <div>
-          <h3>Quero entender meus direitos</h3>
-          <p>Isenção de Imposto de Renda por doença grave, restituição e orientação.</p>
-          <span class="pcta">Ver possibilidades</span>
-        </div>
-      </a>
+        <button class="btn btn-ouro btn-grande" type="submit">Consultar agora</button>
+      </form>
     </div>
   </div>
 </section>
@@ -483,6 +469,9 @@ home = f"""
       <p style="color:var(--texto-suave);font-size:1.05rem;margin-bottom:14px">Sou a <strong style="color:var(--texto)">Liliane Pereira Rosa</strong> — a Lili. Fundei a 100 Milhas para fazer o que quase ninguém faz nesse mercado: olhar o caso de cada pessoa antes de dizer qualquer coisa.</p>
       <p style="color:var(--texto-suave)">Não prometo aprovação. Prometo análise honesta: se você tem caminho, eu digo. Se não tem, eu digo também — e explico por quê.</p>
       <div class="credencial">&#9878;&nbsp;<strong>Despachante Documentalista</strong> — atuação junto aos órgãos de trânsito, com empresa registrada sob o CNPJ 12.109.034/0001-06</div>
+      <div class="selos-mini">
+        <span>15 anos</span><span>+5.000 processos</span><span>Atendimento especializado</span>
+      </div>
       <div class="assinatura">— Lili, Despachante 100 Milhas</div>
       <a class="btn btn-linha" style="margin-top:22px" href="/quem-somos">Conhecer a nossa história</a>
     </div>
@@ -493,12 +482,9 @@ home = f"""
 <section>
   <div class="wrap">
     <div class="google-topo">
-      <div>
-        <div class="nota">4,9</div>
-        <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      </div>
+      <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <div style="max-width:22rem">
-        <strong>657 avaliações reais no Google</strong>
+        <strong>Avaliações reais no Google</strong>
         <p style="color:var(--texto-suave);font-size:.93rem">Quem passou por aqui conta o que aconteceu.</p>
       </div>
       <a class="btn btn-linha" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">Ver todas as avaliações</a>

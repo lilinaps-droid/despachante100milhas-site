@@ -86,17 +86,20 @@
     ev.preventDefault();
     var p=iP.value.trim(), r=iR.value.trim(), ok=true;
 
-    if(!p && !r){
-      marcar(iP,eP,'Informe a placa ou o RENAVAM.');
-      iP.focus(); return;
-    }
-    if(p && !RE_PLACA.test(p)){ marcar(iP,eP,'Placa inválida. Ex.: ABC1D23 ou ABC1234.'); ok=false; }
-    if(r && r.length<9){ marcar(iR,eR,'O RENAVAM tem de 9 a 11 dígitos.'); ok=false; }
+    if(!p){ marcar(iP,eP,'Informe a placa do veículo.'); ok=false; }
+    else if(!RE_PLACA.test(p)){ marcar(iP,eP,'Placa inválida. Ex.: ABC1D23 ou ABC1234.'); ok=false; }
+    if(!r){ marcar(iR,eR,'Informe o RENAVAM (está no documento do veículo).'); ok=false; }
+    else if(r.length<9){ marcar(iR,eR,'O RENAVAM tem de 9 a 11 dígitos.'); ok=false; }
     if(!ok){ (iP.getAttribute('aria-invalid')?iP:iR).focus(); return; }
 
-    var msg='Olá, equipe 100 Milhas. Vim pelo site e quero orientação sobre a situação do meu veículo.';
-    if(p) msg+='\nPlaca: '+p;
-    if(r) msg+='\nRENAVAM: '+r;
+    // carregamento visível: o pedido é encaminhado para a equipe no WhatsApp
+    var b=f.querySelector('button[type=submit]');
+    var rotulo=b.textContent;
+    b.disabled=true; b.textContent='Encaminhando…';
+    setTimeout(function(){ b.disabled=false; b.textContent=rotulo; },2200);
+
+    var msg='Olá, equipe 100 Milhas. Vim pelo site e quero o levantamento da situação do meu veículo.'+
+      '\nPlaca: '+p+'\nRENAVAM: '+r;
     window.open('https://api.whatsapp.com/send?phone='+ZAP+'&text='+encodeURIComponent(msg),'_blank');
   });
 })();
