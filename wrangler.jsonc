@@ -1,0 +1,10 @@
+{
+  // ATENCAO: "name" precisa bater EXATAMENTE com o nome do Worker na Cloudflare.
+  // Se mudar isso, o build falha. (Doc: Workers name requirement)
+  "name": "odd-hall-da24",
+  "compatibility_date": "2026-07-12",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}

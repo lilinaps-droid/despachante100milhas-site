@@ -1,0 +1,7 @@
+# Redirecionamentos 301 — protegem o SEO na migracao.
+/isencao-pcd            /isencaopcd          301
+/isencao-imposto-de-renda /impostoderenda    301
+/recurso-de-multa       /recursos            301
+/debitos/orcamento      /debitos             301
+/debitos/orcamentoV2    /debitos             301
+/transferencia/debitos  /transferencia       301
