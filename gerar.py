@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=12"
+V = "?v=13"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -432,7 +432,7 @@ home = f"""
         <img src="/assets/lili.webp" width="96" height="96" loading="lazy" alt="Lili, Despachante Documentalista">
         <h2>Converse com a Lili sobre seus direitos PCD</h2>
         <p>Escolha um dia e horário disponível para uma orientação personalizada sobre o seu caso.</p>
-        <p class="ag-nota">Orientação de segunda a sexta &middot; análise inicial sem custo e sem compromisso.</p>
+        <p class="ag-nota">Orientação às quartas, quintas e sextas &middot; análise inicial sem custo e sem compromisso.</p>
       </div>
       <div class="ag-caixa">
         <div class="ag-passo" id="ag-p1">
@@ -1501,6 +1501,87 @@ central = f"""
 </section>
 """
 
+# ==================== SIMULADOR DE DIREITOS PCD ====================
+# Aprofundamento da Central: a Central tria todos os servicos; aqui e so PCD.
+CHAMADA_SIMULADOR = """<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sp-chamada">
+      <div>
+        <b>Descubra em poucos minutos quais direitos PCD podem se aplicar ao seu caso.</b>
+        <span>Cinco perguntas. Resultado na tela, sem cadastro. Orientação inicial, sem compromisso.</span>
+      </div>
+      <a class="btn btn-roxo" href="/isencaopcd/simulador">Fazer simulação gratuita</a>
+    </div>
+  </div>
+</section>"""
+
+# Chamada nas duas paginas PCD existentes, logo apos a primeira secao (hero).
+pcd = pcd.replace("</section>", "</section>" + CHAMADA_SIMULADOR, 1)
+mudanca2027 = mudanca2027.replace("</section>", "</section>" + CHAMADA_SIMULADOR, 1)
+
+FAQ_SIMULADOR = """<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Quem pode ter direito à isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Pessoas com deficiência física ou motora, deficiência visual, deficiência intelectual ou mental e pessoas com autismo (TEA) podem ter direito à isenção de IPI, ICMS e IPVA. O direito depende do laudo médico e da decisão dos órgãos competentes."}},
+  {"@type":"Question","name":"Preciso dirigir para ter isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Não. A pessoa com deficiência que não dirige também pode pedir a isenção, indicando condutores autorizados para o veículo."}},
+  {"@type":"Question","name":"Quem já tem carro pode pedir isenção de IPVA?",
+   "acceptedAnswer":{"@type":"Answer","text":"Sim. A isenção de IPVA pode ser analisada para veículo que já está no nome da pessoa, e em alguns casos há valores pagos que podem ser restituídos."}},
+  {"@type":"Question","name":"O que costuma derrubar um pedido de isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Laudo genérico sem CID e sem descrição da limitação funcional, condição temporária sem caráter permanente, veículo acima do teto de valor do benefício estadual, carência de isenção anterior e documentação incompleta do condutor indicado."}}
+ ]}
+</script>
+<script src="/assets/simulador-pcd.js" defer></script>"""
+
+simuladorpcd = """
+<section class="sec-clara">
+  <div class="wrap" style="max-width:44rem">
+    <div class="sp-acess">
+      <button type="button" id="sp-menos" aria-label="Diminuir o tamanho do texto">A&minus;</button>
+      <button type="button" id="sp-mais" aria-label="Aumentar o tamanho do texto">A+</button>
+    </div>
+
+    <div class="central" id="simulador-pcd">
+      <div class="central-topo">
+        <img src="/assets/lili-ia.webp" width="56" height="56" loading="lazy" alt="Lili, da Despachante 100 Milhas">
+        <div>
+          <b>Simulador de Direitos PCD</b>
+          <span>Cinco perguntas &middot; sem cadastro &middot; sem CPF</span>
+        </div>
+      </div>
+      <div class="central-corpo" aria-live="polite">
+        <noscript><p>Este simulador precisa de JavaScript. Se preferir, fale com a nossa equipe pelo WhatsApp e a gente analisa o seu caso.</p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:44rem">
+    <h2 style="font-family:'Montserrat',sans-serif;color:var(--roxo-fundo);font-size:1.5rem;margin-bottom:12px">Por que este simulador existe</h2>
+    <p style="color:var(--texto-suave);margin-bottom:12px">A maioria das pessoas não procura um despachante. Procura uma resposta: <strong style="color:var(--texto)">&ldquo;eu tenho direito?&rdquo;</strong></p>
+    <p style="color:var(--texto-suave);margin-bottom:12px">Este simulador responde o que dá para responder sem ver o seu laudo &mdash; e diz com todas as letras o que <em>não</em> dá. Ele não aprova nada, não promete valor e não substitui a análise de ninguém.</p>
+    <p style="color:var(--texto-suave)">São mais de 15 anos analisando esses casos. O que você vê aqui é o mesmo raciocínio que a nossa equipe faz na primeira leitura &mdash; só que na sua mão, de graça, sem precisar falar com ninguém antes de querer.</p>
+  </div>
+</section>
+"""
+
+# ==================== PAINEL DA AGENDA (área da Lili) ====================
+# Rota /agenda — restrita, fora do Google (noindex) e fora do menu.
+EXTRA_PAINEL = """<meta name="robots" content="noindex, nofollow">
+<script src="/assets/agenda-painel.js" defer></script>"""
+
+painelagenda = """
+<section class="sec-clara">
+  <div class="wrap" style="max-width:46rem">
+    <div id="painel-agenda" class="painel-agenda">
+      <noscript><p>Este painel precisa de JavaScript.</p></noscript>
+    </div>
+  </div>
+</section>
+"""
+
 # ==================== ESCREVER ====================
 print("Gerando páginas:")
 pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home,extra=f'<script src="/assets/agenda.js{V}" defer></script>')
@@ -1511,9 +1592,11 @@ pagina("impostoderenda/index.html","Isenção de Imposto de Renda para Aposentad
 pagina("recursos/index.html","Recurso de Multa, Suspensão e Cassação da CNH | Despachante 100 Milhas","Defesa especializada em direito de trânsito: recurso de multa, bafômetro, suspensão e cassação da CNH. Não perca o seu direito de dirigir.","/recursos",rec,pilar="cnh")
 pagina("quem-somos/index.html","Quem Somos — Liliane Pereira Rosa | Despachante 100 Milhas","Conheça a Lili, fundadora da Despachante 100 Milhas e Despachante Documentalista. Atuação desde 2011 na Baixada Santista, com escritório em São Vicente/SP.","/quem-somos",quem)
 pagina("isencaopcd/2027/index.html","Isenção PCD em 2027: o que muda com a reforma tributária | 100 Milhas","As regras atuais de isenção PCD (IPI e ICMS) valem até 31/12/2026. Entenda o novo escalonamento, o prazo de troca e se compensa comprar agora ou esperar.","/isencaopcd/2027",mudanca2027,pilar="pcd",canal="pcd")
+pagina("isencaopcd/simulador/index.html","Simulador de Isenção PCD: descubra em minutos se você pode ter direito | 100 Milhas","Responda 5 perguntas e veja quais isenções podem se aplicar ao seu caso: IPI, ICMS, IPVA e restituição. Gratuito, sem cadastro. Orientação inicial, sem garantia de aprovação.","/isencaopcd/simulador",simuladorpcd,extra=FAQ_SIMULADOR,pilar="pcd",canal="pcd")
 pagina("ipva/index.html","IPVA Atrasado: como regularizar e quem tem isenção | Despachante 100 Milhas","IPVA em atraso gera acréscimo diário, dívida ativa e impede o licenciamento. Consulte, parcele e descubra se você tem direito à isenção.","/ipva",ipva,pilar="doc")
 pagina("cnh-suspensa/index.html","CNH Suspensa ou Cassada: existe defesa e existe prazo | 100 Milhas","Recebeu notificação de suspensão ou cassação da CNH? O prazo de defesa é curto. Entenda a diferença, quando cabe recurso e o que fazer agora.","/cnh-suspensa",cnh,pilar="cnh")
 pagina("licenciamento/index.html","Licenciamento e CRLV: documento do veículo em dia | Despachante 100 Milhas","Licenciamento anual e emissão do CRLV-e. Levantamos os débitos, parcelamos no cartão e colocamos o documento do seu veículo em dia. O serviço que mais fazemos.","/licenciamento",licenciamento,pilar="doc")
 pagina("central/index.html","Central da Lili — descubra se você tem direito | Despachante 100 Milhas","Responda cinco perguntas simples e descubra em qual direito o seu caso se encaixa: isenção PCD, Imposto de Renda, CNH ou documentação. Orientação preliminar, sem compromisso.","/central",central)
+pagina("agenda/index.html","Agenda da Lili — área restrita","Área restrita da equipe.","/agenda",painelagenda,extra=EXTRA_PAINEL,canal="pcd")
 pagina("privacidade/index.html","Política de Privacidade | Despachante 100 Milhas","Como a Despachante 100 Milhas coleta, usa e protege os seus dados. Seus direitos sob a LGPD.","/privacidade",priv)
 print("\nOK.")
