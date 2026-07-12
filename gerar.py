@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=8"
+V = "?v=9"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -141,10 +141,10 @@ def header(atual, canal="doc"):
   <a class="logo" href="/" aria-label="Despachante 100 Milhas — início">
     <img src="/assets/logo.webp" alt="Despachante 100 Milhas" width="160" height="46">
   </a>
-  <button class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger">&#9776;</button>
+  <button class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="menu" id="menu">
     {itens}
-    <a class="btn-zap" href="{zap(msg_zap, canal)}" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn-zap" href="{zap(msg_zap, canal)}" target="_blank" rel="noopener">{SVG_ZAP}WhatsApp</a>
   </nav>
 </div>
 </header>
@@ -158,7 +158,7 @@ def rodape(canal="doc"):
 <div class="wrap">
   <div class="foot-marca">
     <span class="foot-logo"><img src="/assets/logo.webp" alt="Despachante 100 Milhas" width="170" height="49"></span>
-    <p>Documentação veicular e direitos, com análise honesta caso a caso — desde 2011, em São Vicente/SP.</p>
+    <p>Assessoria privada em documentação e regularização veicular — Isenção PCD, recurso de multa e direitos de aposentados. Presencial e 100% online, na Baixada Santista e em São Paulo.</p>
   </div>
 
   <div class="canais">
@@ -169,12 +169,12 @@ def rodape(canal="doc"):
     <a class="canal canal-doc" href="{zap('Olá! Preciso de ajuda com a documentação do meu veículo.')}" target="_blank" rel="noopener">
       <span class="canal-tag">Documentação</span>
       <span class="canal-num">{SVG_ZAP_MINI}<b>{FONE_DOC}</b></span>
-      <span class="canal-desc">Licenciamento &middot; transferência &middot; multas &middot; recursos &middot; CNH</span>
+      <span class="canal-desc">Licenciamento &middot; Transferência &middot; Multas &middot; Recursos &middot; CNH</span>
     </a>
     <a class="canal canal-pcd" href="{zap('Olá! Quero atendimento PCD (isenções, laudos, IR).', 'pcd')}" target="_blank" rel="noopener">
       <span class="canal-tag">PCD</span>
       <span class="canal-num">{SVG_ZAP_MINI}<b>{FONE_PCD}</b></span>
-      <span class="canal-desc">Isenção PCD &middot; laudos &middot; IMESC &middot; IR doença grave &middot; cartão DEFIS</span>
+      <span class="canal-desc">Isenção PCD &middot; Laudos &middot; Imposto de Renda &middot; Cartão DEFIS</span>
     </a>
   </div>
 
@@ -191,9 +191,15 @@ def rodape(canal="doc"):
 
     <div>
       <h2 class="foot-tit">Atendimento</h2>
+      <div class="end-bloco">
+        <b>Segunda a sexta &middot; São Vicente/SP</b>
+        <span>R. Jacob Emmerich, 700 — Centro &middot; CEP 11310-070</span>
+      </div>
+      <div class="end-bloco">
+        <b>Sábado &middot; São Paulo/SP</b>
+        <span>Av. Atlântica, 2905 — Jd. Santa Helena</span>
+      </div>
       <div class="horario">
-        <div><span>Segunda a sexta</span><b>São Vicente</b></div>
-        <div><span>Sábado</span><b>São Paulo</b></div>
         <div><span>Telefone</span><b><a href="tel:+551334667438">(13) 3466-7438</a></b></div>
         <div><span>E-mail</span><b><a href="mailto:desp.100milhas@hotmail.com">desp.100milhas@hotmail.com</a></b></div>
       </div>
@@ -314,10 +320,10 @@ home = f"""
   <div class="wrap">
     <div class="hero-marca">
       <img src="/assets/lili-ia-mini.webp" width="44" height="44" alt="Lili, da Despachante 100 Milhas">
-      <span><b>Despachante 100 Milhas</b><em>Documentação veicular e direitos PCD · desde 2011</em></span>
+      <span><b>Despachante 100 Milhas</b><em>Um despachante muito mais digital</em></span>
     </div>
     <h1>Resolva sua documentação <em>sem sair de casa</em>.</h1>
-    <p class="sub">Consulte seu veículo, descubra seus direitos e receba orientação especializada da 100 Milhas.</p>
+    <p class="sub">Licenciamento, transferência, multas, CNH e Isenção PCD — tudo pelo WhatsApp, com gente de verdade do outro lado.</p>
     <p class="apoio">Você conta o problema. A gente mostra o caminho.</p>
     <div class="prova-topo">
       <div class="pt-item">
@@ -325,11 +331,11 @@ home = f"""
         <b>4,9</b><span>NO GOOGLE</span>
       </div>
       <span class="pt-div"></span>
-      <div class="pt-item"><b>2011</b><span>DESDE</span></div>
+      <div class="pt-item"><b>657</b><span>AVALIAÇÕES</span></div>
       <span class="pt-div"></span>
-      <div class="pt-item"><b>São Vicente</b><span>ESCRITÓRIO FÍSICO</span></div>
+      <div class="pt-item"><b>+5.000</b><span>PROCESSOS</span></div>
       <span class="pt-div"></span>
-      <div class="pt-item"><b>Humano</b><span>ATENDIMENTO</span></div>
+      <div class="pt-item"><b>15 anos</b><span>DE MERCADO</span></div>
     </div>
     <div class="provas">
       <span class="prova">{ic("check")} Presencial e online</span>
@@ -501,7 +507,7 @@ home = f"""
         <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       </div>
       <div style="max-width:22rem">
-        <strong>Centenas de avaliações reais no Google</strong>
+        <strong>657 avaliações reais no Google</strong>
         <p style="color:var(--texto-suave);font-size:.93rem">Quem passou por aqui conta o que aconteceu.</p>
       </div>
       <a class="btn btn-linha" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">Ver todas as avaliações</a>
@@ -515,7 +521,7 @@ home = f"""
   <div class="wrap">
     <div class="cabeca">
       <span class="placa claro">Por que aqui</span>
-      <h2>Um despachante muito mais prático. Muito mais online.</h2>
+      <h2>Um despachante muito mais digital.</h2>
     </div>
     <div class="grid g4">
       <div class="card card-vidro"><h3>Agilidade no processo</h3><p>Simule valores de transferência veicular sem esperar por ninguém.</p></div>
@@ -608,7 +614,7 @@ home = f"""
       <div class="atende destaque">
         <div class="atende-ico">{ic("mapa")}</div>
         <h3>São Vicente / SP</h3>
-        <p>Sede física: R. Jacob Emmerich, 700 — Centro.<br>Segunda a sexta, atendimento presencial.</p>
+        <p>Sede: R. Jacob Emmerich, 700 — Centro &middot; CEP 11310-070.<br>Segunda a sexta, atendimento presencial.</p>
       </div>
       <div class="atende">
         <div class="atende-ico">{ic("mapa")}</div>
@@ -618,7 +624,7 @@ home = f"""
       <div class="atende">
         <div class="atende-ico">{ic("relogio")}</div>
         <h3>São Paulo / SP</h3>
-        <p>Atendimento na capital aos sábados.</p>
+        <p>Av. Atlântica, 2905 — Jd. Santa Helena.<br>Atendimento aos sábados.</p>
       </div>
       <div class="atende">
         <div class="atende-ico">{ic("envio")}</div>
@@ -1120,7 +1126,7 @@ quem = f"""
     <div class="cabeca centro"><span class="placa">Onde estamos</span><h2>Endereço real, porta aberta</h2>
     <p>Se você quiser olhar no olho, o endereço é este. Atendemos presencialmente em São Vicente.</p></div>
     <div class="grid g2" style="max-width:47rem;margin:0 auto">
-      <div class="card"><div class="icone">{ic("mapa")}</div><h3>São Vicente / SP</h3><p>R. Jacob Emmerich, 700 — Centro<br>Atendimento em dias úteis.</p></div>
+      <div class="card"><div class="icone">{ic("mapa")}</div><h3>Onde atendemos</h3><p><strong>São Vicente/SP</strong> (seg–sex): R. Jacob Emmerich, 700 — Centro &middot; CEP 11310-070<br><strong>São Paulo/SP</strong> (sáb): Av. Atlântica, 2905 — Jd. Santa Helena</p></div>
       <div class="card"><div class="icone">{ic("fone")}</div><h3>Fale conosco</h3><p>Telefone: (13) 3466-7438<br>Documentação: {FONE_DOC}<br>PCD e Imposto de Renda: {FONE_PCD}</p><a class="btn btn-roxo" style="margin-top:16px" href="{zap('Olá, quero falar com a equipe da 100 Milhas.')}" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
     </div>
   </div>

@@ -1189,3 +1189,29 @@ body.com-lgpd .lili-lan{bottom:calc(16px + 96px)}
 @media(max-width:720px){
   .dobra .hero-marca{order:1;align-self:flex-start;margin-bottom:var(--e-2)}
 }
+
+/* =========================================================================
+   V9 — CABEÇALHO REFINADO + ENDEREÇOS OFICIAIS
+   ========================================================================= */
+
+/* Cabeçalho: mais presença, sem perder leveza */
+header{box-shadow:0 2px 20px rgba(42,6,64,.07)}
+.nav{padding:14px 0}
+.logo img{height:48px}
+.menu a{font-weight:600;letter-spacing:.01em}
+.btn-zap{padding:12px 20px;gap:8px;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.btn-zap svg{width:18px;height:18px;fill:#fff;flex:none}
+.burger{padding:8px;border-radius:var(--r-sm);color:var(--roxo)}
+.burger svg{width:26px;height:26px;display:block;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;fill:none}
+.burger:hover{background:var(--claro)}
+@media(max-width:720px){
+  header .nav{padding:10px 0}
+  .logo img{height:38px}
+}
+
+/* Rodapé: blocos de endereço oficiais (seg–sex e sábado) */
+.end-bloco{margin-bottom:var(--e-3);padding-bottom:var(--e-3);border-bottom:1px dashed rgba(255,255,255,.1)}
+.end-bloco b{display:block;color:#fff;font-weight:600;font-size:.92rem}
+.end-bloco span{font-size:.86rem;color:var(--texto-rodape);line-height:1.5}
+.horario{margin-top:var(--e-2)}
