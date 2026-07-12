@@ -3,8 +3,19 @@
   // Se mudar isso, o build falha. (Doc: Workers name requirement)
   "name": "odd-hall-da24",
   "compatibility_date": "2026-07-12",
+  // API da Agenda da Lili (sem n8n): roda no proprio Worker do site.
+  // Rotas /api/agenda/* -> worker.js; todo o resto -> arquivos de ./public.
+  "main": "worker.js",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "agenda-100milhas",
+      "database_id": "d2e5bef3-fa57-44d7-9931-6425eda2e5db"
+    }
+  ]
 }

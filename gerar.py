@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=11"
+V = "?v=12"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -68,11 +68,13 @@ src="https://www.facebook.com/tr?id={PIXEL_ID}&ev=PageView&noscript=1" alt=""></
     return t
 
 NAV = [
-    ("/licenciamento", "Documentos"),
+    ("/licenciamento", "Licenciamento"),
+    ("/transferencia", "Transferência"),
+    ("/debitos", "Débitos e IPVA"),
     ("/cnh-suspensa", "CNH"),
-    ("/isencaopcd", "Direitos PCD"),
+    ("/isencaopcd", "Isenção PCD"),
     ("/impostoderenda", "Imposto de Renda"),
-    ("/quem-somos", "100 Milhas"),
+    ("/quem-somos", "A 100 Milhas"),
 ]
 
 SVG_ZAP = '<svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>'
@@ -162,7 +164,7 @@ def rodape(canal="doc"):
     return f"""<footer>
 <div class="wrap">
   <div class="foot-marca">
-    <span class="foot-logo"><img src="/assets/logo.webp" alt="Despachante 100 Milhas" width="170" height="49"></span>
+    <img class="foot-logo-img" src="/assets/logo.webp" alt="Despachante 100 Milhas" width="170" height="49">
     <p>Assessoria privada em documentação e regularização veicular — Isenção PCD, recurso de multa e direitos de aposentados. Presencial e 100% online, na Baixada Santista e em São Paulo.</p>
   </div>
 
@@ -327,6 +329,37 @@ home = f"""
     <h1>Resolva a documentação do seu veículo <em>sem sair de casa</em></h1>
     <p class="sub">Licenciamento, transferência, ATPV-e, veículo 0 km, defesa da CNH, isenções PCD e Imposto de Renda, com acompanhamento especializado do início ao fim.</p>
 
+    <!-- A CONSULTA É A PRIMEIRA AÇÃO DO SITE -->
+    <div class="consulta2" id="consultar">
+      <div class="c2-info">
+        <span class="c2-placa" aria-hidden="true"><i>BR</i>ABC&middot;1D23</span>
+        <h2>Consulte a situação do seu veículo</h2>
+        <p>Informe a placa e o RENAVAM para solicitar o levantamento da documentação, débitos e possíveis pendências do veículo.</p>
+        <ul class="c2-itens">
+          <li>Débitos e multas</li>
+          <li>Licenciamento</li>
+          <li>IPVA</li>
+          <li>Restrições e pendências</li>
+        </ul>
+        <p class="c2-nota">O levantamento é feito pela nossa equipe e devolvido a você pelo WhatsApp.</p>
+      </div>
+      <form id="form-veiculo" class="c2-form" novalidate>
+        <div class="campo-g">
+          <label for="placa">Placa</label>
+          <input id="placa" name="placa" placeholder="ABC1D23" autocomplete="off"
+                 inputmode="text" maxlength="8" aria-describedby="erro-placa" required>
+          <div class="erro-campo" id="erro-placa" role="alert"></div>
+        </div>
+        <div class="campo-g">
+          <label for="renavam">RENAVAM</label>
+          <input id="renavam" name="renavam" placeholder="Digite o RENAVAM" autocomplete="off"
+                 inputmode="numeric" maxlength="11" aria-describedby="erro-renavam" required>
+          <div class="erro-campo" id="erro-renavam" role="alert"></div>
+        </div>
+        <button class="btn btn-ouro btn-grande" type="submit">Consultar agora</button>
+      </form>
+    </div>
+
     <h2 class="pergunta7">O que você precisa resolver hoje?</h2>
 
     <div class="svc7">
@@ -391,37 +424,56 @@ home = f"""
   </div>
 </section>
 
-<!-- CONSULTA VEICULAR: a ferramenta do sistema -->
+<!-- AGENDA DA LILI — ORIENTAÇÃO PCD (API própria no Worker, sem n8n) -->
 <section class="sec-clara" style="padding:56px 0">
   <div class="wrap">
-    <div class="consulta2">
-      <div class="c2-info">
-        <span class="c2-placa" aria-hidden="true"><i>BR</i>ABC&middot;1D23</span>
-        <h2>Consulte a situação do seu veículo</h2>
-        <p>Informe a placa e o RENAVAM para solicitar o levantamento da documentação, débitos e possíveis pendências do veículo.</p>
-        <ul class="c2-itens">
-          <li>Débitos e multas</li>
-          <li>Licenciamento</li>
-          <li>IPVA</li>
-          <li>Restrições e pendências</li>
-        </ul>
-        <p class="c2-nota">O levantamento é feito pela nossa equipe e devolvido a você pelo WhatsApp.</p>
+    <div class="agenda" id="agenda-pcd">
+      <div class="ag-info">
+        <img src="/assets/lili.webp" width="96" height="96" loading="lazy" alt="Lili, Despachante Documentalista">
+        <h2>Converse com a Lili sobre seus direitos PCD</h2>
+        <p>Escolha um dia e horário disponível para uma orientação personalizada sobre o seu caso.</p>
+        <p class="ag-nota">Orientação de segunda a sexta &middot; análise inicial sem custo e sem compromisso.</p>
       </div>
-      <form id="form-veiculo" class="c2-form" novalidate>
-        <div class="campo-g">
-          <label for="placa">Placa</label>
-          <input id="placa" name="placa" placeholder="ABC1D23" autocomplete="off"
-                 inputmode="text" maxlength="8" aria-describedby="erro-placa" required>
-          <div class="erro-campo" id="erro-placa" role="alert"></div>
+      <div class="ag-caixa">
+        <div class="ag-passo" id="ag-p1">
+          <h3><b>1</b> Escolha o dia</h3>
+          <div class="ag-dias" id="ag-dias"></div>
         </div>
-        <div class="campo-g">
-          <label for="renavam">RENAVAM</label>
-          <input id="renavam" name="renavam" placeholder="Digite o RENAVAM" autocomplete="off"
-                 inputmode="numeric" maxlength="11" aria-describedby="erro-renavam" required>
-          <div class="erro-campo" id="erro-renavam" role="alert"></div>
+        <div class="ag-passo" id="ag-p2" hidden>
+          <h3><b>2</b> Escolha o horário</h3>
+          <div class="ag-horas" id="ag-horas"></div>
         </div>
-        <button class="btn btn-ouro btn-grande" type="submit">Consultar agora</button>
-      </form>
+        <div class="ag-passo" id="ag-p3" hidden>
+          <h3><b>3</b> Seus dados</h3>
+          <form id="ag-form" novalidate>
+            <div class="campo-g">
+              <label for="ag-nome">Nome completo</label>
+              <input id="ag-nome" maxlength="80" autocomplete="name" required>
+            </div>
+            <div class="campo-g">
+              <label for="ag-tel">WhatsApp com DDD</label>
+              <input id="ag-tel" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(13) 99999-9999" required>
+            </div>
+            <div class="campo-g">
+              <label for="ag-assunto">Assunto (opcional)</label>
+              <input id="ag-assunto" maxlength="200" placeholder="Ex.: isenção para meu filho com TEA">
+            </div>
+            <button class="btn btn-ouro btn-bloco" type="submit">Agendar orientação PCD</button>
+          </form>
+        </div>
+        <p class="ag-erro" id="ag-erro" role="alert"></p>
+        <div class="ag-ok" id="ag-ok" hidden>
+          <div class="ag-ok-selo">&#10003;</div>
+          <h3>Agendamento confirmado!</h3>
+          <p id="ag-ok-txt"></p>
+          <a class="btn btn-roxo btn-bloco" id="ag-ok-zap" target="_blank" rel="noopener" href="#">Enviar comprovante no WhatsApp da Lili</a>
+          <p class="ag-mini">O horário já ficou reservado para você. Enviar o comprovante ajuda a equipe a se preparar para o seu caso.</p>
+        </div>
+        <div class="ag-off" id="ag-off" hidden>
+          <p>A agenda está temporariamente indisponível.</p>
+          <a class="btn btn-ouro btn-bloco" href="{zap('Olá! Quero agendar uma orientação sobre direitos PCD.', 'pcd')}" target="_blank" rel="noopener">Agendar pelo WhatsApp PCD</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -649,7 +701,10 @@ home = f"""
       <img src="/assets/lili.webp" width="104" height="104" alt="Liliane Pereira Rosa, a Lili">
       <h2>Ainda não sabe por onde começar?</h2>
       <p>Conversa comigo. Você conta o que aconteceu, eu olho o seu caso e te digo a verdade — mesmo quando a verdade é não.</p>
-      <a class="btn btn-ouro" href="{zap('Olá Lili! Não sei bem por onde começar, quero conversar.')}" target="_blank" rel="noopener">Falar com a Lili agora</a>
+      <div class="fecho-btns">
+        <a class="btn btn-ouro" href="#agenda-pcd">Agendar com a Lili</a>
+        <a class="btn btn-linha btn-claro" href="{zap('Olá Lili! Não sei bem por onde começar, quero conversar.')}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
       <div class="local">{ic("mapa")} Atendimento presencial e online</div>
     </div>
   </div>
@@ -1448,7 +1503,7 @@ central = f"""
 
 # ==================== ESCREVER ====================
 print("Gerando páginas:")
-pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home)
+pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home,extra=f'<script src="/assets/agenda.js{V}" defer></script>')
 pagina("transferencia/index.html","Transferência de Veículo Online | Despachante 100 Milhas","Orçamento de transferência veicular online. Documentos, prazos, valores e gravame explicados. Envie o veículo e receba o orçamento completo pelo WhatsApp.","/transferencia",trans,pilar="doc")
 pagina("debitos/index.html","Consultar Débitos do Veículo — IPVA, Multas e Licenciamento | 100 Milhas","Consulte IPVA, multas e licenciamento do seu veículo e parcele no cartão. Levantamento completo dos débitos e regularização com quem entende.","/debitos",deb,pilar="doc")
 pagina("isencaopcd/index.html","Isenção PCD: IPI, ICMS e IPVA para Carro 0km | Despachante 100 Milhas","Mais de 70 condições podem dar direito à isenção PCD — e não é só para cadeirantes. Vale para condutor e não condutor. Fazemos a análise do seu caso, sem compromisso.","/isencaopcd",pcd,pilar="pcd",canal="pcd")

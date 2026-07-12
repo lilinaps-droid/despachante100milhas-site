@@ -1469,3 +1469,100 @@ header{box-shadow:0 2px 20px rgba(42,6,64,.07)}
 @media(max-width:720px){
   .topo7 .wrap > *{order:0}
 }
+
+/* =========================================================================
+   V12 — CABEÇALHO NAVEGÁVEL, CONSULTA EM PRIMEIRO E AGENDA DA LILI
+   ========================================================================= */
+
+/* Cabeçalho: a logo é uma placa — vive direto sobre o roxo, sem caixa branca */
+header{
+  background:linear-gradient(180deg,var(--roxo-escuro) 0%,var(--roxo-fundo) 100%);
+  border-bottom:2px solid var(--dourado);box-shadow:0 4px 24px rgba(20,2,31,.45)
+}
+.menu{gap:18px}
+.menu a{color:var(--texto-inv);font-size:.88rem;font-weight:600}
+.menu a:hover,.menu a[aria-current="page"]{color:var(--dourado);border-color:var(--dourado)}
+.burger{color:#fff}
+.burger:hover{background:rgba(255,255,255,.1)}
+@media(max-width:1180px){ .menu{gap:12px} .menu a{font-size:.8rem} }
+/* com 7 divisões o menu recolhe mais cedo */
+@media(max-width:1024px){
+  .menu{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    background:var(--roxo-fundo);flex-direction:column;align-items:stretch;gap:0;
+    padding:8px 20px 18px;border-bottom:2px solid var(--dourado);
+    box-shadow:0 18px 40px rgba(20,2,31,.5)
+  }
+  .menu.aberto{display:flex}
+  .menu a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+  .menu .btn-zap{margin-top:12px;justify-content:center;border-bottom:0}
+  .burger{display:block}
+  .nav{position:relative}
+}
+@media(max-width:720px){ .menu{background:var(--roxo-fundo)} .menu a{border-color:rgba(255,255,255,.1)} }
+
+/* Rodapé: logo direta no roxo (o branco é da própria placa) */
+.foot-logo-img{height:44px;width:auto;flex:none}
+
+/* Consulta dentro do hero: primeira ação do site */
+.topo7 .consulta2{width:100%;max-width:62rem;text-align:left;margin-top:var(--e-4)}
+.topo7 .pergunta7{margin-top:var(--e-10)}
+
+/* Fechamento com agenda + WhatsApp */
+.fecho-btns{display:flex;gap:var(--e-3);justify-content:center;flex-wrap:wrap}
+.btn-claro{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-claro:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+
+/* ---------- AGENDA DA LILI ---------- */
+.agenda{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--e-8);align-items:start;
+  background:linear-gradient(150deg,var(--roxo-escuro),var(--roxo-meio));
+  border:1px solid rgba(212,175,55,.4);border-radius:var(--r-xl);
+  padding:var(--e-8);color:#fff;box-shadow:var(--sombra-forte);
+  position:relative;overflow:hidden
+}
+.agenda::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(480px 240px at 12% 0,rgba(212,175,55,.15),transparent 70%)}
+.agenda > *{position:relative}
+.ag-info img{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 18%;
+  border:3px solid var(--dourado);margin-bottom:var(--e-4);box-shadow:0 8px 26px rgba(0,0,0,.35)}
+.ag-info h2{font-size:clamp(1.35rem,2.2vw,1.7rem);color:#fff;margin-bottom:var(--e-3)}
+.ag-info > p{color:var(--texto-hero);font-size:.97rem;max-width:38ch}
+.ag-nota{margin-top:var(--e-3);font-size:.82rem;color:var(--texto-inv-suave)}
+.ag-caixa{background:#fff;border-radius:var(--r-lg);padding:var(--e-6);color:var(--texto);
+  box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.ag-passo + .ag-passo{margin-top:var(--e-5)}
+.ag-passo h3{font-size:.95rem;color:var(--roxo-fundo);margin-bottom:var(--e-3);display:flex;align-items:center;gap:8px}
+.ag-passo h3 b{width:22px;height:22px;border-radius:50%;background:var(--roxo);color:#fff;
+  display:grid;place-items:center;font-size:.72rem;flex:none}
+.ag-dias,.ag-horas{display:flex;flex-wrap:wrap;gap:8px}
+.ag-chip{
+  display:flex;flex-direction:column;align-items:center;line-height:1.1;gap:1px;
+  background:var(--claro);border:1.5px solid var(--linha);border-radius:var(--r-md);
+  padding:8px 12px;cursor:pointer;font-family:var(--fonte-display);transition:var(--transicao);min-width:56px
+}
+.ag-chip small{font-size:.6rem;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.06em}
+.ag-chip b{font-size:1rem;color:var(--roxo-fundo)}
+.ag-chip:hover{border-color:var(--roxo);background:#fff}
+.ag-chip.ativo{border-color:var(--roxo);background:var(--roxo);}
+.ag-chip.ativo b,.ag-chip.ativo small{color:#fff}
+.ag-chip[disabled]{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.ag-hora{min-width:72px;padding:10px 12px}
+.ag-carregando{font-size:.86rem;color:var(--texto-suave)}
+.ag-erro{color:var(--vermelho);font-size:.86rem;font-weight:600;margin-top:var(--e-3);min-height:1.2em}
+#ag-form .campo-g{margin-bottom:var(--e-3)}
+#ag-form input{min-height:52px;font-size:1rem;letter-spacing:normal;text-align:left;font-family:var(--fonte-corpo);font-weight:500}
+.ag-ok{text-align:center;padding:var(--e-4) 0}
+.ag-ok-selo{width:56px;height:56px;border-radius:50%;background:var(--verde-zap);color:#fff;
+  font-size:1.6rem;display:grid;place-items:center;margin:0 auto var(--e-3)}
+.ag-ok h3{color:var(--roxo-fundo);margin-bottom:6px}
+.ag-ok p{color:var(--texto-suave);font-size:.95rem;margin-bottom:var(--e-4)}
+.ag-mini{font-size:.78rem;margin-top:var(--e-3)}
+.ag-off{text-align:center;padding:var(--e-2) 0}
+.ag-off p{color:var(--texto-suave);margin-bottom:var(--e-3)}
+@media(max-width:960px){
+  .agenda{grid-template-columns:1fr;gap:var(--e-5);padding:var(--e-5)}
+  .ag-info{text-align:center}
+  .ag-info img{margin-inline:auto}
+  .ag-info > p{margin-inline:auto}
+}
