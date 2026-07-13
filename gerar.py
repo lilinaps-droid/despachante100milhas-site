@@ -764,11 +764,17 @@ pcd = f"""
   "Contar meu caso", "Olá Lili, quero contar meu caso de isenção PCD.", "pcd")}
 <section>
   <div class="wrap">
-    <div class="cabeca centro"><span class="placa">O caminho</span><h2>Como funciona o processo</h2></div>
-    <div class="passos" style="max-width:47rem;margin:0 auto">
-      <div class="passo"><div><h3>Análise documental</h3><p>Avaliamos seus exames e laudos para verificar o enquadramento na lei.</p></div></div>
-      <div class="passo"><div><h3>Laudo médico PCD</h3><p>Orientação completa para a obtenção do laudo junto aos órgãos credenciados.</p></div></div>
-      <div class="passo"><div><h3>Protocolo das isenções</h3><p>Damos entrada nos pedidos de IPI, ICMS e IPVA de forma digital e ágil.</p></div></div>
+    <div class="cabeca centro"><span class="placa">O caminho</span><h2>Como funciona o seu processo PCD</h2>
+    <p>Do primeiro contato ao pós-venda, cada etapa é acompanhada pela nossa equipe, com supervisão da Lili.</p></div>
+    <div class="trilha">
+      <div class="etapa"><h3>Atendimento</h3><p>Você conversa com a equipe e conta o seu caso. Sem compromisso e sem juridiquês.</p></div>
+      <div class="etapa"><h3>Triagem</h3><p>Analisamos a sua condição e identificamos a quais isenções você <strong>pode ter direito</strong> — IPI, ICMS, IPVA e Imposto de Renda.</p></div>
+      <div class="etapa"><h3>Documentação</h3><p>Organizamos, junto com você, os documentos e tudo o que cada órgão exige.</p></div>
+      <div class="etapa"><h3>Laudo</h3><p>Orientamos sobre o laudo médico pericial — a peça central do pedido — e como obtê-lo corretamente.</p></div>
+      <div class="etapa"><h3>Solicitação das isenções</h3><p>Protocolamos os pedidos nos órgãos competentes, com tudo conferido.</p></div>
+      <div class="etapa"><h3>Análise e resultado</h3><p>O órgão avalia. Acompanhamos o andamento e, <strong>se aprovado</strong>, o seu direito é reconhecido — quem aprova é o órgão, com base no laudo.</p></div>
+      <div class="etapa"><h3>Compra do veículo</h3><p>Com a isenção reconhecida, orientamos você na compra dentro das regras.</p></div>
+      <div class="etapa final"><h3>Pós-venda</h3><p>Seguimos ao seu lado em renovações, prazos e novas necessidades. O relacionamento não acaba na aprovação.</p></div>
     </div>
     <div style="text-align:center;margin-top:34px"><a class="btn btn-roxo" href="{zap('Olá, quero iniciar meu processo de isenção PCD.', 'pcd')}" target="_blank" rel="noopener">Iniciar meu processo</a></div>
   </div>
@@ -1174,13 +1180,14 @@ quem = f"""
 
 <section class="sec-escura">
   <div class="wrap">
-    <div class="cabeca"><span class="placa claro">A equipe</span><h2>Você não fala com um robô</h2>
-    <p>Quem atende, analisa e acompanha o seu processo é gente — com nome, rosto e responsabilidade sobre o seu caso.</p></div>
+    <div class="cabeca"><span class="placa claro">A equipe</span><h2>Por trás de cada processo, uma equipe inteira</h2>
+    <p>Você nunca fala com um robô nem cai numa esteira. Cada caso é acompanhado de perto por gente que conhece o seu nome, o seu processo e o seu prazo — com a supervisão técnica da Lili em todas as etapas.</p></div>
     <div class="grid g3">
-      <div class="card card-vidro"><h3>Lili</h3><p>Fundadora e Despachante Documentalista. Analisa os casos e responde pelos processos.</p></div>
-      <div class="card card-vidro"><h3>Kamila</h3><p>Financeiro e organização dos processos.</p></div>
-      <div class="card card-vidro"><h3>Pedro</h3><p>Comunicação e relacionamento.</p></div>
+      <div class="card card-vidro"><h3>Lili</h3><p><strong style="color:var(--dourado)">Fundadora e Especialista em Direitos PCD.</strong><br>Define o padrão técnico de cada análise, supervisiona os casos e garante que ninguém prometa o que o órgão não aprovou — só o que o seu caso realmente sustenta.</p></div>
+      <div class="card card-vidro"><h3>Kamila</h3><p><strong style="color:var(--dourado)">Documentação e suporte ao cliente.</strong><br>Organiza laudos, documentos e exigências para que o seu pedido chegue completo e correto — o detalhe que faz um processo andar.</p></div>
+      <div class="card card-vidro"><h3>Pedro</h3><p><strong style="color:var(--dourado)">Atendimento e acompanhamento de processos.</strong><br>Cuida para que nenhum processo pare no meio do caminho: acompanha prazos, retornos dos órgãos e mantém você informado a cada passo.</p></div>
     </div>
+    <p style="text-align:center;color:#fff;margin-top:28px;font-weight:600">Toda análise passa pela supervisão da Lili. Todo cliente tem um nome — não um número de senha.</p>
   </div>
 </section>
 
