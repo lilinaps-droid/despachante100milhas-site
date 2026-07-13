@@ -21,7 +21,7 @@
   function mostraErro(msg){ erro.textContent=msg||''; }
 
   // Dias em que a Lili atende: 3=qua, 4=qui, 5=sex. Seg e ter não entram.
-  var DIAS_ATENDIMENTO = [3,4,5];
+  var DIAS_ATENDIMENTO = [1,2,3,4,5];
 
   // ---------- Passo 1: próximos dias de atendimento ----------
   function montaDias(){

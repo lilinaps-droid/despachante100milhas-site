@@ -125,7 +125,7 @@
 
     raiz.innerHTML =
       '<div class="pa-topo">' +
-        '<div><b>Agenda da Lili</b><span>'+clientes+' cliente(s) agendado(s) · atendimento às quartas, quintas e sextas</span></div>' +
+        '<div><b>Agenda da Lili</b><span>'+clientes+' cliente(s) agendado(s) · atendimento de segunda a sexta</span></div>' +
         '<button class="btn btn-linha" id="pa-recarregar">Atualizar</button>' +
       '</div>' +
 
