@@ -13,7 +13,7 @@ const DIAS_FUTUROS_MAX = 30; // não aceita agendar além de 30 dias
 
 // Dias em que a Lili atende: 3=quarta, 4=quinta, 5=sexta.
 // Segunda e terça ficam livres para perícia, cartório e órgão.
-const DIAS_ATENDIMENTO = [3, 4, 5];
+const DIAS_ATENDIMENTO = [1, 2, 3, 4, 5];
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
@@ -35,7 +35,7 @@ function validaDia(dia) {
   if (isNaN(d)) return 'Data inválida.';
   const dow = d.getUTCDay();
   if (!DIAS_ATENDIMENTO.includes(dow))
-    return 'A orientação acontece às quartas, quintas e sextas. Escolha um desses dias.';
+    return 'A orientação acontece de segunda a sexta. Escolha um desses dias.';
   const hoje = ymd(agoraSP());
   if (dia < hoje) return 'Essa data já passou.';
   const lim = new Date(agoraSP().getTime() + DIAS_FUTUROS_MAX * 86400 * 1000);

@@ -432,7 +432,7 @@ home = f"""
         <img src="/assets/lili.webp" width="96" height="96" loading="lazy" alt="Lili, Despachante Documentalista">
         <h2>Converse com a Lili sobre seus direitos PCD</h2>
         <p>Escolha um dia e horário disponível para uma orientação personalizada sobre o seu caso.</p>
-        <p class="ag-nota">Orientação às quartas, quintas e sextas &middot; análise inicial sem custo e sem compromisso.</p>
+        <p class="ag-nota">Orientação de segunda a sexta &middot; análise inicial sem custo e sem compromisso.</p>
       </div>
       <div class="ag-caixa">
         <div class="ag-passo" id="ag-p1">
@@ -1591,7 +1591,7 @@ painelagenda = """
 
 # ==================== ESCREVER ====================
 print("Gerando páginas:")
-pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home,extra=f'<script src="/assets/agenda.js{V}" defer></script>')
+pagina("index.html","Despachante 100 Milhas — Regularização veicular, isenção PCD e recursos de multa","Assessoria em documentação veicular em São Vicente/SP. Isenção PCD (IPI, ICMS, IPVA), isenção de Imposto de Renda, recursos de multa e transferência. Desde 2011, com 4,9 no Google.","/",home,extra='<script src="/assets/agenda.js?v=14" defer></script>')
 pagina("transferencia/index.html","Transferência de Veículo Online | Despachante 100 Milhas","Orçamento de transferência veicular online. Documentos, prazos, valores e gravame explicados. Envie o veículo e receba o orçamento completo pelo WhatsApp.","/transferencia",trans,pilar="doc")
 pagina("debitos/index.html","Consultar Débitos do Veículo — IPVA, Multas e Licenciamento | 100 Milhas","Consulte IPVA, multas e licenciamento do seu veículo e parcele no cartão. Levantamento completo dos débitos e regularização com quem entende.","/debitos",deb,pilar="doc")
 pagina("isencaopcd/index.html","Isenção PCD: IPI, ICMS e IPVA para Carro 0km | Despachante 100 Milhas","Mais de 70 condições podem dar direito à isenção PCD — e não é só para cadeirantes. Vale para condutor e não condutor. Fazemos a análise do seu caso, sem compromisso.","/isencaopcd",pcd,pilar="pcd",canal="pcd")
