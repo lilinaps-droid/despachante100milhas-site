@@ -8,7 +8,7 @@
   var raiz = document.getElementById('agenda-pcd');
   if(!raiz) return;
 
-  var ZAP_PCD = '5513978091064';
+  var ZAP_PCD = '5513978144035';
   var p1=document.getElementById('ag-p1'), p2=document.getElementById('ag-p2'), p3=document.getElementById('ag-p3');
   var elDias=document.getElementById('ag-dias'), elHoras=document.getElementById('ag-horas');
   var form=document.getElementById('ag-form'), erro=document.getElementById('ag-erro');

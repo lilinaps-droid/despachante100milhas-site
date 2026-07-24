@@ -14,7 +14,7 @@
   var raiz = document.getElementById('simulador-pcd');
   if(!raiz) return;
 
-  var ZAP_PCD  = '5513978091064';                  // canal PCD, igual às demais páginas PCD
+  var ZAP_PCD  = '5513978144035';                  // canal PCD, igual às demais páginas PCD
   var MSG_ZAP  = 'Olá! Fiz o Simulador de Direitos PCD no site da 100 Milhas e quero uma análise do meu caso.';
   var CHECKOUT = 'https://chk.eduzz.com/G92KOVRXWE'; // Diagnóstico de Direitos PCD — R$ 47
 

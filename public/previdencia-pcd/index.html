@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6A0DAD">
+<title>Aposentadoria da Pessoa com Deficiência (PCD) | Despachante 100 Milhas</title>
+<meta name="description" content="Calculadora de aposentadoria da pessoa com deficiência (INSS): descubra se pode se aposentar, quanto falta, o valor estimado e como planejar a renda. Estimativa — a 100 Milhas orienta o seu caso.">
+<link rel="canonical" href="https://www.despachante100milhas.com.br/previdencia-pcd">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@700;800&display=swap">
+<link rel="stylesheet" href="/assets/estilo.css?v=13">
+<style>
+  /* Ajustes específicos da calculadora — herdam as variáveis do site (estilo.css) */
+  .campo select,.campo textarea{width:100%;padding:14px 16px;border:2px solid var(--linha);border-radius:var(--r-md,12px);font-size:1rem;font-family:inherit;background:var(--claro);color:var(--texto)}
+  .campo textarea{min-height:64px;resize:vertical}
+  .campo select:focus,.campo textarea:focus{outline:none;border-color:var(--roxo);background:#fff;box-shadow:0 0 0 4px rgba(106,13,173,.12)}
+  .g-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  @media(max-width:720px){.g-inputs{grid-template-columns:1fr}}
+  .kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:4px}
+  @media(max-width:720px){.kpis{grid-template-columns:1fr}}
+  .kpi-box{background:var(--claro);border:1px solid var(--linha);border-radius:14px;padding:16px}
+  .kpi-box .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-suave);font-weight:700}
+  .kpi-box .val{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:800;color:var(--roxo);margin-top:4px}
+  .tabela{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:10px}
+  .tabela th,.tabela td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--linha)}
+  .tabela th{font-family:'Montserrat',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--texto-suave)}
+  .tabela tbody tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;border-radius:100px;padding:3px 12px;font-size:.74rem;font-weight:700}
+  .t-ok{background:#e3f4ea;color:#1a7f4b}.t-no{background:#fbe6e6;color:#b02a2a}.t-w{background:#fbf0d8;color:#8a5a06}
+  .avi-roxo{background:#f2e9fb;border:1px solid #e0d0f2;border-radius:12px;padding:14px;font-size:.9rem;margin-top:14px}
+  .avi-amarelo{background:#fff8e6;border:1px solid #f0dca0;color:#5f4a12;border-radius:12px;padding:14px;font-size:.86rem}
+  .avi-cinza{background:var(--claro);border:1px dashed #cdc6da;border-radius:12px;padding:14px;font-size:.86rem;color:var(--texto-suave)}
+  .fonte{font-size:.76rem;color:var(--texto-suave)}
+  .prev-consent{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;margin-top:6px}
+  .prev-consent input{width:auto;margin-top:3px}
+  .periodo{border:1px solid var(--linha);border-radius:12px;padding:14px;margin-top:12px;background:var(--claro)}
+  .lista-melhora{margin:8px 0 0 18px}.lista-melhora li{margin:5px 0;font-size:.95rem}
+  section.prev{padding:56px 0}
+  @media print{header,.btn,.no-print{display:none!important}.hero{padding:32px 0}}
+</style>
+</head>
+<body data-pilar="pcd">
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="logo" href="/"><img src="/assets/logo.webp" alt="Despachante 100 Milhas"></a>
+      <nav class="menu" id="menu">
+        <a href="/licenciamento">Licenciamento</a>
+        <a href="/transferencia">Transferência</a>
+        <a href="/debitos">Débitos e IPVA</a>
+        <a href="/cnh-suspensa">CNH</a>
+        <a href="/isencaopcd">Isenção PCD</a>
+        <a href="/carros-pcd">Carros PCD</a>
+        <a href="/impostoderenda">Imposto de Renda</a>
+        <a href="/previdencia-pcd" aria-current="page">Previdência PCD</a>
+        <a href="/quem-somos">A 100 Milhas</a>
+        <a class="btn-zap" href="https://api.whatsapp.com/send?phone=5513978144035&text=Ol%C3%A1!%20Quero%20orienta%C3%A7%C3%A3o%20sobre%20aposentadoria%20PCD." target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="placa claro">Direitos PCD · Previdência (INSS)</span>
+    <h1>Aposentadoria da <em>Pessoa com Deficiência</em></h1>
+    <p class="sub">Descubra se você já pode se aposentar pelo INSS, quanto falta, o valor estimado do benefício e como planejar uma renda complementar. Estimativa educativa — não é concessão do INSS. A 100 Milhas orienta o seu caso.</p>
+    <div class="selos">
+      <span class="selo"><b>+15 anos</b> de experiência</span>
+      <span class="selo"><b>+5.000</b> processos</span>
+      <span class="selo">Nota <b>4,9</b> no Google</span>
+    </div>
+  </div>
+</section>
+
+<section class="prev">
+  <div class="wrap" style="max-width:840px">
+
+    <div class="card" style="margin-bottom:20px">
+      <span class="placa">Etapa 1 · Seus dados</span>
+      <div class="g-inputs" style="margin-top:16px">
+        <div class="campo"><label>Nome</label><input id="nome" placeholder="Nome"></div>
+        <div class="campo"><label>Data de nascimento</label><input type="date" id="nasc" onchange="mostraIdade()"></div>
+        <div class="campo"><label>Idade</label><input id="idadeAuto" readonly placeholder="—"></div>
+      </div>
+      <div class="g-inputs">
+        <div class="campo"><label>Sexo (regra do INSS)</label><select id="sexo"><option value="M">Mulher</option><option value="H">Homem</option></select></div>
+        <div class="campo"><label>Grau informado</label><select id="grau"><option value="grave">Grave</option><option value="moderada">Moderada</option><option value="leve">Leve</option><option value="indefinido">Não definido</option></select></div>
+        <div class="campo"><label>WhatsApp</label><input id="tel" placeholder="(13) 9xxxx-xxxx"></div>
+      </div>
+      <p class="fonte">O grau é reconhecido pela perícia do INSS (LC 142/2013, art. 5º / IFBrA). Aqui é só o valor informado para a estimativa.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <span class="placa">Etapa 2 · Tempo de contribuição</span>
+      <div id="periodos" style="margin-top:8px"></div>
+      <button type="button" class="btn btn-linha no-print" style="margin-top:14px;padding:12px 22px" onclick="addPeriodo()">+ Adicionar período</button>
+      <p class="fonte">Períodos com graus diferentes recebem estimativa de conversão (art. 70-E) sinalizada — casos assim pedem análise profissional.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <span class="placa">Etapa 3 · Salários (opcional)</span>
+      <div class="campo" style="margin-top:16px"><label>Salários de contribuição — um por linha</label><textarea id="salarios" placeholder="2500&#10;3000&#10;3200&#10;4100&#10;5000"></textarea></div>
+      <p class="fonte">Sem salários, mostramos só a análise de tempo/idade. Nunca inventamos valores ausentes.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <label class="prev-consent"><input type="checkbox" id="okConsent"> Li e concordo com o uso dos meus dados apenas para gerar esta simulação (LGPD). O grau da deficiência é definido pela perícia do INSS.</label>
+      <button type="button" class="btn btn-roxo btn-bloco no-print" style="margin-top:16px" onclick="calcular()">Calcular minha aposentadoria PCD</button>
+    </div>
+
+    <div id="result" style="display:none">
+      <div class="card" style="margin-bottom:20px">
+        <span class="placa">Resultado previdenciário</span>
+        <h2 id="tituloRes" style="font-family:'Montserrat';font-size:1.4rem;margin:12px 0 14px;color:var(--roxo-fundo)">Simulação</h2>
+        <div class="kpis">
+          <div class="kpi-box"><div class="lbl">Pode se aposentar hoje?</div><div class="val" id="k_pode">—</div></div>
+          <div class="kpi-box"><div class="lbl">Regra mais vantajosa</div><div class="val" id="k_regra">—</div></div>
+          <div class="kpi-box"><div class="lbl">Benefício estimado</div><div class="val" id="k_valor">—</div></div>
+        </div>
+        <div style="overflow-x:auto"><table class="tabela"><thead><tr><th>Regra</th><th>Exigência</th><th>Você</th><th>Situação</th><th>Falta</th><th>RMI</th><th>Valor</th></tr></thead><tbody id="cmpBody"></tbody></table></div>
+        <p class="fonte" style="margin-top:8px">Piso R$ 1.621,00 / teto R$ 8.475,55 — Portaria Interministerial MPS/MF nº 13/2026.</p>
+        <div class="avi-roxo"><b>⚖️ Divergência jurídica (mostrada, não escondida):</b> a média salarial tem duas teses — <b>80% dos maiores</b> (LC 142 art. 8º → Lei 8.213 art. 29 + EC 103 art. 22) × <b>100% do período</b> (EC 103 art. 26). Mostramos os dois cenários; o INSS decide qual se aplica.</div>
+        <div id="convAviso"></div>
+        <h3 style="font-family:'Montserrat';font-size:1.05rem;margin:18px 0 6px;color:var(--roxo-fundo)">O que pode melhorar</h3>
+        <ul class="lista-melhora" id="melhoras"></ul>
+        <div class="avi-cinza" style="margin-top:14px"><b>Ainda dependem de validação/análise (não entram no cálculo de memória):</b> fatores de conversão do art. 70-E, carência exata (art. 25) e metodologia IFBrA. Grau único calcula completo; múltiplos graus recebem estimativa sinalizada + recomendação profissional.</div>
+        <div class="avi-amarelo" style="margin-top:14px"><b>Aviso legal:</b> estimativa baseada nos dados informados e na legislação considerada. Não é concessão nem promessa de valor ou aprovação. O grau é definido pela perícia do INSS; diagnóstico/CID isolado não garante direito. Incapacidade ≠ deficiência; aposentadoria PCD ≠ auxílio por incapacidade ≠ BPC.</div>
+      </div>
+
+      <div class="card" style="margin-bottom:20px">
+        <span class="placa">Planejamento financeiro complementar</span>
+        <h2 style="font-family:'Montserrat';font-size:1.3rem;margin:12px 0 14px;color:var(--roxo-fundo)">Quanto falta para a renda que você deseja?</h2>
+        <div class="g-inputs">
+          <div class="campo"><label>Renda mensal desejada (R$)</label><input type="number" id="rendaDes" placeholder="5000"></div>
+          <div class="campo"><label>Idade que quer se aposentar</label><input type="number" id="idadeApos" placeholder="60"></div>
+          <div class="campo"><label>Anos recebendo a renda</label><input type="number" id="anosReceb" placeholder="25"></div>
+        </div>
+        <div class="g-inputs">
+          <div class="campo"><label>Já acumulado (R$)</label><input type="number" id="jaAcum" placeholder="0"></div>
+          <div class="campo"><label>Aporte mensal possível (R$)</label><input type="number" id="aporte" placeholder="500"></div>
+        </div>
+        <button type="button" class="btn btn-ouro btn-bloco no-print" onclick="calcularFinanceiro()">Calcular planejamento financeiro</button>
+        <div id="finResult" style="display:none">
+          <div class="kpis" style="margin-top:16px">
+            <div class="kpi-box"><div class="lbl">Benefício INSS estimado</div><div class="val" id="f_inss">—</div></div>
+            <div class="kpi-box"><div class="lbl">Diferença mensal</div><div class="val" id="f_dif">—</div></div>
+            <div class="kpi-box"><div class="lbl">Patrimônio necessário</div><div class="val" id="f_patNec">—</div></div>
+          </div>
+          <div style="overflow-x:auto"><table class="tabela"><thead><tr><th>Cenário</th><th>Rent. real</th><th>Patrimônio projetado</th><th>Renda complementar</th><th>Renda total</th><th>Situação</th></tr></thead><tbody id="finBody"></tbody></table></div>
+          <div class="avi-amarelo" style="margin-top:12px">Simulação educacional baseada nas premissas informadas. Não é promessa de rentabilidade, recomendação de investimento nem garantia de resultado. Produtos financeiros devem ser avaliados com profissional habilitado.</div>
+        </div>
+      </div>
+
+      <div class="card no-print" style="margin-bottom:20px">
+        <span class="placa">Próximos passos</span>
+        <div class="g-inputs" style="margin-top:16px">
+          <button type="button" class="btn btn-linha" onclick="window.print()">Imprimir / PDF</button>
+          <button type="button" class="btn btn-roxo" onclick="enviarWhats()">Falar com a 100 Milhas</button>
+          <button type="button" class="btn btn-linha" onclick="location.reload()">Nova simulação</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="fonte" style="text-align:center;margin-top:20px">Despachante 100 Milhas · Aposentadoria PCD · base: LC 142/2013, EC 103/2019, Portaria MPS/MF 13/2026 · estimativa, não concessão · WhatsApp (13) 97814-4035.</p>
+  </div>
+</section>
+
+<script>
+const PISO=1621.00, TETO=8475.55;
+const TEMPO={grave:{H:300,M:240},moderada:{H:348,M:288},leve:{H:396,M:336}};
+const IDADE={H:60,M:55}, CONTRIB_MIN_IDADE=180, CARENCIA=180;
+const WHATS="5513978144035";
+let ultimoBeneficio=0;
+function fmtBRL(n){return (isFinite(n)?n:0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+function mesesStr(m){return `${Math.floor(m/12)}a ${m%12}m`;}
+function idadeDe(s){if(!s)return null;const n=new Date(s),h=new Date();if(isNaN(n))return null;let a=h.getFullYear()-n.getFullYear();const m=h.getMonth()-n.getMonth();if(m<0||(m===0&&h.getDate()<n.getDate()))a--;return a<0?null:a;}
+function mostraIdade(){const a=idadeDe(document.getElementById('nasc').value);document.getElementById('idadeAuto').value=a!=null?a+' anos':'—';}
+function media(a){return a.reduce((s,x)=>s+x,0)/a.length;}
+function media80(a){const s=[...a].sort((x,y)=>y-x);const q=Math.max(1,Math.round(s.length*0.8));return media(s.slice(0,q));}
+function parseValorBR(x){let s=String(x).replace(/[^\d.,-]/g,'').trim();if(!s)return NaN;if(s.indexOf(',')>=0){s=s.replace(/\./g,'').replace(',','.');}else{const p=(s.match(/\./g)||[]).length;if(p>1){s=s.replace(/\./g,'');}else if(p===1){const dec=s.split('.')[1];if(dec&&dec.length===3)s=s.replace(/\./g,'');}}return parseFloat(s);}
+function addPeriodo(){const d=document.createElement('div');d.className='periodo';d.innerHTML=`<div class="g-inputs"><div class="campo"><label>Início</label><input type="date" class="pIni"></div><div class="campo"><label>Fim</label><input type="date" class="pFim"></div><div class="campo"><label>Grau no período</label><select class="pGrau"><option value="grave">Grave</option><option value="moderada">Moderada</option><option value="leve">Leve</option><option value="comum">Sem deficiência</option></select></div></div><div style="text-align:right"><button type="button" class="btn btn-linha" style="padding:8px 16px;font-size:.85rem" onclick="this.closest('.periodo').remove()">Remover</button></div>`;document.getElementById('periodos').appendChild(d);}
+function coletaPeriodos(){const arr=[];document.querySelectorAll('.periodo').forEach(p=>{const ini=p.querySelector('.pIni').value,fim=p.querySelector('.pFim').value,grau=p.querySelector('.pGrau').value;if(ini&&fim){const mi=(new Date(fim)-new Date(ini))/(1000*3600*24*30.44);if(mi>0)arr.push({meses:Math.round(mi),grau});}});return arr;}
+function calcular(){
+  if(!document.getElementById('okConsent').checked){alert('Marque o consentimento (LGPD) para calcular.');return;}
+  const sexo=document.getElementById('sexo').value;let grau=document.getElementById('grau').value;
+  const idade=idadeDe(document.getElementById('nasc').value);const periodos=coletaPeriodos();
+  const porGrau={grave:0,moderada:0,leve:0,comum:0};periodos.forEach(p=>porGrau[p.grau]+=p.meses);
+  const tcTotal=porGrau.grave+porGrau.moderada+porGrau.leve+porGrau.comum;
+  const graus=['grave','moderada','leve'].filter(g=>porGrau[g]>0);
+  const multiGrau=graus.length>1||(porGrau.comum>0&&graus.length>=1);
+  let grauPrep=grau;if(graus.length){grauPrep=graus.reduce((a,b)=>porGrau[a]>=porGrau[b]?a:b);}if(grauPrep==='indefinido')grauPrep='leve';
+  const tcPcd=porGrau.grave+porGrau.moderada+porGrau.leve;const tcUsar=tcTotal>0?tcTotal:0;
+  const exigTempo=TEMPO[grauPrep][sexo];const cumpreTempo=tcPcd>=exigTempo;const faltaTempo=Math.max(0,exigTempo-tcPcd);
+  const exigIdade=IDADE[sexo];const cumpreIdade=idade!=null&&idade>=exigIdade&&tcUsar>=CONTRIB_MIN_IDADE;
+  const faltaIdade=idade!=null?Math.max(0,exigIdade-idade):null;const faltaContrib=Math.max(0,CONTRIB_MIN_IDADE-tcUsar);
+  const raw=document.getElementById('salarios').value.trim();let sb100=0,sb80=0,nContrib=0,temSal=false;
+  if(raw){const a=raw.split(/[;\n]/).map(parseValorBR).filter(x=>x>0);if(a.length){temSal=true;nContrib=a.length;sb100=Math.min(TETO,media(a));sb80=Math.min(TETO,media80(a));}}
+  const coefIdade=Math.min(1.00,0.70+Math.floor(tcUsar/12)*0.01);
+  const val=(sb,coef)=>sb>0?Math.max(PISO,sb*coef):0;
+  const vTempo100=val(sb100,1),vTempo80=val(sb80,1),vIdade100=val(sb100,coefIdade),vIdade80=val(sb80,coefIdade);
+  const cmp=document.getElementById('cmpBody');cmp.innerHTML='';
+  const linha=(nome,exig,voce,ok,falta,rmi,valTxt)=>cmp.innerHTML+=`<tr><td>${nome}</td><td>${exig}</td><td>${voce}</td><td>${ok?'<span class="tag t-ok">Cumprido</span>':'<span class="tag t-w">Falta</span>'}</td><td>${falta}</td><td>${rmi}</td><td>${valTxt}</td></tr>`;
+  linha(`PCD por tempo (${grauPrep})`,mesesStr(exigTempo),mesesStr(tcPcd),cumpreTempo,cumpreTempo?'—':mesesStr(faltaTempo),'100%',temSal?`${fmtBRL(vTempo100)} <span class="fonte">(80%: ${fmtBRL(vTempo80)})</span>`:'informe salários');
+  linha('PCD por idade',`${exigIdade}a + ${mesesStr(CONTRIB_MIN_IDADE)}`,(idade!=null?idade+'a':'—')+' / '+mesesStr(tcUsar),cumpreIdade,idade==null?'informe nascimento':((faltaIdade>0?faltaIdade+'a ':'')+(faltaContrib>0?mesesStr(faltaContrib)+' contrib.':(faltaIdade>0?'':'—'))),(coefIdade*100).toFixed(0)+'%',temSal?`${fmtBRL(vIdade100)} <span class="fonte">(80%: ${fmtBRL(vIdade80)})</span>`:'informe salários');
+  const pode=cumpreTempo||cumpreIdade;
+  document.getElementById('k_pode').innerHTML=pode?'<span class="tag t-ok">Possível hoje</span>':'<span class="tag t-no">Ainda não</span>';
+  document.getElementById('k_regra').textContent=cumpreTempo?'Por tempo (100%)':(cumpreIdade?'Por idade':'Depende do tempo/idade');
+  const par=cumpreTempo?[vTempo80,vTempo100]:(cumpreIdade?[vIdade80,vIdade100]:[vTempo80,vTempo100]);
+  const vals=par.filter(x=>x>0);const temValor=vals.length>0;
+  const menor=temValor?Math.min(...vals):0,maior=temValor?Math.max(...vals):0;
+  ultimoBeneficio=temValor?menor:0;
+  document.getElementById('k_valor').innerHTML=temValor?(menor!==maior?`${fmtBRL(menor)} <span class="fonte">a ${fmtBRL(maior)}</span>`:fmtBRL(maior)):'informe salários';
+  const conv=document.getElementById('convAviso');conv.innerHTML='';
+  if(graus.length>1)conv.innerHTML+=`<div class="avi-cinza" style="margin-top:10px"><b>Múltiplos graus de deficiência.</b> Usamos o grau preponderante (<b>${grauPrep}</b>, art. 7º LC 142) para a exigência de tempo. A conversão exata entre graus (art. 70-E) não é fixada automaticamente — este caso pede <b>análise profissional</b>.</div>`;
+  if(porGrau.comum>0)conv.innerHTML+=`<div class="avi-cinza" style="margin-top:10px">${tcPcd>0?`<b>Tempo sem deficiência informado (${mesesStr(porGrau.comum)}).</b> Ele <b>não é somado</b> ao tempo PCD: só entra por <b>conversão</b> (art. 70-E), que depende do grau e pode reduzir o que falta. Leve para análise da 100 Milhas.`:`<b>Só foi informado tempo sem deficiência (${mesesStr(porGrau.comum)}).</b> Tempo comum sozinho <b>não concede</b> aposentadoria PCD por tempo — é preciso ter contribuído na condição de pessoa com deficiência. Fale com a 100 Milhas para avaliar a conversão do período.`}</div>`;
+  if(tcUsar>0&&tcUsar<CARENCIA)conv.innerHTML+=`<div class="avi-cinza" style="margin-top:10px"><b>Carência:</b> tempo informado (${mesesStr(tcUsar)}) abaixo de 180 contribuições — verificar com a equipe.</div>`;
+  const mel=document.getElementById('melhoras');mel.innerHTML='';
+  ['Corrigir o CNIS (vínculos, salários e datas) pode elevar tempo e média.','Comprovar a data de início da deficiência e o grau (perícia INSS/IFBrA) é decisivo.','Guardar laudos, PPP/LTCAT e documentos do impedimento de longo prazo.','Avaliar direito adquirido em regra anterior, se aplicável.'].forEach(d=>mel.innerHTML+=`<li>${d}</li>`);
+  document.getElementById('tituloRes').textContent='Simulação de '+(document.getElementById('nome').value||'cliente')+' · '+new Date().toLocaleDateString('pt-BR');
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+const fv=(pv,pmt,r,m)=>pv*Math.pow(1+r,m)+(r===0?pmt*m:pmt*((Math.pow(1+r,m)-1)/r));
+const pvAnnuity=(pmt,r,m)=>r===0?pmt*m:pmt*(1-Math.pow(1+r,-m))/r;
+const annuityPayment=(pv,r,m)=>r===0?pv/m:pv*r/(1-Math.pow(1+r,-m));
+function calcularFinanceiro(){
+  const idade=idadeDe(document.getElementById('nasc').value);
+  if(idade==null){alert('Informe uma data de nascimento válida (Etapa 1) para o planejamento financeiro.');return;}
+  const idadeApos=parseFloat(document.getElementById('idadeApos').value||'0');
+  if(!(idadeApos>idade)){alert('A idade para se aposentar deve ser maior que a idade atual ('+idade+' anos).');return;}
+  let anosReceb=parseFloat(document.getElementById('anosReceb').value||'25');if(!(anosReceb>=1))anosReceb=25;
+  const inss=ultimoBeneficio;const rendaDes=parseFloat(document.getElementById('rendaDes').value||'0');
+  const pv=parseFloat(document.getElementById('jaAcum').value||'0');
+  const pmt=parseFloat(document.getElementById('aporte').value||'0');const t=idadeApos-idade;const m=t*12;const nReceb=anosReceb*12;
+  const dif=Math.max(0,rendaDes-inss);
+  document.getElementById('f_inss').textContent=fmtBRL(inss);document.getElementById('f_dif').textContent=fmtBRL(dif);
+  const cen=[{n:'Conservador',rr:0.03},{n:'Intermediário',rr:0.05},{n:'Otimista',rr:0.07}];
+  const fb=document.getElementById('finBody');fb.innerHTML='';let patNecRef=0;
+  cen.forEach(c=>{const rm=Math.pow(1+c.rr,1/12)-1;const patNec=pvAnnuity(dif,rm,nReceb);if(c.n==='Intermediário')patNecRef=patNec;
+    const patProj=fv(pv,pmt,rm,m);const rendaComp=patProj>0?annuityPayment(patProj,rm,nReceb):0;const total=inss+rendaComp;const ok=patProj>=patNec;
+    fb.innerHTML+=`<tr><td>${c.n}</td><td>${(c.rr*100).toFixed(0)}%</td><td>${fmtBRL(patProj)}</td><td>${fmtBRL(rendaComp)}</td><td><b>${fmtBRL(total)}</b></td><td>${ok?'<span class="tag t-ok">Meta atingida</span>':'<span class="tag t-w">Faltam '+fmtBRL(Math.max(0,patNec-patProj))+'</span>'}</td></tr>`;});
+  const rm=Math.pow(1.05,1/12)-1;const aporteNec=Math.max(0,(patNecRef-pv*Math.pow(1+rm,m))*rm/(Math.pow(1+rm,m)-1));
+  document.getElementById('f_patNec').textContent=fmtBRL(patNecRef);
+  fb.innerHTML+=`<tr><td colspan="6" class="fonte">Para atingir a meta no cenário intermediário (5% real), aporte mensal ≈ <b>${fmtBRL(aporteNec)}</b> por ${t} anos (além do já acumulado). Valores em poder de compra de hoje.</td></tr>`;
+  document.getElementById('finResult').style.display='block';
+}
+function enviarWhats(){const nome=document.getElementById('nome').value||'';const txt=`Olá! Fiz a simulação de Aposentadoria PCD no site da 100 Milhas${nome?(' ('+nome+')'):''} e quero uma análise do meu caso.`;window.open(`https://wa.me/${WHATS}?text=`+encodeURIComponent(txt),'_blank');}
+addPeriodo();
+</script>
+</body>
+</html>

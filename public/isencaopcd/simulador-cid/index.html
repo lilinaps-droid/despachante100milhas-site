@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agenda da Lili — área restrita</title>
-<meta name="description" content="Área restrita da equipe.">
-<link rel="canonical" href="https://www.despachante100milhas.com.br/agenda">
+<title>Minha doença dá direito à isenção PCD? Consulte pelo CID | 100 Milhas</title>
+<meta name="description" content="Digite a sua condição ou o código do CID e veja se pode dar direito à isenção PCD (IPI, ICMS e IPVA). Mais de 40 condições. Gratuito, sem cadastro. Orientação inicial, sem garantia de aprovação.">
+<link rel="canonical" href="https://www.despachante100milhas.com.br/isencaopcd/simulador-cid">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Despachante 100 Milhas">
-<meta property="og:title" content="Agenda da Lili — área restrita">
-<meta property="og:description" content="Área restrita da equipe.">
-<meta property="og:url" content="https://www.despachante100milhas.com.br/agenda">
+<meta property="og:title" content="Minha doença dá direito à isenção PCD? Consulte pelo CID | 100 Milhas">
+<meta property="og:description" content="Digite a sua condição ou o código do CID e veja se pode dar direito à isenção PCD (IPI, ICMS e IPVA). Gratuito, sem cadastro. Orientação inicial, sem garantia de aprovação.">
+<meta property="og:url" content="https://www.despachante100milhas.com.br/isencaopcd/simulador-cid">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:image" content="https://www.despachante100milhas.com.br/assets/lili.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Agenda da Lili — área restrita">
-<meta name="twitter:description" content="Área restrita da equipe.">
+<meta name="twitter:title" content="Minha doença dá direito à isenção PCD? Consulte pelo CID | 100 Milhas">
+<meta name="twitter:description" content="Digite a sua condição ou o código do CID e veja se pode dar direito à isenção PCD (IPI, ICMS e IPVA). Gratuito, sem cadastro.">
 <meta name="twitter:image" content="https://www.despachante100milhas.com.br/assets/lili.webp">
 <meta name="theme-color" content="#6A0DAD">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon.png">
@@ -44,10 +44,22 @@
   "sameAs":["https://www.instagram.com/despachante100milhas/","https://www.facebook.com/100milhasdespachante"]
 }
 </script>
-<meta name="robots" content="noindex, nofollow">
-<script src="/assets/agenda-painel.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"O código do CID garante a isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Não. O direito à isenção PCD não vem do código do CID, e sim da limitação funcional descrita no laudo médico. A mesma doença pode enquadrar uma pessoa e não enquadrar outra, dependendo do grau de comprometimento e do caráter permanente."}},
+  {"@type":"Question","name":"Artrose, hérnia de disco ou problemas de coluna dão direito à isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Podem dar. Essas condições entram na análise quando geram limitação funcional relevante e permanente, comprovada em laudo. Não é o diagnóstico isolado que enquadra, e sim a limitação que ele provoca."}},
+  {"@type":"Question","name":"Autismo (TEA) dá direito à isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"Sim. O Transtorno do Espectro Autista (CID F84) é expressamente reconhecido para fins de isenção PCD, em qualquer grau de suporte, mediante laudo com o diagnóstico."}},
+  {"@type":"Question","name":"Quem teve AVC tem direito à isenção PCD?",
+   "acceptedAnswer":{"@type":"Answer","text":"O AVC costuma dar direito quando deixa sequela motora permanente, como hemiparesia. É a sequela documentada no laudo, e não o episódio em si, que sustenta o pedido."}}
+ ]}
+</script>
+<script src="/assets/simulador-cid.js" defer></script>
 </head>
-<body data-canal="pcd">
+<body data-pilar="pcd" data-canal="pcd">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header>
 <div class="wrap nav">
@@ -63,10 +75,34 @@
 </header>
 <main id="conteudo">
 <section class="sec-clara">
-  <div class="wrap" style="max-width:46rem">
-    <div id="painel-agenda" class="painel-agenda">
-      <noscript><p>Este painel precisa de JavaScript.</p></noscript>
+  <div class="wrap" style="max-width:44rem">
+    <div class="sp-acess">
+      <button type="button" id="sp-menos" aria-label="Diminuir o tamanho do texto">A&minus;</button>
+      <button type="button" id="sp-mais" aria-label="Aumentar o tamanho do texto">A+</button>
     </div>
+
+    <div class="central" id="simulador-cid">
+      <div class="central-topo">
+        <img src="/assets/lili-ia.webp" width="56" height="56" loading="lazy" alt="Lili, da Despachante 100 Milhas">
+        <div>
+          <b>Consulta por Condição ou CID</b>
+          <span>Digite a sua doença &middot; sem cadastro &middot; sem CPF</span>
+        </div>
+      </div>
+      <div class="central-corpo" aria-live="polite">
+        <noscript><p>Esta consulta precisa de JavaScript. Se preferir, fale com a nossa equipe pelo WhatsApp e a gente analisa a sua condição.</p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:44rem">
+    <h2 style="font-family:'Montserrat',sans-serif;color:var(--roxo-fundo);font-size:1.5rem;margin-bottom:12px">O que este simulador responde &mdash; e o que não responde</h2>
+    <p style="color:var(--texto-suave);margin-bottom:12px">Quase todo mundo começa pela mesma pergunta: <strong style="color:var(--texto)">&ldquo;a minha doença dá direito?&rdquo;</strong> Aqui você parte da <em>condição</em> ou do <em>CID</em>, não do valor do carro &mdash; e recebe uma leitura de enquadramento na hora.</p>
+    <p style="color:var(--texto-suave);margin-bottom:12px">Mas existe uma verdade que precisa ficar clara: <strong style="color:var(--texto)">o direito não nasce do código do CID.</strong> Ele nasce da <strong style="color:var(--texto)">limitação funcional</strong> que o laudo comprova. Por isso a mesma condição pode enquadrar uma pessoa e não enquadrar outra. Este simulador diz o que costuma acontecer &mdash; a confirmação vem sempre da leitura do laudo.</p>
+    <p style="color:var(--texto-suave)">São mais de 15 anos analisando esses casos. O que você vê aqui é o mesmo raciocínio que a nossa equipe faz na primeira leitura &mdash; só que na sua mão, de graça, sem precisar falar com ninguém antes de querer.</p>
+    <p style="margin-top:18px"><a class="btn btn-linha" href="/isencaopcd/simulador">Prefiro a triagem completa em 5 perguntas</a></p>
   </div>
 </section>
 </main><footer>
