@@ -1,8 +1,10 @@
 # Redirecionamentos 301 — protegem o SEO na migracao.
-/carros-pcd             /isencaopcd#carros-pcd   301
 /isencao-pcd            /isencaopcd          301
 /isencao-imposto-de-renda /impostoderenda    301
 /recurso-de-multa       /recursos            301
 /debitos/orcamento      /debitos             301
 /debitos/orcamentoV2    /debitos             301
 /transferencia/debitos  /transferencia       301
+
+# Area do Cliente (PWA "Meu 100 Milhas One" no Lovable) — 302 ate ter dominio proprio.
+/app https://preview-100milhas.lovable.app 302

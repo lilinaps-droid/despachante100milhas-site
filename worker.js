@@ -5,6 +5,14 @@
      GET  /api/agenda/slots?dia=YYYY-MM-DD  -> horários livres do dia
      POST /api/agenda/reservar              -> cria o agendamento
    Sem dependência de n8n: tudo roda dentro da própria Cloudflare.
+
+   Sincronização com o Google Agenda (também sem n8n), por iCal:
+   1) Google -> site: o secret GCAL_ICS_URL guarda o "endereço secreto em
+      formato iCal" da agenda da Lili. O Worker lê e bloqueia no site os
+      horários já ocupados no Google. Sem o secret, o site funciona como antes.
+   2) Site -> Google: GET /api/agenda/feed.ics?t=<ICAL_TOKEN> devolve os
+      agendamentos do site em iCal. A Lili assina essa URL uma única vez no
+      Google Agenda (Adicionar agenda -> De URL) e tudo aparece lá.
    ========================================================================= */
 
 // Horários de orientação (fuso de São Paulo)
@@ -52,16 +60,148 @@ function horariosLivresDoDia(dia, ocupados) {
   }));
 }
 
+/* ---------------- Ponte 1: Google Agenda -> site (iCal secreto) ---------- */
+
+const DIAS_ICS = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+
+function minutosDe(hhmm) { return parseInt(hhmm.slice(0, 2), 10) * 60 + parseInt(hhmm.slice(3, 5), 10); }
+
+// Converte um valor de data do ICS para o fuso de SP.
+// Aceita 20260724T120000Z (UTC), 20260724T090000 (hora local) e 20260724 (dia inteiro).
+function icsParaSP(valor) {
+  if (/^\d{8}$/.test(valor))
+    return { dia: valor.slice(0, 4) + '-' + valor.slice(4, 6) + '-' + valor.slice(6, 8), min: null };
+  const m = valor.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})/);
+  if (!m) return null;
+  let t = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
+  if (valor.endsWith('Z')) t -= 3 * 3600 * 1000;
+  const d = new Date(t);
+  return { dia: d.toISOString().slice(0, 10), min: d.getUTCHours() * 60 + d.getUTCMinutes() };
+}
+
+function eventosDoICS(texto) {
+  // Desdobra as linhas contínuas do RFC 5545 (linha seguinte começa com espaço/tab)
+  const linhas = texto.replace(/\r?\n[ \t]/g, '').split(/\r?\n/);
+  const evs = []; let ev = null;
+  for (const l of linhas) {
+    if (l === 'BEGIN:VEVENT') { ev = {}; continue; }
+    if (l === 'END:VEVENT') { if (ev) evs.push(ev); ev = null; continue; }
+    if (!ev) continue;
+    const i = l.indexOf(':'); if (i < 0) continue;
+    const chave = l.slice(0, i).split(';')[0];
+    if (['DTSTART', 'DTEND', 'STATUS', 'TRANSP', 'RRULE'].includes(chave)) ev[chave] = l.slice(i + 1);
+  }
+  return evs;
+}
+
+// Recorrência simples: diária e semanal (com BYDAY/UNTIL). Cobre os casos reais
+// da agenda da Lili; recorrências exóticas não bloqueiam o site.
+function recorreNoDia(ev, ini, dia) {
+  const r = ev.RRULE || '';
+  if (!r || dia < ini.dia) return false;
+  const until = (r.match(/UNTIL=(\d{8})/) || [])[1];
+  if (until && dia > until.slice(0, 4) + '-' + until.slice(4, 6) + '-' + until.slice(6, 8)) return false;
+  const dow = new Date(dia + 'T12:00:00Z').getUTCDay();
+  if (r.includes('FREQ=DAILY')) return true;
+  if (r.includes('FREQ=WEEKLY')) {
+    const byday = (r.match(/BYDAY=([^;]+)/) || [])[1];
+    if (byday) return byday.split(',').includes(DIAS_ICS[dow]);
+    return dow === new Date(ini.dia + 'T12:00:00Z').getUTCDay();
+  }
+  return false;
+}
+
+// Intervalos ocupados (em minutos do dia, fuso SP) segundo o Google Agenda.
+function ocupadosNoDia(texto, dia) {
+  const out = [];
+  for (const ev of eventosDoICS(texto)) {
+    if (ev.STATUS === 'CANCELLED' || ev.TRANSP === 'TRANSPARENT' || !ev.DTSTART) continue;
+    const ini = icsParaSP(ev.DTSTART);
+    if (!ini) continue;
+    const fim = ev.DTEND ? icsParaSP(ev.DTEND) : null;
+    if (ini.min === null) {
+      // Dia inteiro (DTEND é exclusivo): bloqueia o dia todo
+      const dentro = fim && fim.dia ? (dia >= ini.dia && dia < fim.dia) : dia === ini.dia;
+      if (dentro) out.push([0, 1440]);
+      continue;
+    }
+    const ocorreHoje = ini.dia === dia || recorreNoDia(ev, ini, dia);
+    if (!ocorreHoje) continue;
+    const fimMin = (fim && fim.min !== null && (fim.dia === ini.dia)) ? fim.min : ini.min + 40;
+    out.push([ini.min, Math.max(fimMin, ini.min + 5)]);
+  }
+  return out;
+}
+
+async function ocupadosDoGoogle(env, dia) {
+  if (!env.GCAL_ICS_URL) return [];
+  try {
+    const r = await fetch(env.GCAL_ICS_URL, { cf: { cacheTtl: 300, cacheEverything: true } });
+    if (!r.ok) return [];
+    return ocupadosNoDia(await r.text(), dia);
+  } catch { return []; }
+}
+
+function livreNoGoogle(hora, ocupados) {
+  const ini = minutosDe(hora), fim = ini + 40;
+  return !ocupados.some(([a, b]) => a < fim && b > ini);
+}
+
+/* ---------------- Ponte 2: site -> Google Agenda (feed iCal) ------------- */
+
+function icsEscape(s) {
+  return String(s || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+function icsUTC(dia, hora, maisMin) {
+  const t = new Date(dia + 'T' + hora + ':00-03:00').getTime() + (maisMin || 0) * 60000;
+  return new Date(t).toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+}
+
+async function feedICS(env) {
+  const r = await env.DB.prepare(
+    "SELECT rowid AS id, dia, hora, nome, telefone, assunto FROM agendamentos " +
+    "WHERE (tipo IS NULL OR tipo <> 'lili') AND dia >= date('now', '-60 days') ORDER BY dia, hora"
+  ).all();
+  const agora = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+  const linhas = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0',
+    'PRODID:-//Despachante 100 Milhas//Agenda do Site//PT',
+    'CALSCALE:GREGORIAN', 'X-WR-CALNAME:Agenda do Site — 100 Milhas',
+    'X-WR-TIMEZONE:America/Sao_Paulo'
+  ];
+  for (const a of (r.results || [])) {
+    linhas.push(
+      'BEGIN:VEVENT',
+      'UID:site-' + a.id + '@despachante100milhas.com.br',
+      'DTSTAMP:' + agora,
+      'DTSTART:' + icsUTC(a.dia, a.hora),
+      'DTEND:' + icsUTC(a.dia, a.hora, 40),
+      'SUMMARY:' + icsEscape('Orientação — ' + a.nome),
+      'DESCRIPTION:' + icsEscape('WhatsApp: ' + a.telefone + '\nAssunto: ' + (a.assunto || '—') + '\nAgendado pelo site.'),
+      'END:VEVENT'
+    );
+  }
+  linhas.push('END:VCALENDAR');
+  return new Response(linhas.join('\r\n'), {
+    headers: { 'Content-Type': 'text/calendar; charset=utf-8', 'Cache-Control': 'no-store' }
+  });
+}
+
 async function apiAgenda(req, env, url) {
   try {
     if (url.pathname === '/api/agenda/slots' && req.method === 'GET') {
       const dia = url.searchParams.get('dia') || '';
       const erro = validaDia(dia);
       if (erro) return json({ ok: false, erro }, 400);
-      // Ocupa o horário tanto o cliente quanto o compromisso lançado pela Lili.
-      const r = await env.DB.prepare('SELECT hora FROM agendamentos WHERE dia = ?').bind(dia).all();
+      // Ocupa o horário o cliente, o compromisso lançado pela Lili e o Google Agenda.
+      const [r, gcal] = await Promise.all([
+        env.DB.prepare('SELECT hora FROM agendamentos WHERE dia = ?').bind(dia).all(),
+        ocupadosDoGoogle(env, dia)
+      ]);
       const ocupados = (r.results || []).map(x => x.hora);
-      return json({ ok: true, dia, horarios: horariosLivresDoDia(dia, ocupados) });
+      const horarios = horariosLivresDoDia(dia, ocupados)
+        .map(h => ({ hora: h.hora, livre: h.livre && livreNoGoogle(h.hora, gcal) }));
+      return json({ ok: true, dia, horarios });
     }
 
     if (url.pathname === '/api/agenda/reservar' && req.method === 'POST') {
@@ -82,6 +222,11 @@ async function apiAgenda(req, env, url) {
       if (telefone.length < 10 || telefone.length > 13)
         return json({ ok: false, erro: 'Informe um WhatsApp válido, com DDD.' }, 400);
 
+      // Confere o Google Agenda antes de gravar, para não furar compromisso da Lili.
+      const gcal = await ocupadosDoGoogle(env, dia);
+      if (!livreNoGoogle(hora, gcal))
+        return json({ ok: false, erro: 'Esse horário acabou de ser reservado. Escolha outro.' }, 409);
+
       try {
         await env.DB.prepare(
           'INSERT INTO agendamentos (dia, hora, nome, telefone, assunto) VALUES (?, ?, ?, ?, ?)'
@@ -92,6 +237,14 @@ async function apiAgenda(req, env, url) {
         throw e;
       }
       return json({ ok: true, dia, hora, nome });
+    }
+
+    // Feed iCal dos agendamentos do site, para a Lili assinar no Google Agenda.
+    // Protegido por token (secret ICAL_TOKEN); sem o token certo, some (404).
+    if (url.pathname === '/api/agenda/feed.ics' && req.method === 'GET') {
+      if (!env.ICAL_TOKEN || url.searchParams.get('t') !== env.ICAL_TOKEN)
+        return new Response('Não encontrado.', { status: 404 });
+      return feedICS(env);
     }
 
     return json({ ok: false, erro: 'Rota não encontrada.' }, 404);

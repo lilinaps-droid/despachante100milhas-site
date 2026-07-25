@@ -1558,6 +1558,10 @@ header{
 .ag-ok h3{color:var(--roxo-fundo);margin-bottom:6px}
 .ag-ok p{color:var(--texto-suave);font-size:.95rem;margin-bottom:var(--e-4)}
 .ag-mini{font-size:.78rem;margin-top:var(--e-3)}
+.ag-ok-redes{margin-top:var(--e-4);padding-top:var(--e-4);border-top:1px solid var(--linha)}
+.ag-ok-redes-tit{font-family:var(--fonte-titulo);font-weight:700;color:var(--roxo-fundo);
+  font-size:.9rem;margin-bottom:var(--e-3)}
+.ag-ok-redes .redes-links{justify-content:center}
 .ag-off{text-align:center;padding:var(--e-2) 0}
 .ag-off p{color:var(--texto-suave);margin-bottom:var(--e-3)}
 @media(max-width:960px){

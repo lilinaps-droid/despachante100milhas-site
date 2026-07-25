@@ -8,7 +8,7 @@ BASE = "https://www.despachante100milhas.com.br"
 
 # Versao dos assets: fura o cache "immutable" de 1 ano dos navegadores que
 # guardaram os arquivos antigos. Incremente a cada mudanca em CSS/JS.
-V = "?v=13"
+V = "?v=14"
 
 # --- CANAIS DE WHATSAPP ---
 # doc: licenciamento, transferencia, multas, recursos, CNH, documentacao
@@ -146,6 +146,7 @@ def header(atual, canal="doc"):
   <button class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="menu" id="menu">
     {itens}
+    <a href="/app" target="_blank" rel="noopener">Área do Cliente</a>
     <a class="btn-zap" href="{zap(msg_zap, canal)}" target="_blank" rel="noopener">{SVG_ZAP}WhatsApp</a>
   </nav>
 </div>
@@ -158,6 +159,15 @@ SVG_ZAP_MINI = SVG_ZAP.replace('viewBox="0 0 24 24"','viewBox="0 0 24 24" style=
 IC_INSTA = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>'
 IC_FACE  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h2.5V4.5H14A4.5 4.5 0 0 0 9.5 9v2.5H7V15h2.5v6H13v-6h2.6l.6-3.5H13V9a1 1 0 0 1 1-1Z"/></svg>'
 IC_GOOGLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.2l5.9-.8L12 3Z"/></svg>'
+IC_YT = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.4v5.2l4.4-2.6-4.4-2.6Z" fill="currentColor" stroke="none"/></svg>'
+IC_GUIA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8l4.5 4.5v12.5H6V3.5Z"/><path d="M13.5 3.5V9H19"/><path d="M9 13h6M9 16.5h4"/></svg>'
+
+# Canal do YouTube. Enquanto estiver vazio, nenhum link do YouTube é gerado —
+# o site nunca mostra botão que não leva a lugar nenhum.
+YOUTUBE = ""
+
+def link_yt(classe="rede-link"):
+    return f'<a class="{classe}" href="{YOUTUBE}" target="_blank" rel="noopener">{IC_YT}YouTube</a>' if YOUTUBE else ''
 
 def rodape(canal="doc"):
     msg_flut = 'Olá, quero atendimento sobre isenção PCD / Imposto de Renda.' if canal == "pcd" else 'Olá, quero falar com um especialista.'
@@ -211,6 +221,7 @@ def rodape(canal="doc"):
       </div>
       <div class="redes">
         <a class="rede" href="https://www.instagram.com/despachante100milhas/" target="_blank" rel="noopener">Instagram</a>
+        {link_yt("rede")}
         <a class="rede" href="https://www.facebook.com/100milhasdespachante" target="_blank" rel="noopener">Facebook</a>
         <a class="rede" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">&#9733; Google</a>
       </div>
@@ -237,6 +248,7 @@ def rodape(canal="doc"):
       <ul>
         <li><a href="/quem-somos">Quem somos</a></li>
         <li><a href="/quem-somos">Conheça a Lili</a></li>
+        <li><a href="/app" target="_blank" rel="noopener"><strong style="color:#fff">Área do Cliente</strong></a></li>
         <li><a href="/privacidade">Política de Privacidade</a></li>
       </ul>
       <div class="aviso" style="margin-top:var(--e-5)">
@@ -468,6 +480,14 @@ home = f"""
           <p id="ag-ok-txt"></p>
           <a class="btn btn-roxo btn-bloco" id="ag-ok-zap" target="_blank" rel="noopener" href="#">Enviar comprovante no WhatsApp da Lili</a>
           <p class="ag-mini">O horário já ficou reservado para você. Enviar o comprovante ajuda a equipe a se preparar para o seu caso.</p>
+          <div class="ag-ok-redes">
+            <p class="ag-ok-redes-tit">Enquanto isso, conheça o trabalho da Lili</p>
+            <div class="redes-links">
+              <a class="rede-link" href="https://www.instagram.com/despachante100milhas/" target="_blank" rel="noopener">{IC_INSTA}Instagram</a>
+              {link_yt()}
+              <a class="rede-link" href="/isencaopcd">{IC_GUIA}Como funciona a isenção PCD</a>
+            </div>
+          </div>
         </div>
         <div class="ag-off" id="ag-off" hidden>
           <p>A agenda está temporariamente indisponível.</p>
@@ -687,6 +707,7 @@ home = f"""
       </div>
       <div class="redes-links">
         <a class="rede-link" href="https://www.instagram.com/despachante100milhas/" target="_blank" rel="noopener">{IC_INSTA}Instagram</a>
+        {link_yt()}
         <a class="rede-link" href="https://www.facebook.com/100milhasdespachante" target="_blank" rel="noopener">{IC_FACE}Facebook</a>
         <a class="rede-link" href="https://www.google.com/search?q=100+milhas+despachante" target="_blank" rel="noopener">{IC_GOOGLE}Avaliações no Google</a>
         <a class="rede-link rl-zap" href="{zap('Olá, estou no site e tenho uma dúvida.')}" target="_blank" rel="noopener">{SVG_ZAP}WhatsApp</a>
