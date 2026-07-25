@@ -4,3 +4,5 @@ node_modules/
 *.zip
 public_backup_*/
 .wrangler/
+_backup_tmp/
+_git_locks_movidos/

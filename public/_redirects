@@ -1,4 +1,5 @@
 # Redirecionamentos 301 — protegem o SEO na migracao.
+/carros-pcd             /isencaopcd#carros-pcd   301
 /isencao-pcd            /isencaopcd          301
 /isencao-imposto-de-renda /impostoderenda    301
 /recurso-de-multa       /recursos            301
