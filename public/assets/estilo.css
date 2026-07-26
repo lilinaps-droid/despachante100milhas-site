@@ -1829,3 +1829,19 @@ div[aria-label="Instagram"]:not(:has(.ti-widget)){padding:0!important}
 /* v17.3 — badge de frescor nas páginas de conteúdo */
 .atualizado{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--texto-inv-suave);border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:5px 14px;margin-top:14px}
 .sec-clara .atualizado, section:not(.hero):not(.sec-escura):not(.sec-fim) .atualizado{color:var(--texto-suave);border-color:var(--linha)}
+
+/* ============================================================
+   v18 — HARMONIA TIPOGRÁFICA + TRILHA (breadcrumbs) PREMIUM
+   ============================================================ */
+/* Todos os títulos de seção no MESMO tamanho de voz (os h2 sem classe
+   ficavam em 1.6rem enquanto os novos iam a 2.5rem — assimetria real). */
+main section h2:not([class]){font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:800;line-height:1.15}
+/* Símbolos dos botões na fonte da marca (vazava Arial) */
+.burger,.lili-fechar{font-family:'Montserrat',sans-serif}
+/* Trilha de navegação — estrutura de site grande, ninguém local tem */
+.crumbs{background:var(--roxo-escuro);border-bottom:1px solid rgba(255,255,255,.07)}
+.crumbs .wrap{display:flex;gap:8px;align-items:center;padding:10px 0;font-size:.8rem;color:#9C8CAD;flex-wrap:wrap}
+.crumbs a{color:#B9A9CC;font-weight:600}
+.crumbs a:hover{color:var(--dourado)}
+.crumbs b{color:#EDE4F6;font-weight:600}
+.crumbs span.sep{opacity:.5}
