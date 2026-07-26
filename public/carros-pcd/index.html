@@ -25,7 +25,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/assets/estilo.css?v=39">
+<link rel="stylesheet" href="/assets/estilo.css?v=40">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -640,6 +640,41 @@
   });
 })();
 
+/* ===== Vitrine viva: preços da Lili via /dados/carros-pcd-2026.json =====
+   Se o JSON carregar, re-renderiza os cards (fonte única de preços).
+   Se falhar, os cards estáticos acima permanecem — zero regressão. */
+(function(){
+  var grid=document.getElementById('cp-grid');
+  if(!grid||!window.fetch)return;
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  fetch('/dados/carros-pcd-2026.json').then(function(r){return r.json();}).then(function(j){
+    if(!j||!j.carros||!j.carros.length)return;
+    grid.innerHTML=j.carros.map(function(c){
+      var zap='https://wa.me/5513978144035?text='+encodeURIComponent('Olá! Vi o '+c.modelo+' no site e quero saber sobre a isenção PCD.');
+      var consulta='https://api.whatsapp.com/send?phone=5513978091064&text='+encodeURIComponent('#site\n\nOlá, quero consultar meu direito à isenção PCD.');
+      var ipva=c.ipva?('<div class="cp-ipva">IPVA estimado: <b>'+esc(c.ipva)+'</b>'+(c.ipva_nota?('<span>'+esc(c.ipva_nota)+'</span>'):'')+'</div>'):'';
+      return '<article class="cp-card" data-tipo="'+esc(c.tipo)+'" data-eletrico="'+(c.eletrico?'1':'0')+'" data-preco="'+(c.preco_filtro||0)+'">'
+        +'<div class="cp-foto"><img loading="lazy" src="'+esc(c.foto)+'" alt="'+esc(c.modelo)+'" onerror="this.parentNode.innerHTML=\'<div class=&quot;cp-ph&quot;>'+esc(c.marca)+'</div>\'"></div>'
+        +'<div class="cp-body"><div class="cp-marca">'+esc(c.marca)+'</div>'
+        +'<h3 class="cp-modelo">'+esc(c.modelo)+'</h3>'
+        +'<div class="cp-equip">'+esc(c.equip)+'</div>'
+        +'<div class="cp-precos"><div class="cp-pub">'+esc(c.preco_publico)+'</div>'
+        +'<div class="cp-pcd">'+esc(c.preco_pcd)+'</div>'
+        +'<div class="cp-pcd-lbl">'+esc(c.pcd_label)+'</div>'+ipva+'</div>'
+        +'<a class="cp-cta" target="_blank" rel="noopener" href="'+zap+'">Quero este carro</a>'
+        +'<details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in">'
+        +'<div><span>Valor público</span><b>'+esc((c.preco_publico||'').replace(/^de |^público /,''))+'</b></div>'
+        +'<div><span>Valor estimado no PCD</span><b>'+esc(c.preco_pcd)+'</b></div>'
+        +(c.ipva?('<div><span>IPVA estimado</span><b>'+esc(c.ipva)+'</b></div>'):'')
+        +'<p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p>'
+        +'<div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="'+zap+'">Falar no WhatsApp</a>'
+        +'<a class="btn btn-linha" target="_blank" rel="noopener" href="'+consulta+'">Consultar meu direito</a></div>'
+        +'</div></details></div></article>';
+    }).join('');
+    if(window.__cpRefresh)window.__cpRefresh();
+  }).catch(function(){});
+})();
+
 /* ===== Simulador de IPVA PCD ===== */
 (function(){
   var tabs=document.querySelectorAll('.s-tab'),v=document.getElementById('s-valor'),mes=document.getElementById('s-mes'),wrapMes=document.getElementById('wrap-mes'),lbl=document.getElementById('lbl-valor'),h=document.getElementById('s-hib'),btn=document.getElementById('s-btn'),out=document.getElementById('s-out');
@@ -678,7 +713,7 @@
 })();
 </script>
 <script src="/assets/analytics.js?v=14" defer></script>
-<script src="/assets/script.js?v=18" defer></script>
+<script src="/assets/script.js?v=19" defer></script>
 <script src="/assets/central.js?v=17" defer></script>
 <script src="/assets/agente.js?v=15" defer></script>
 </body>
