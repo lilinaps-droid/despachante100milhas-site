@@ -2010,10 +2010,8 @@ header.rolou{box-shadow:0 8px 32px rgba(10,1,16,.6)}
    ============================================================ */
 /* Tipografia-base fluida: tudo em rem acompanha a tela */
 html{font-size:clamp(15px, 0.36vw + 11.4px, 19px)}
-/* Container por camadas de tela */
-@media(min-width:1500px){ :root{--max:1300px} }
-@media(min-width:1900px){ :root{--max:1470px} }
-@media(min-width:2400px){ :root{--max:1660px} }
+/* Container fluido: cresce junto com a janela, sem platôs entre breakpoints */
+@media(min-width:1280px){ :root{--max:clamp(1160px,88vw,1780px)} }
 /* Janela intermediária (960–1240): hero respira, chips empilham */
 @media(min-width:961px) and (max-width:1240px){
   .hero2 .hero-grid{gap:32px}
@@ -2052,3 +2050,64 @@ body[data-pilar="doc"] .faixa-lili{border-left-color:var(--dourado)}
 .sec-escura .wrap:has(> .btn):not(:has(.grid)):not(:has(.tabela)):not(:has(.faq)){text-align:center}
 .sec-escura .wrap:has(> .btn):not(:has(.grid)) .cabeca{margin-inline:auto;max-width:46rem}
 .sec-escura .wrap:has(> .btn) > .btn{margin-top:6px}
+/* v24.2 — leitura da dona aplicada a TODAS as páginas */
+/* Convites (cabeça+botão sem grade) centrados também em seções claras */
+section .wrap:has(> .btn):not(:has(.grid)):not(:has(.tabela)):not(:has(.faq)):not(:has(form)):not(:has(.passos)){text-align:center}
+section .wrap:has(> .btn):not(:has(.grid)):not(:has(form)) > .cabeca{margin-inline:auto;max-width:46rem}
+/* Acento CNH (terracota) e IR (azul) também viram detalhe fino: título dourado */
+body[data-pilar="cnh"] .hero h1 em,body[data-pilar="ir"] .hero h1 em{color:var(--dourado)}
+body[data-pilar="cnh"] .placa,body[data-pilar="cnh"] .placa.claro,
+body[data-pilar="ir"] .placa,body[data-pilar="ir"] .placa.claro{color:var(--dourado);border-color:rgba(212,175,55,.6);box-shadow:0 2px 0 rgba(212,175,55,.45)}
+
+/* ============================================================
+   v25 — BOTÕES NÍVEL MUNDIAL (síntese Stripe·Nubank·Phantom·
+   Loom·Discord·Linear·Twitch) + cards dark premium
+   ============================================================ */
+:root{ --roxo-btn-claro:#9D4EDD; --ease-btn:cubic-bezier(.22,1,.36,1); }
+/* Base: pill premium, imprensa no clique, transição de gente grande */
+.btn{transition:transform .2s var(--ease-btn),box-shadow .2s var(--ease-btn),background-color .2s var(--ease-btn),border-color .2s var(--ease-btn),filter .2s var(--ease-btn)}
+.btn:active{transform:translateY(1px) scale(.98);transition-duration:.06s}
+/* PRIMÁRIO dourado: metal com luz (regra Phantom: texto escuro) + glow Loom */
+.btn-ouro{
+  background:linear-gradient(180deg,#E8C766 0%,var(--dourado) 55%,#C9A22F 100%);
+  color:#2A0A45;
+  box-shadow:0 4px 16px rgba(212,175,55,.28),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.btn-ouro:hover{
+  background:linear-gradient(180deg,#F0D480 0%,#DDBA4A 55%,#C9A22F 100%);
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(212,175,55,.5),inset 0 1px 0 rgba(255,255,255,.5);
+}
+/* SECUNDÁRIO roxo: regra Twitch — sobre fundo escuro, clareia */
+.btn-roxo{box-shadow:0 4px 16px rgba(106,13,173,.3)}
+.btn-roxo:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(106,13,173,.45)}
+.hero .btn-roxo,.hero2 .btn-roxo,.sec-escura .btn-roxo,.sec-fim .btn-roxo,.dobra .btn-roxo{
+  background:var(--roxo-btn-claro);
+  box-shadow:0 4px 16px rgba(157,78,221,.3);
+}
+.hero .btn-roxo:hover,.hero2 .btn-roxo:hover,.sec-escura .btn-roxo:hover,.sec-fim .btn-roxo:hover,.dobra .btn-roxo:hover{
+  background:#B368E8;box-shadow:0 10px 30px rgba(157,78,221,.45);
+}
+/* GHOST em contexto escuro: receita Linear (superfície + borda que doura) */
+.sec-escura .btn-linha,.sec-fim .btn-linha,.hero .btn-linha,.hero2 .btn-linha,.dobra .btn-linha{
+  background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#F3EDFF;
+}
+.sec-escura .btn-linha:hover,.sec-fim .btn-linha:hover,.hero .btn-linha:hover,.hero2 .btn-linha:hover,.dobra .btn-linha:hover{
+  background:rgba(255,255,255,.1);border-color:rgba(212,175,55,.55);color:#fff;
+}
+/* Cards escuros com BORDA-GRADIENTE (Polygon/Linear — dark premium num traço) */
+.card-vidro,.conf,.fx-item{
+  border:1px solid transparent;
+  background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.03)) padding-box,
+             linear-gradient(135deg,rgba(212,175,55,.45),rgba(157,78,221,.18) 45%,rgba(255,255,255,.06)) border-box;
+}
+.card-vidro:hover,.conf:hover{
+  background:linear-gradient(rgba(255,255,255,.085),rgba(255,255,255,.05)) padding-box,
+             linear-gradient(135deg,rgba(212,175,55,.75),rgba(157,78,221,.3) 45%,rgba(255,255,255,.1)) border-box;
+}
+/* Feed do Instagram: nunca vira fileira de caixas vazias */
+[aria-label="Instagram"] .ti-widget{max-height:560px;overflow:hidden;border-radius:14px}
+/* v25.1 — carro contido à direita, longe do texto */
+.hero2::after{opacity:.11;
+  -webkit-mask-image:linear-gradient(100deg,transparent 34%,#000 62%);
+          mask-image:linear-gradient(100deg,transparent 34%,#000 62%)}
