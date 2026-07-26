@@ -282,12 +282,35 @@ TRUSTINDEX = (
     '<script defer async src="https://cdn.trustindex.io/loader-feed.js?ade8aa577e5873853a56944ff9d"></script></div>\n'
 )
 
+# ============================================================
+# VACINA ANTI-SOBRESCRITA (26/07/2026)
+# O site vivo foi MUITO editado à mão. Este gerador se RECUSA a
+# sobrescrever qualquer página cujo conteúdo atual difira do que ele
+# mesmo gerou por último (manifesto de hashes). Para forçar de propósito:
+#   FORCE=1 python3 gerar.py
+# Ideia portada do repo despachante-100milhas-ds (commit 52d2328).
+# ============================================================
+import json as _json, hashlib as _hl
+_MANIFESTO = os.path.join(SAIDA, ".gerar-manifesto.json")
+try:
+    with open(_MANIFESTO, encoding="utf-8") as _f: _manif = _json.load(_f)
+except Exception:
+    _manif = {}
+_FORCE = os.environ.get("FORCE") == "1"
+
 def pagina(arquivo, titulo, desc, url, corpo, extra="", pilar="", canal="doc"):
     conteudo = head(titulo, desc, url, extra, pilar, canal) + header(url, canal) + '<main id="conteudo">' + corpo + '</main>' + TRUSTINDEX + rodape(canal)
     caminho = os.path.join(SAIDA, arquivo)
+    if os.path.exists(caminho) and not _FORCE:
+        with open(caminho, encoding="utf-8") as _f: _atual = _f.read()
+        if _manif.get(arquivo) != _hl.md5(_atual.encode()).hexdigest():
+            print(f"  PROTEGIDO: {arquivo} tem edição manual — NÃO sobrescrito (FORCE=1 para forçar)")
+            return
     os.makedirs(os.path.dirname(caminho), exist_ok=True)
     with open(caminho, "w", encoding="utf-8") as f:
         f.write(conteudo)
+    _manif[arquivo] = _hl.md5(conteudo.encode()).hexdigest()
+    with open(_MANIFESTO, "w", encoding="utf-8") as _f: _json.dump(_manif, _f, indent=0, ensure_ascii=False)
     print(f"  {arquivo}  ({len(conteudo):,} bytes)")
 
 

@@ -174,6 +174,21 @@ function livreNoGoogle(hora, ocupados) {
 
 /* ---------------- Ponte 2: site -> Google Agenda (feed iCal) ------------- */
 
+// Dobra linhas do iCal MEDINDO OCTETOS UTF-8 (RFC 5545: máx. 75 bytes/linha).
+// Sem isso, nome/assunto longos com acento podem quebrar a importação no
+// Google Agenda. Portado do repo despachante-100milhas-ds (3º sócio).
+function dobraLinhaICS(linha) {
+  const enc = new TextEncoder();
+  if (enc.encode(linha).length <= 75) return linha;
+  let saida = '', bytes = 0;
+  for (const ch of linha) {
+    const b = enc.encode(ch).length;
+    if (bytes + b > 75) { saida += '\r\n '; bytes = 1; }
+    saida += ch; bytes += b;
+  }
+  return saida;
+}
+
 function icsEscape(s) {
   return String(s || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 }
@@ -207,7 +222,7 @@ async function feedICS(env) {
     );
   }
   linhas.push('END:VCALENDAR');
-  return new Response(linhas.join('\r\n'), {
+  return new Response(linhas.map(dobraLinhaICS).join('\r\n'), {
     headers: { 'Content-Type': 'text/calendar; charset=utf-8', 'Cache-Control': 'no-store' }
   });
 }
