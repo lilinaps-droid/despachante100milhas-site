@@ -72,6 +72,7 @@ NAV = [
     ("/transferencia", "Transferência"),
     ("/debitos", "Débitos e IPVA"),
     ("/cnh-suspensa", "CNH"),
+    ("/recursos", "Recurso de Multa"),
     ("/isencaopcd", "Isenção PCD"),
     ("/impostoderenda", "Imposto de Renda"),
     ("/quem-somos", "A 100 Milhas"),
