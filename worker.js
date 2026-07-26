@@ -89,7 +89,9 @@ function eventosDoICS(texto) {
     if (!ev) continue;
     const i = l.indexOf(':'); if (i < 0) continue;
     const chave = l.slice(0, i).split(';')[0];
-    if (['DTSTART', 'DTEND', 'STATUS', 'TRANSP', 'RRULE'].includes(chave)) ev[chave] = l.slice(i + 1);
+    if (['DTSTART', 'DTEND', 'STATUS', 'TRANSP', 'RRULE', 'UID', 'RECURRENCE-ID'].includes(chave)) ev[chave] = l.slice(i + 1);
+    // EXDATE pode aparecer varias vezes e com lista separada por virgula
+    if (chave === 'EXDATE') (ev.EXDATES = ev.EXDATES || []).push(...l.slice(i + 1).split(','));
   }
   return evs;
 }
@@ -102,8 +104,12 @@ function recorreNoDia(ev, ini, dia) {
   const until = (r.match(/UNTIL=(\d{8})/) || [])[1];
   if (until && dia > until.slice(0, 4) + '-' + until.slice(4, 6) + '-' + until.slice(6, 8)) return false;
   const dow = new Date(dia + 'T12:00:00Z').getUTCDay();
-  if (r.includes('FREQ=DAILY')) return true;
+  // INTERVAL=2 (quinzenal etc.): sem isso, a serie bloqueava TODA semana
+  const intervalo = +((r.match(/INTERVAL=(\d+)/) || [])[1] || 1);
+  const diffDias = Math.round((new Date(dia + 'T12:00:00Z') - new Date(ini.dia + 'T12:00:00Z')) / 86400000);
+  if (r.includes('FREQ=DAILY')) return diffDias % intervalo === 0;
   if (r.includes('FREQ=WEEKLY')) {
+    if (Math.floor(diffDias / 7) % intervalo !== 0) return false;
     const byday = (r.match(/BYDAY=([^;]+)/) || [])[1];
     if (byday) return byday.split(',').includes(DIAS_ICS[dow]);
     return dow === new Date(ini.dia + 'T12:00:00Z').getUTCDay();
@@ -114,7 +120,17 @@ function recorreNoDia(ev, ini, dia) {
 // Intervalos ocupados (em minutos do dia, fuso SP) segundo o Google Agenda.
 function ocupadosNoDia(texto, dia) {
   const out = [];
-  for (const ev of eventosDoICS(texto)) {
+  const evs = eventosDoICS(texto);
+  // Instancias remarcadas (RECURRENCE-ID) devem calar a ocorrencia ORIGINAL
+  // da serie — senao o site bloqueia a hora antiga e a nova ao mesmo tempo.
+  const remarcadas = new Set();
+  for (const ev of evs) {
+    if (ev['RECURRENCE-ID'] && ev.UID) {
+      const rid = icsParaSP(ev['RECURRENCE-ID']);
+      if (rid) remarcadas.add(ev.UID + '|' + rid.dia);
+    }
+  }
+  for (const ev of evs) {
     if (ev.STATUS === 'CANCELLED' || ev.TRANSP === 'TRANSPARENT' || !ev.DTSTART) continue;
     const ini = icsParaSP(ev.DTSTART);
     if (!ini) continue;
@@ -125,8 +141,13 @@ function ocupadosNoDia(texto, dia) {
       if (dentro) out.push([0, 1440]);
       continue;
     }
-    const ocorreHoje = ini.dia === dia || recorreNoDia(ev, ini, dia);
+    const ocorreHoje = ini.dia === dia || (!ev['RECURRENCE-ID'] && recorreNoDia(ev, ini, dia));
     if (!ocorreHoje) continue;
+    // Serie recorrente: respeita ocorrencia EXCLUIDA (EXDATE) e REMARCADA (RECURRENCE-ID)
+    if (ev.RRULE) {
+      if ((ev.EXDATES || []).some(function (x) { const p = icsParaSP(x); return p && p.dia === dia; })) continue;
+      if (ev.UID && remarcadas.has(ev.UID + '|' + dia)) continue;
+    }
     const fimMin = (fim && fim.min !== null && (fim.dia === ini.dia)) ? fim.min : ini.min + 40;
     out.push([ini.min, Math.max(fimMin, ini.min + 5)]);
   }
@@ -136,7 +157,7 @@ function ocupadosNoDia(texto, dia) {
 async function ocupadosDoGoogle(env, dia) {
   if (!env.GCAL_ICS_URL) return [];
   try {
-    const r = await fetch(env.GCAL_ICS_URL, { cf: { cacheTtl: 300, cacheEverything: true } });
+    const r = await fetch(env.GCAL_ICS_URL, { cf: { cacheTtl: 120, cacheEverything: true } });
     if (!r.ok) return [];
     return ocupadosNoDia(await r.text(), dia);
   } catch { return []; }

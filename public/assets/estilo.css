@@ -1798,3 +1798,19 @@ header{
 .btn-zap svg{fill:#fff!important}
 .zap-flut{background:#25D366!important}
 .zap-flut svg{fill:#fff!important}
+
+/* ============================================================
+   v17 — pé da home contínuo no roxo + logo com presença + faxina
+   ============================================================ */
+/* Logo do cabeçalho: mais presença sobre o roxo (o arquivo não muda) */
+.logo img{height:58px;filter:drop-shadow(0 1px 0 rgba(255,255,255,.3)) drop-shadow(0 6px 18px rgba(212,175,55,.38))}
+@media(max-width:720px){ .logo img{height:44px} }
+/* Fim da home: as duas últimas seções entram no roxo e escorrem até o rodapé */
+.sec-fim{background:linear-gradient(180deg,var(--roxo-escuro),var(--roxo-fundo) 55%,#16021F);color:#fff}
+.sec-fim h2{color:#fff}
+.sec-fim p{color:#DCCFEA}
+.sec-fim .rede-link{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#EDE4F6}
+.sec-fim .rede-link:hover{background:rgba(255,255,255,.15);border-color:var(--dourado);color:#fff}
+/* Provas sociais vazias não deixam buraco enquanto a conta Trustindex não volta */
+div[aria-label="Avaliacoes no Google"]:not(:has(.ti-widget)),
+div[aria-label="Instagram"]:not(:has(.ti-widget)){padding:0!important}
