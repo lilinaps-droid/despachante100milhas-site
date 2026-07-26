@@ -1825,3 +1825,7 @@ div[aria-label="Instagram"]:not(:has(.ti-widget)){padding:0!important}
 .yt-embed{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
 .yt-embed iframe{width:100%;height:100%;border:0}
 @media(max-width:720px){ .yt-grid{grid-template-columns:1fr} }
+
+/* v17.3 — badge de frescor nas páginas de conteúdo */
+.atualizado{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--texto-inv-suave);border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:5px 14px;margin-top:14px}
+.sec-clara .atualizado, section:not(.hero):not(.sec-escura):not(.sec-fim) .atualizado{color:var(--texto-suave);border-color:var(--linha)}
