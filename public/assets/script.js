@@ -113,6 +113,13 @@
     var top=g.querySelector('.nav-top'); if(!top) return;
     top.addEventListener('click',function(e){
       e.preventDefault(); e.stopPropagation();
+      var alvo=g.querySelector('.nav-drop a');
+      // Com MOUSE o hover já abre a lista — o clique no título NAVEGA
+      // para a página principal do assunto (primeiro item do grupo).
+      if(window.matchMedia('(hover: hover)').matches && alvo){
+        window.location.href = alvo.getAttribute('href'); return;
+      }
+      // No TOQUE: 1º toque abre a lista, itens navegam, re-toque fecha.
       var abrir=!g.classList.contains('aberto');
       fecha(g); g.classList.toggle('aberto',abrir);
       top.setAttribute('aria-expanded',abrir?'true':'false');
