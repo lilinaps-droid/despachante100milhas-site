@@ -98,11 +98,13 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdro
 .menu a{font-weight:500;font-size:.94rem;color:var(--texto);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
 .menu a:hover,.menu a[aria-current="page"]{color:var(--roxo);border-color:var(--dourado)}
 .btn-zap{
-  background:var(--verde-zap);color:#fff;font-weight:700;font-size:.9rem;
+  background:linear-gradient(135deg,var(--dourado-claro),var(--dourado) 55%,var(--dourado-escuro));
+  color:#2B0640;font-weight:700;font-size:.9rem;
   padding:12px 16px;border-radius:100px;display:inline-flex;gap:8px;align-items:center;white-space:nowrap;
-  transition:.2s
+  box-shadow:0 6px 20px rgba(212,175,55,.42);transition:.2s
 }
-.btn-zap:hover{filter:brightness(.93);transform:translateY(-1px)}
+.btn-zap svg{fill:#1A0327}
+.btn-zap:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .burger{display:none;background:none;border:0;font-size:1.7rem;color:var(--roxo);cursor:pointer;line-height:1}
 
 /* ---------- BOTOES ---------- */
@@ -118,8 +120,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdro
 /* ---------- HERO ---------- */
 .hero{
   background:
-    radial-gradient(1100px 480px at 78% 8%,rgba(106,13,173,.55),transparent 62%),
-    linear-gradient(160deg,var(--roxo-escuro),var(--roxo-fundo) 58%,#3D0A5C);
+    radial-gradient(1200px 520px at 50% -12%,rgba(166,107,230,.55),transparent 60%),
+    linear-gradient(180deg,#5A1690 0%,var(--roxo-fundo) 48%,var(--roxo-escuro) 82%,#16021F 100%);
   color:#fff;padding:72px 0 80px;position:relative;overflow:hidden
 }
 .hero::after{
@@ -244,9 +246,9 @@ footer ul{list-style:none;display:grid;gap:8px}
 .sociais a:hover{background:var(--dourado);color:var(--roxo-escuro)}
 
 /* ---------- ZAP FLUTUANTE ---------- */
-.zap-flut{position:fixed;right:20px;bottom:20px;z-index:80;width:58px;height:58px;border-radius:50%;background:var(--verde-zap);display:grid;place-items:center;box-shadow:0 8px 26px rgba(37,211,102,.45);transition:.2s}
+.zap-flut{position:fixed;right:20px;bottom:20px;z-index:80;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--dourado-claro),var(--dourado) 55%,var(--dourado-escuro));display:grid;place-items:center;box-shadow:0 10px 30px rgba(212,175,55,.5);transition:.2s}
 .zap-flut:hover{transform:scale(1.08)}
-.zap-flut svg{width:30px;height:30px;fill:#fff}
+.zap-flut svg{width:30px;height:30px;fill:#1A0327}
 
 /* ---------- RESPONSIVO ---------- */
 @media(max-width:960px){
@@ -367,7 +369,7 @@ body[data-pilar="doc"]      { --acento:#C8102E; }  /* documento do veículo — 
 body[data-pilar] .placa     { color:var(--acento); border-color:var(--acento); box-shadow:0 2px 0 var(--acento) }
 body[data-pilar] .placa::before{ background:var(--acento) }
 body[data-pilar] .placa.claro{ color:var(--acento); border-color:var(--acento) }
-body[data-pilar] .hero      { background:radial-gradient(1100px 480px at 78% 8%,rgba(106,13,173,.5),transparent 62%),linear-gradient(160deg,var(--roxo-escuro),var(--roxo-fundo) 58%,#3D0A5C) }
+body[data-pilar] .hero      { background:radial-gradient(1200px 520px at 50% -12%,rgba(166,107,230,.52),transparent 60%),linear-gradient(180deg,#5A1690 0%,var(--roxo-fundo) 48%,var(--roxo-escuro) 82%,#16021F 100%) }
 body[data-pilar] .hero h1 em{ color:var(--acento) }
 body[data-pilar] .card:hover{ border-color:var(--acento) }
 body[data-pilar] .icone     { background:linear-gradient(140deg,var(--roxo),#9B3FD4) }
@@ -1687,3 +1689,78 @@ header{
 .pa-btn:hover{border-color:var(--roxo);background:#FCFAFE}
 .pa-del{color:#B3261E}
 .pa-del:hover{border-color:#B3261E;background:#FDF3F2}
+
+/* ============================================================
+   v15 — MENU COM SUBMENUS + logo com destaque + botões premium
+   Aditivo: herda os tokens/cores existentes. Não altera identidade.
+   ============================================================ */
+.logo img{height:54px}
+.menu .nav-grupo{position:relative;display:flex;align-items:center}
+.menu .nav-top{font-family:inherit;font-weight:600;font-size:.94rem;letter-spacing:.01em;color:var(--texto);background:none;border:0;cursor:pointer;padding:4px 0;display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid transparent;transition:.2s;line-height:1.2}
+.menu .nav-top::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s;opacity:.6}
+.menu .nav-grupo:hover .nav-top,.menu .nav-grupo:focus-within .nav-top,.menu .nav-grupo.aberto .nav-top,.menu .nav-grupo.ativo .nav-top{color:var(--roxo);border-color:var(--dourado)}
+.menu .nav-grupo.aberto .nav-top::after{transform:rotate(-135deg) translateY(1px)}
+.menu .nav-drop{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);min-width:252px;background:#fff;border:1px solid var(--linha);border-radius:14px;box-shadow:0 16px 48px rgba(42,6,64,.22);padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;pointer-events:none;transition:.18s;z-index:70}
+.menu .nav-drop::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+.menu .nav-grupo:hover .nav-drop,.menu .nav-grupo:focus-within .nav-drop,.menu .nav-grupo.aberto .nav-drop{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.menu .nav-drop a{padding:11px 14px;border-radius:10px;border-bottom:0;font-size:.9rem;color:var(--texto);white-space:nowrap;transition:.15s}
+.menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{background:var(--claro);color:var(--roxo);border-color:transparent}
+.menu .btn-cliente{font-weight:600;font-size:.88rem;color:var(--roxo);padding:9px 18px;border:1.6px solid var(--roxo);border-radius:100px;transition:.2s;white-space:nowrap}
+.menu .btn-cliente:hover{background:var(--roxo);color:#fff;box-shadow:0 8px 20px rgba(106,13,173,.28);transform:translateY(-1px)}
+.menu .btn-zap{box-shadow:0 8px 20px rgba(37,211,102,.32)}
+@media(max-width:720px){
+  .menu .nav-grupo{display:block;width:100%}
+  .menu .nav-top{width:100%;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--linha);font-size:1rem}
+  .menu .nav-drop{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;box-shadow:none;border:0;border-radius:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .menu .nav-grupo.aberto .nav-drop{max-height:600px;padding:2px 0 10px;transform:none}
+  .menu .nav-drop a{padding:11px 0 11px 16px;border-bottom:1px solid var(--linha);border-radius:0;white-space:normal}
+  .menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{background:none}
+  .menu .btn-cliente{display:block;text-align:center;margin-top:14px}
+}
+
+/* v15.1 — ajustes pedidos: logo do rodapé maior/chamativo, submenus com mais atenção */
+.foot-logo-img{height:66px;width:auto}
+.menu .nav-top{font-weight:700}
+.menu .nav-top::after{border-right-color:var(--dourado);border-bottom-color:var(--dourado);opacity:.95;width:8px;height:8px}
+.menu .nav-grupo:hover .nav-top,.menu .nav-grupo.aberto .nav-top,.menu .nav-grupo.ativo .nav-top{color:var(--roxo)}
+.menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{background:var(--claro);color:var(--roxo);box-shadow:inset 3px 0 0 var(--dourado)}
+@media(max-width:720px){ .menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{box-shadow:inset 3px 0 0 var(--dourado)} }
+
+/* ============================================================
+   v15 — MENU COM SUBMENUS + logo com destaque + botões premium
+   Aditivo: herda os tokens/cores existentes. Não altera identidade.
+   ============================================================ */
+.logo img{height:54px}
+.menu .nav-grupo{position:relative;display:flex;align-items:center}
+.menu .nav-top{font-family:inherit;font-weight:700;font-size:.94rem;letter-spacing:.01em;color:var(--texto);background:none;border:0;cursor:pointer;padding:4px 0;display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid transparent;transition:.2s;line-height:1.2}
+.menu .nav-top::after{content:"";width:8px;height:8px;border-right:2px solid var(--dourado);border-bottom:2px solid var(--dourado);transform:rotate(45deg) translateY(-2px);transition:transform .2s;opacity:.95}
+.menu .nav-grupo:hover .nav-top,.menu .nav-grupo:focus-within .nav-top,.menu .nav-grupo.aberto .nav-top,.menu .nav-grupo.ativo .nav-top{color:var(--roxo);border-color:var(--dourado)}
+.menu .nav-grupo.aberto .nav-top::after{transform:rotate(-135deg) translateY(1px)}
+.menu .nav-drop{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);min-width:252px;background:#fff;border:1px solid var(--linha);border-radius:14px;box-shadow:0 16px 48px rgba(42,6,64,.22);padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;pointer-events:none;transition:.18s;z-index:70}
+.menu .nav-drop::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+.menu .nav-grupo:hover .nav-drop,.menu .nav-grupo:focus-within .nav-drop,.menu .nav-grupo.aberto .nav-drop{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.menu .nav-drop a{padding:11px 14px;border-radius:10px;border-bottom:0;font-size:.9rem;color:var(--texto);white-space:nowrap;transition:.15s}
+.menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{background:var(--claro);color:var(--roxo);box-shadow:inset 3px 0 0 var(--dourado)}
+.menu .btn-cliente{font-weight:600;font-size:.88rem;color:var(--roxo);padding:9px 18px;border:1.6px solid var(--roxo);border-radius:100px;transition:.2s;white-space:nowrap}
+.menu .btn-cliente:hover{background:var(--roxo);color:#fff;box-shadow:0 8px 20px rgba(106,13,173,.28);transform:translateY(-1px)}
+.menu .btn-zap{box-shadow:0 8px 20px rgba(37,211,102,.32)}
+.foot-logo-img{height:66px;width:auto}
+@media(max-width:720px){
+  .menu .nav-grupo{display:block;width:100%}
+  .menu .nav-top{width:100%;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--linha);font-size:1rem}
+  .menu .nav-drop{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;box-shadow:none;border:0;border-radius:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .menu .nav-grupo.aberto .nav-drop{max-height:600px;padding:2px 0 10px;transform:none}
+  .menu .nav-drop a{padding:11px 0 11px 16px;border-bottom:1px solid var(--linha);border-radius:0;white-space:normal}
+  .menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{background:none;box-shadow:inset 3px 0 0 var(--dourado)}
+  .menu .btn-cliente{display:block;text-align:center;margin-top:14px}
+}
+
+/* v15.2 — cabeçalho sólido: corrige menu ilegível no topo da home (escuro no escuro) */
+header{background:rgba(255,255,255,.97)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.menu .nav-top,.menu>a{color:var(--texto)}
+
+/* v15.2b — WhatsApp legível + logo header com destaque */
+.btn-zap{background:#25D366!important;color:#fff!important;font-weight:700!important}
+.btn-zap svg{fill:#fff!important}
+.zap-flut{background:#25D366!important}
+.zap-flut svg{fill:#fff!important}
