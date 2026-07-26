@@ -8,7 +8,7 @@
   var raiz = document.getElementById('agenda-pcd');
   if(!raiz) return;
 
-  var ZAP_PCD = '5513978091064'; // canal PCD oficial (padrão do rodapé aprovado)
+  var ZAP_PCD = '5513978144035';
   var p1=document.getElementById('ag-p1'), p2=document.getElementById('ag-p2'), p3=document.getElementById('ag-p3');
   var elDias=document.getElementById('ag-dias'), elHoras=document.getElementById('ag-horas');
   var form=document.getElementById('ag-form'), erro=document.getElementById('ag-erro');
@@ -42,7 +42,7 @@
     });
   }
 
-  function escolheDia(b, tentativa){
+  function escolheDia(b){
     mostraErro('');
     elDias.querySelectorAll('.ag-chip').forEach(function(x){x.classList.remove('ativo');});
     b.classList.add('ativo');
@@ -62,12 +62,7 @@
           x.addEventListener('click', function(){ escolheHora(x); });
         });
       })
-      .catch(function(){
-        // Falha transitória não pode derrubar a agenda inteira:
-        // tenta mais uma vez antes de mostrar o aviso de indisponível.
-        if(!tentativa){ setTimeout(function(){ escolheDia(b, 1); }, 1200); }
-        else { foraDoAr(); }
-      });
+      .catch(function(){ foraDoAr(); });
   }
 
   function escolheHora(b){
