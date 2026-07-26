@@ -272,18 +272,8 @@ def rodape(canal="doc"):
 </body>
 </html>"""
 
-# TRUSTINDEX — prova social ao vivo (avaliações Google + feed Instagram).
-# FICA NO GERADOR de propósito: em 26/07/2026 uma regeneração apagou os
-# widgets que tinham sido enxertados à mão nos HTML. Nunca remover daqui.
-TRUSTINDEX = (
-    '<div class="wrap" style="padding:34px 0 6px" aria-label="Avaliacoes no Google">'
-    '<script defer async src="https://cdn.trustindex.io/loader.js?1091ee077915738c76363a49964"></script></div>\n'
-    '<div class="wrap" style="padding:6px 0 30px" aria-label="Instagram">'
-    '<script defer async src="https://cdn.trustindex.io/loader-feed.js?ade8aa577e5873853a56944ff9d"></script></div>\n'
-)
-
 def pagina(arquivo, titulo, desc, url, corpo, extra="", pilar="", canal="doc"):
-    conteudo = head(titulo, desc, url, extra, pilar, canal) + header(url, canal) + '<main id="conteudo">' + corpo + '</main>' + TRUSTINDEX + rodape(canal)
+    conteudo = head(titulo, desc, url, extra, pilar, canal) + header(url, canal) + '<main id="conteudo">' + corpo + '</main>' + rodape(canal)
     caminho = os.path.join(SAIDA, arquivo)
     os.makedirs(os.path.dirname(caminho), exist_ok=True)
     with open(caminho, "w", encoding="utf-8") as f:
