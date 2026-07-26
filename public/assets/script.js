@@ -140,3 +140,17 @@
   },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(e){ io.observe(e); });
 })();
+
+/* v22 — fio de progresso dourado + header que reage ao rolar */
+(function(){
+  var fio=document.createElement('div'); fio.id='fio-ouro'; document.body.appendChild(fio);
+  var hd=document.querySelector('header'); var tick=false;
+  function rola(){
+    tick=false;
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    fio.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+    if(hd) hd.classList.toggle('rolou', h.scrollTop>40);
+  }
+  addEventListener('scroll',function(){ if(!tick){ tick=true; requestAnimationFrame(rola); } },{passive:true});
+  rola();
+})();
