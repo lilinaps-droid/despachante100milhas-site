@@ -1845,3 +1845,32 @@ main section h2:not([class]){font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:8
 .crumbs a:hover{color:var(--dourado)}
 .crumbs b{color:#EDE4F6;font-weight:600}
 .crumbs span.sep{opacity:.5}
+
+/* ============================================================
+   v19 — RODAPÉ PREMIUM ENXUTO (um componente, zero repetição)
+   ============================================================ */
+.ft2{background:linear-gradient(180deg,#16021F,var(--roxo-escuro));color:#CDBEDC;border-top:1px solid rgba(212,175,55,.35)}
+.ft2 .wrap{padding:56px 0 0}
+.ft2-topo{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft2-marca{display:flex;gap:14px;align-items:center}
+.ft2-marca img{height:52px;width:auto}
+.ft2-marca p{font-size:.9rem;color:#B9A9CC;max-width:24rem}
+.ft2-zaps{display:flex;gap:10px;flex-wrap:wrap}
+.ft2-zap{display:inline-flex;align-items:center;gap:8px;border:1.4px solid rgba(255,255,255,.22);border-radius:100px;padding:10px 16px;font-size:.86rem;font-weight:600;color:#EDE4F6;transition:.2s}
+.ft2-zap svg{width:18px;height:18px;fill:var(--verde-zap);flex:none}
+.ft2-zap:hover{border-color:var(--verde-zap);color:#fff;transform:translateY(-1px)}
+.ft2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft2-grid h3{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--dourado);margin-bottom:12px}
+.ft2-grid a{display:block;font-size:.9rem;color:#CDBEDC;padding:5px 0;transition:.15s}
+.ft2-grid a:hover{color:#fff;padding-left:4px}
+.ft2-info{display:flex;gap:16px 32px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.84rem}
+.ft2-info .end b{color:#EDE4F6;font-weight:600}
+.ft2-redes{display:flex;gap:8px}
+.ft2-redes a{display:grid;place-items:center;width:38px;height:38px;border:1.4px solid rgba(255,255,255,.2);border-radius:50%;color:#CDBEDC;font-size:.95rem;transition:.2s}
+.ft2-redes a:hover{border-color:var(--dourado);color:var(--dourado);transform:translateY(-2px)}
+.ft2-redes svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+.ft2-aviso{margin:22px 0;padding:16px 18px;border-left:3px solid var(--dourado);background:rgba(255,255,255,.04);border-radius:0 10px 10px 0;font-size:.84rem;color:#B9A9CC}
+.ft2-aviso b{color:#EDE4F6}
+.ft2-fim{display:flex;gap:8px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:18px 0 26px;font-size:.78rem;color:#9C8CAD}
+@media(max-width:960px){ .ft2-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:600px){ .ft2-topo,.ft2-info,.ft2-fim{flex-direction:column;align-items:flex-start} .ft2-marca{flex-direction:column;align-items:flex-start} }
