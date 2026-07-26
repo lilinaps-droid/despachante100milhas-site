@@ -1874,3 +1874,51 @@ main section h2:not([class]){font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:8
 .ft2-fim{display:flex;gap:8px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:18px 0 26px;font-size:.78rem;color:#9C8CAD}
 @media(max-width:960px){ .ft2-grid{grid-template-columns:repeat(2,1fr)} }
 @media(max-width:600px){ .ft2-topo,.ft2-info,.ft2-fim{flex-direction:column;align-items:flex-start} .ft2-marca{flex-direction:column;align-items:flex-start} }
+
+/* ============================================================
+   v20 — HOME NA RÉGUA DA REFERÊNCIA: hero 2 colunas + faixa de
+   serviços + rodapé de UMA faixa. Header intocado.
+   ============================================================ */
+.hero2{padding:64px 0 56px}
+.hero2 .hero-grid{align-items:start}
+.confs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px;max-width:34rem}
+.conf{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px}
+.conf .ic{width:38px;height:38px;flex:none;display:grid;place-items:center;border:1.4px solid rgba(212,175,55,.55);border-radius:10px;color:var(--dourado)}
+.conf .ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.conf b{display:block;font-size:.92rem;color:#fff;line-height:1.25}
+.conf small{font-size:.8rem;color:#CDBEDC}
+.h2-card h2{font-size:1.4rem}
+.h2-card .campo{position:relative}
+.brchip{position:absolute;right:12px;top:38px;background:#E8F5E9;border:1px solid #A5D6A7;color:#1B5E20;font-size:.68rem;font-weight:800;border-radius:6px;padding:3px 7px;letter-spacing:.04em}
+.fx-serv{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09)}
+.fx-in{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.fx-item{display:flex;gap:12px;align-items:center;padding:22px 18px;border-left:1px solid rgba(255,255,255,.08);transition:.2s}
+.fx-item:first-child{border-left:0}
+.fx-item:hover{background:rgba(255,255,255,.05)}
+.fx-item .ic{width:40px;height:40px;flex:none;display:grid;place-items:center;color:var(--dourado)}
+.fx-item .ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fx-item b{display:block;font-size:.95rem;color:#fff}
+.fx-item small{font-size:.79rem;color:#BFAED2;line-height:1.3}
+@media(max-width:1024px){ .fx-in{grid-template-columns:repeat(2,1fr)} .fx-item{border-left:0;border-top:1px solid rgba(255,255,255,.06)} }
+@media(max-width:960px){ .hero2 .hero-grid{grid-template-columns:1fr} .confs{max-width:none} }
+@media(max-width:600px){ .confs{grid-template-columns:1fr} .fx-in{grid-template-columns:1fr} }
+/* -------- Rodapé v20: UMA faixa, respiração de gente grande -------- */
+.ft3{background:linear-gradient(180deg,var(--roxo-meio),var(--roxo-fundo));color:#E4D6F2;border-top:2px solid var(--dourado)}
+.ft3-in{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;padding:40px 0 34px}
+.ft3-b h4{display:flex;gap:8px;align-items:center;font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:700;color:#fff;margin-bottom:8px}
+.ft3-b h4 .ic{color:var(--dourado);display:grid;place-items:center}
+.ft3-b h4 .ic svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft3-b p,.ft3-b a{font-size:.84rem;color:#CDBEDC;line-height:1.55;display:block}
+.ft3-b a:hover{color:#fff}
+.ft3-b b{color:#fff;font-weight:700}
+.ft3-soc{display:flex;gap:8px;margin-top:10px}
+.ft3-soc a{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.85rem}
+.ft3-soc .s-ig{background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.ft3-soc .s-fb{background:#1877F2}
+.ft3-soc .s-yt{background:#FF0000}
+.ft3-soc svg{width:15px;height:15px;fill:#fff}
+.ft3-stars{color:var(--dourado);letter-spacing:2px;font-size:.95rem}
+.ft3-g{font-weight:800;font-family:'Montserrat',sans-serif;font-size:1.25rem;color:#fff}
+.ft3-legal{border-top:1px solid rgba(255,255,255,.1);padding:16px 0 22px;font-size:.75rem;color:#B9A9CC;display:flex;gap:6px 24px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:1024px){ .ft3-in{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:600px){ .ft3-in{grid-template-columns:1fr;gap:20px} }
