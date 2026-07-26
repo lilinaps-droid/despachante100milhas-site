@@ -1922,3 +1922,51 @@ main section h2:not([class]){font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:8
 .ft3-legal{border-top:1px solid rgba(255,255,255,.1);padding:16px 0 22px;font-size:.75rem;color:#B9A9CC;display:flex;gap:6px 24px;justify-content:space-between;flex-wrap:wrap}
 @media(max-width:1024px){ .ft3-in{grid-template-columns:repeat(2,1fr)} }
 @media(max-width:600px){ .ft3-in{grid-template-columns:1fr;gap:20px} }
+
+/* ============================================================
+   v21 — HARMONIA & PRAZER: composição equilibrada, profundidade
+   no fundo e micro-interações que respondem à pessoa.
+   ============================================================ */
+/* Equilíbrio da 1ª dobra: colunas alinhadas ao centro, título em 3 linhas */
+.hero2 .hero-grid{align-items:center;gap:56px}
+.hero2 h1{font-size:clamp(2.05rem,3.9vw,3.05rem);line-height:1.13;text-wrap:balance}
+.hero2 p.sub{max-width:30rem}
+/* Fundo com profundidade: brilho dourado atrás do cartão + aurora roxa */
+.hero2{position:relative;overflow:hidden}
+.hero2::before{content:"";position:absolute;inset:-10%;pointer-events:none;background:
+  radial-gradient(580px 440px at 76% 48%,rgba(212,175,55,.13),transparent 65%),
+  radial-gradient(720px 520px at 10% 6%,rgba(155,63,212,.33),transparent 62%),
+  radial-gradient(900px 600px at 50% 115%,rgba(22,2,31,.85),transparent 70%)}
+.hero2 .wrap{position:relative;z-index:1}
+/* Chips de confiança: vivos, com resposta ao toque */
+.confs{gap:10px;margin-top:26px}
+.conf{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
+  border-color:rgba(255,255,255,.13);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.conf:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.6);box-shadow:0 14px 30px rgba(20,2,31,.5)}
+.conf .ic{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.35)}
+/* Cartão de consulta: presença de produto */
+.h2-card{border-radius:22px;box-shadow:0 30px 80px rgba(12,1,20,.55),0 0 0 1px rgba(212,175,55,.22)}
+.h2-card .btn{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.h2-card .btn:hover{transform:translateY(-2px)}
+.h2-card .btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg);transition:left .55s ease}
+.h2-card .btn:hover::after{left:130%}
+.h2-card .campo input{transition:border-color .2s,box-shadow .2s,transform .15s}
+.h2-card .campo input:focus{transform:scale(1.01)}
+/* Revelação suave ao rolar — o site responde à navegação */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
+/* v21.1 — toques universais: TODAS as abas, cada espaço */
+main h1,main h2{text-wrap:balance}
+main .tabela tbody tr{transition:background .2s}
+main .tabela tbody tr:hover{background:rgba(106,13,173,.05)}
+main details{transition:box-shadow .25s,border-color .25s}
+main details:hover{border-color:var(--roxo);box-shadow:var(--sombra-forte)}
+main summary:hover{color:var(--roxo)}
+.crumbs a{transition:color .2s}
+.atualizado{transition:border-color .25s,color .25s}
+section:hover .atualizado{border-color:rgba(212,175,55,.6)}
+.ft3-b a{transition:color .2s,padding-left .2s}
+.ft3-b a:hover{padding-left:3px}

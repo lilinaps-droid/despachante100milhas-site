@@ -129,3 +129,14 @@
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') fecha(null); });
 })();
 
+
+/* v21 — Revelação suave ao rolar: cartões e blocos entram vivos, em cascata. */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var els=document.querySelectorAll('main .cabeca, main .card, .conf, .fx-item, main .passo, main .depo, main details, .yt-card');
+  els.forEach(function(e,i){ e.classList.add('rv'); e.style.transitionDelay=(i%6)*70+'ms'; });
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
