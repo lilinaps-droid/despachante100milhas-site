@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de IPVA PCD — São Paulo | Despachante 100 Milhas</title>
+<meta name="description" content="Calcule o IPVA do seu carro PCD em São Paulo: isenção total até R$ 70 mil, parcial até R$ 120 mil, proporcional para 0km. Estimativa gratuita da 100 Milhas.">
+<link rel="canonical" href="https://www.despachante100milhas.com.br/isencaopcd/simulador-ipva">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Despachante 100 Milhas">
+<meta property="og:title" content="Calculadora de IPVA PCD — São Paulo | Despachante 100 Milhas">
+<meta property="og:description" content="Isenção total até R$ 70 mil, parcial até R$ 120 mil, proporcional para 0km. Calcule grátis.">
+<meta property="og:url" content="https://www.despachante100milhas.com.br/isencaopcd/simulador-ipva">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#6A0DAD">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--roxo:#6A0DAD;--roxoE:#1A0327;--roxoM:#3D0A5C;--ouro:#D4AF37;--ouroC:#F0D97B;--linha:#ece4f6;--suave:#6a5a7a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Segoe UI',system-ui,Arial,sans-serif;background:#f4eefc;color:#221033;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px}
+.box{width:100%;max-width:520px}
+.head{text-align:center;margin-bottom:16px}
+.badge{display:inline-block;background:#fff;border:1px solid var(--linha);color:var(--roxo);font-family:'Montserrat';font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:30px;box-shadow:0 4px 16px rgba(106,13,173,.08)}
+.head h1{font-family:'Montserrat';font-size:1.55rem;font-weight:800;color:var(--roxoE);margin-top:12px;line-height:1.2}
+.head p{color:var(--suave);font-size:.92rem;margin-top:6px}
+.card{background:#fff;border:1px solid var(--linha);border-radius:22px;padding:26px 24px;box-shadow:0 18px 50px rgba(106,13,173,.12)}
+.seg{display:flex;background:#f4eefc;border-radius:14px;padding:5px;gap:5px;margin-bottom:20px}
+.seg button{flex:1;background:transparent;border:0;border-radius:10px;padding:12px;font-family:'Montserrat';font-weight:700;font-size:.9rem;color:var(--suave);cursor:pointer;transition:.15s}
+.seg button.on{background:#fff;color:var(--roxo);box-shadow:0 4px 14px rgba(106,13,173,.14)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:700;color:var(--roxoE);margin-bottom:7px}
+.inp{display:flex;align-items:center;border:2px solid var(--linha);border-radius:14px;overflow:hidden;transition:.15s}
+.inp:focus-within{border-color:var(--roxo)}
+.inp .pre{padding:0 0 0 16px;font-family:'Montserrat';font-weight:800;color:var(--suave);font-size:1.1rem}
+.inp input{flex:1;border:0;outline:0;padding:15px 16px 15px 8px;font-size:1.25rem;font-family:'Montserrat';font-weight:700;color:#221033;background:transparent}
+.field select{width:100%;padding:15px 16px;border:2px solid var(--linha);border-radius:14px;font-size:1.05rem;font-family:'DM Sans';color:#221033;background:#fff;cursor:pointer}
+.field select:focus{outline:0;border-color:var(--roxo)}
+.switch{display:flex;align-items:center;gap:12px;background:#faf7fe;border:1px solid var(--linha);border-radius:14px;padding:13px 15px;margin-bottom:20px;cursor:pointer}
+.switch input{width:20px;height:20px;accent-color:var(--roxo)}
+.switch span{font-size:.9rem;color:#3a2b4d;font-weight:500}
+.btn{width:100%;background:linear-gradient(135deg,var(--roxo),var(--roxoM));color:#fff;border:0;border-radius:40px;padding:17px;font-family:'Montserrat';font-weight:800;font-size:1.08rem;cursor:pointer;box-shadow:0 10px 26px rgba(106,13,173,.32);transition:.15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.out{margin-top:20px}
+.msg{background:#fdece6;border:1px solid #f5c9b8;border-radius:14px;padding:14px 16px;font-size:.92rem;color:#8a3b1a}
+.res{background:linear-gradient(135deg,var(--roxoE),var(--roxoM));border-radius:18px;padding:22px 22px;color:#fff;position:relative;overflow:hidden}
+.res:before{content:"";position:absolute;inset:0;background:radial-gradient(500px 200px at 90% -20%,rgba(212,175,55,.28),transparent 60%)}
+.res .lbl{position:relative;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;opacity:.85;font-weight:600}
+.res .big{position:relative;font-family:'Montserrat';font-weight:800;font-size:2.6rem;line-height:1.05;margin-top:6px;color:var(--ouroC)}
+.res.isento .big{color:#8ef0b8}
+.res .sub{position:relative;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:.9rem;line-height:1.55;opacity:.95}
+.res .sub b{color:#fff}
+.legal{margin-top:16px;font-size:.75rem;color:var(--suave);line-height:1.6}
+.legal b{color:var(--roxoE)}
+.foot{text-align:center;margin-top:18px;font-size:.82rem;color:var(--suave)}
+.foot a{color:var(--roxo);font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div class="box">
+  <div class="head">
+    <span class="badge">São Paulo · Isenção PCD</span>
+    <h1>Calculadora de IPVA</h1>
+    <p>Coloque as informações e clique em calcular.</p>
+  </div>
+  <div class="card">
+    <div class="seg">
+      <button type="button" class="on" id="tab-novo">Carro 0km</button>
+      <button type="button" id="tab-usado">Carro usado</button>
+    </div>
+    <div class="field">
+      <label id="lbl">Valor da nota fiscal</label>
+      <div class="inp"><span class="pre">R$</span><input id="valor" type="text" inputmode="numeric" placeholder="110.000"></div>
+    </div>
+    <div class="field" id="wrapMes">
+      <label for="mes">Mês da nota fiscal</label>
+      <select id="mes">
+        <option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option><option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option><option value="7" selected>Julho</option><option value="8">Agosto</option><option value="9">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+      </select>
+    </div>
+    <label class="switch"><input id="hib" type="checkbox"><span>É híbrido com isenção de IPVA em SP (ex.: Corolla GLI 2026)</span></label>
+    <button type="button" class="btn" id="btn">Calcular IPVA</button>
+    <div class="out" id="out"></div>
+    <p class="legal"><b>Como funciona:</b> IPVA = 4% do valor venal. Isento até R$ 70 mil; de R$ 70 mil a R$ 120 mil paga 4% só sobre o que passa de R$ 70 mil; acima de R$ 120 mil, sem isenção. 0km paga proporcional aos meses a partir da nota; usado paga o ano cheio sobre a FIPE. Estimativa — o valor venal oficial pode ser menor; confirme o seu caso.</p>
+  </div>
+  <div class="foot">Despachante 100 Milhas · <a href="https://wa.me/5513978091064" target="_blank" rel="noopener">Falar no WhatsApp</a><br>
+  <a href="/isencaopcd">← Isenção PCD</a> · <a href="/carros-pcd">Carros PCD até R$ 120 mil</a> · <a href="/artigos/isencao-pcd-passo-a-passo/">Passo a passo da isenção</a></div>
+</div>
+<script>
+(function(){
+  var tabNovo=document.getElementById('tab-novo'),tabUsado=document.getElementById('tab-usado'),
+      valor=document.getElementById('valor'),mes=document.getElementById('mes'),wrapMes=document.getElementById('wrapMes'),
+      lbl=document.getElementById('lbl'),hib=document.getElementById('hib'),btn=document.getElementById('btn'),out=document.getElementById('out');
+  var tipo='novo';
+  var nomes=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  function setNovo(){tipo='novo';tabNovo.className='on';tabUsado.className='';lbl.innerHTML='Valor da nota fiscal';wrapMes.style.display='';out.innerHTML='';}
+  function setUsado(){tipo='usado';tabUsado.className='on';tabNovo.className='';lbl.innerHTML='Valor da tabela FIPE';wrapMes.style.display='none';out.innerHTML='';}
+  tabNovo.onclick=setNovo; tabUsado.onclick=setUsado;
+  function num(s){var d=String(s).replace(/[^0-9]/g,'');return d?parseInt(d,10):0;}
+  function br(n){var x=(Math.round(n*100)/100).toFixed(2).replace('.',',');return x.replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+  function base(val){
+    if(hib.checked) return {ipva:0,faixa:'Híbrido com isenção de IPVA em SP (2026) — <b>isento</b>.',isento:true};
+    if(val<=70000) return {ipva:0,faixa:'Até R$ 70 mil: <b>isenção total</b> de IPVA para PCD.',isento:true};
+    if(val<=120000) return {ipva:0.04*(val-70000),faixa:'De R$ 70 mil a R$ 120 mil: paga 4% só sobre o que passa de R$ 70 mil.',isento:false};
+    return {ipva:0.04*val,faixa:'Acima de R$ 120 mil: <b>sem isenção</b> — paga 4% sobre o valor total.',isento:false};
+  }
+  function calc(){
+    var val=num(valor.value);
+    if(val<1000){out.innerHTML='<div class="msg">Digite um valor válido, ex.: 110.000.</div>';return;}
+    var b=base(val),cls=b.isento?'res isento':'res',html='';
+    if(tipo==='novo'){
+      var m=parseInt(mes.value,10)||1, meses=13-m, prop=b.ipva*meses/12;
+      html='<div class="'+cls+'"><div class="lbl">IPVA a pagar este ano</div><div class="big">R$ '+br(prop)+'</div>'
+          +'<div class="sub">'+b.faixa+'<br>Proporcional: <b>'+meses+' de 12 meses</b> (a partir de '+nomes[m-1]+'). IPVA anual cheio: <b>R$ '+br(b.ipva)+'</b>.</div></div>';
+    } else {
+      html='<div class="'+cls+'"><div class="lbl">IPVA do ano (sobre a FIPE)</div><div class="big">R$ '+br(b.ipva)+'</div>'
+          +'<div class="sub">'+b.faixa+'<br>Carro usado paga o <b>ano cheio</b>, calculado sobre o valor da tabela FIPE.</div></div>';
+    }
+    out.innerHTML=html;
+  }
+  btn.onclick=calc;
+  valor.onkeydown=function(e){if(e.key==='Enter'||e.keyCode===13)calc();};
+  valor.oninput=function(){var n=num(valor.value);valor.value=n?br(n).replace(',00',''):'';};
+})();
+</script>
+</body></html>
