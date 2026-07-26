@@ -2027,3 +2027,28 @@ html{font-size:clamp(15px, 0.36vw + 11.4px, 19px)}
   .hero2 h1{font-size:3.3rem}
   .h2-card{padding:40px}
 }
+
+/* ============================================================
+   v24 — LAPIDAÇÃO DA DONA: vermelho fino, seções compostas,
+   hub sem vazios, Trustindex legível
+   ============================================================ */
+/* Pilar DOC: o vermelho vira ASSINATURA fina, não mancha */
+body[data-pilar="doc"] .placa{color:var(--dourado);border-color:rgba(212,175,55,.6);box-shadow:0 2px 0 rgba(212,175,55,.45)}
+body[data-pilar="doc"] .placa.claro{color:var(--dourado);border-color:rgba(212,175,55,.6)}
+body[data-pilar="doc"] .placa::before{background:var(--vermelho)} /* o código da profissão vive no ponto */
+body[data-pilar="doc"] .hero h1 em{color:var(--dourado)}
+body[data-pilar="doc"] .faixa-lili{border-left-color:var(--dourado)}
+.crlv-topo{background:linear-gradient(135deg,var(--roxo-fundo),var(--roxo-meio));border-bottom:3px solid var(--vermelho)}
+.crlv-topo .ano{color:var(--dourado);opacity:1}
+/* Seções de convite (cabeça + botão) centradas — sem metade vazia */
+.sec-escura .cabeca:has(> .btn){margin-inline:auto;text-align:center;max-width:46rem}
+.sec-escura .cabeca:has(> .btn) .btn{margin-top:18px}
+/* Hub da home: as fileiras preenchem a largura toda, sem vazios laterais */
+.acessos{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:none}
+/* Trustindex Instagram: container claro + cabeçalho sempre legível */
+[aria-label="Instagram"]:has(.ti-widget){background:#fff;border-radius:18px;padding:12px 12px 4px;box-shadow:var(--sombra)}
+[aria-label="Instagram"] .ti-widget [class*="header"] *,[aria-label="Instagram"] .ti-widget [class*="profile"] *{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+/* v24.1 — convite centrado também quando o botão é irmão da cabeça */
+.sec-escura .wrap:has(> .btn):not(:has(.grid)):not(:has(.tabela)):not(:has(.faq)){text-align:center}
+.sec-escura .wrap:has(> .btn):not(:has(.grid)) .cabeca{margin-inline:auto;max-width:46rem}
+.sec-escura .wrap:has(> .btn) > .btn{margin-top:6px}

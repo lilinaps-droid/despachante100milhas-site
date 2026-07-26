@@ -26,7 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="image" href="/assets/lili-ia.webp" fetchpriority="high">
-<link rel="stylesheet" href="/assets/estilo.css?v=41">
+<link rel="stylesheet" href="/assets/estilo.css?v=42">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -577,28 +577,32 @@
 
 <script>
 (function(){
-  // Paraquedas GIRATÓRIO: se o widget vivo não carregar, entra um carrossel
-  // de avaliações reais que gira sozinho. Sempre em movimento.
-  setTimeout(function(){
-    var alvo=document.querySelector('.ti-avaliacoes'); if(!alvo) return;
-    var vivo=alvo.querySelector('.ti-widget'); if(vivo && vivo.offsetHeight>50) return;
-    var DEPOS=[
-      ['Eu estava tentando fazer todo o processo PCD sozinha e acabei passando por um perito que me tratou mal. Decidi recome\u00e7ar tudo com a Lili e foi tudo muito r\u00e1pido \u2014 at\u00e9 os peritos que ela agendou eram um amor. Hoje eu indico para todo mundo.','Val Alves'],
-      ['Fiz todo o processo de aquisi\u00e7\u00e3o de um carro PCD com o acompanhamento e a documenta\u00e7\u00e3o com a Liliane da 100 Milhas. Tirou d\u00favidas, auxiliou com a documenta\u00e7\u00e3o e deu todo o suporte. S\u00e3o muito profissionais e atenciosos.','Waldemar Domingues'],
-      ['Gostaria de agradecer imensamente pela agilidade e profissionalismo na resolu\u00e7\u00e3o do processo PCD. A dedica\u00e7\u00e3o de toda a equipe foi fundamental para essa conquista. Super recomendo.','Veronica Santos']
-    ];
-    alvo.insertAdjacentHTML('afterend',
-      '<div class="depo-giro"><div class="depo" id="depo-giro-card" style="max-width:34rem;margin:16px auto 0;transition:opacity .5s">'+
-      '<div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p id="dg-txt"></p><div class="quem" id="dg-quem"></div></div>'+
-      '<div style="text-align:center;margin-top:10px"><span class="fonte">Nota <b>4,9</b> \u00b7 <b>657 avalia\u00e7\u00f5es</b> no Google</span></div></div>');
-    var i=0, card=document.getElementById('depo-giro-card'),
-        tx=document.getElementById('dg-txt'), qm=document.getElementById('dg-quem');
-    function mostra(){ tx.textContent='\u201c'+DEPOS[i][0]+'\u201d'; qm.textContent=DEPOS[i][1]; }
+  // VIGIA da prova social: observa o Trustindex por 60s nas duas direções.
+  // Widget vivo -> só ele (remove o carrossel). Widget morto -> carrossel gira.
+  var DEPOS=[
+    ['Eu estava tentando fazer todo o processo PCD sozinha e acabei passando por um perito que me tratou mal. Decidi recome\u00e7ar tudo com a Lili e foi tudo muito r\u00e1pido \u2014 at\u00e9 os peritos que ela agendou eram um amor. Hoje eu indico para todo mundo.','Val Alves'],
+    ['Fiz todo o processo de aquisi\u00e7\u00e3o de um carro PCD com o acompanhamento e a documenta\u00e7\u00e3o com a Liliane da 100 Milhas. S\u00e3o muito profissionais e atenciosos.','Waldemar Domingues'],
+    ['Gostaria de agradecer imensamente pela agilidade e profissionalismo na resolu\u00e7\u00e3o do processo PCD. Super recomendo.','Veronica Santos']];
+  var alvo, giroTimer=null, idx=0;
+  function tiVivo(){var w=document.querySelector('.ti-avaliacoes .ti-widget');return !!(w&&w.offsetHeight>60);}
+  function montaGiro(){
+    if(document.getElementById('depo-giro-card')) return;
+    alvo.insertAdjacentHTML('afterend','<div class="depo-giro"><div class="depo" id="depo-giro-card" style="max-width:34rem;margin:16px auto 0;transition:opacity .5s"><div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p id="dg-txt"></p><div class="quem" id="dg-quem"></div></div><div style="text-align:center;margin-top:10px"><span class="fonte">Nota <b>4,9</b> \u00b7 <b>657 avalia\u00e7\u00f5es</b> no Google</span></div></div>');
+    var card=document.getElementById('depo-giro-card');
+    function mostra(){document.getElementById('dg-txt').textContent='\u201c'+DEPOS[idx][0]+'\u201d';document.getElementById('dg-quem').textContent=DEPOS[idx][1];}
     mostra();
-    setInterval(function(){ card.style.opacity='0';
-      setTimeout(function(){ i=(i+1)%DEPOS.length; mostra(); card.style.opacity='1'; }, 500);
-    }, 4500);
-  }, 5000);
+    giroTimer=setInterval(function(){card.style.opacity='0';setTimeout(function(){idx=(idx+1)%DEPOS.length;mostra();card.style.opacity='1';},500);},4500);
+  }
+  function desmontaGiro(){var g=document.querySelector('.depo-giro');if(g){g.remove();}if(giroTimer){clearInterval(giroTimer);giroTimer=null;}}
+  function ciclo(t){
+    if(tiVivo()){desmontaGiro();}
+    else if(t>=8000){montaGiro();}
+    if(t<60000) setTimeout(function(){ciclo(t+2500);},2500);
+  }
+  window.addEventListener('load',function(){
+    alvo=document.querySelector('.ti-avaliacoes'); if(!alvo) return;
+    setTimeout(function(){ciclo(0);},2500);
+  });
 })();
 </script>
 </body>
