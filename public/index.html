@@ -26,7 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="image" href="/assets/lili-ia.webp" fetchpriority="high">
-<link rel="stylesheet" href="/assets/estilo.css?v=32">
+<link rel="stylesheet" href="/assets/estilo.css?v=33">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -450,6 +450,30 @@
       </div>
     </div>
   </div>
+
+    <div id="yt-videos" class="yt-grid" hidden aria-label="Últimos vídeos no YouTube"></div>
+    <script>
+    (function(){
+      var g=document.getElementById('yt-videos'); if(!g) return;
+      fetch('/api/youtube').then(function(r){return r.json();}).then(function(j){
+        if(!j.ok||!j.videos||!j.videos.length) return;
+        g.innerHTML=j.videos.slice(0,3).map(function(v){
+          return '<button type="button" class="yt-card" data-id="'+v.id+'" aria-label="Assistir no site">'+
+            '<img loading="lazy" src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="">'+
+            '<span class="yt-play">&#9654;</span>'+
+            (v.title?('<b>'+v.title.replace(/</g,'&lt;')+'</b>'):'')+'</button>';
+        }).join('');
+        g.hidden=false;
+        Array.prototype.forEach.call(g.querySelectorAll('.yt-card'),function(b){
+          b.addEventListener('click',function(){
+            var d=document.createElement('div'); d.className='yt-embed';
+            d.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1" title="Vídeo da 100 Milhas" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+            b.replaceWith(d);
+          });
+        });
+      }).catch(function(){});
+    })();
+    </script>
 </section>
 
 <section class="sec-fim">

@@ -131,9 +131,13 @@ function ocupadosNoDia(texto, dia) {
     }
   }
   for (const ev of evs) {
-    if (ev.STATUS === 'CANCELLED' || ev.TRANSP === 'TRANSPARENT' || !ev.DTSTART) continue;
+    if (ev.STATUS === 'CANCELLED' || !ev.DTSTART) continue;
     const ini = icsParaSP(ev.DTSTART);
     if (!ini) continue;
+    // Evento de DIA INTEIRO no Google nasce marcado "Disponível" (TRANSPARENT)
+    // por padrão — mas na agenda da Lili, dia inteiro = DIA FECHADO.
+    // Então a marca "Disponível" só é respeitada em eventos com hora.
+    if (ini.min !== null && ev.TRANSP === 'TRANSPARENT') continue;
     const fim = ev.DTEND ? icsParaSP(ev.DTEND) : null;
     if (ini.min === null) {
       // Dia inteiro (DTEND é exclusivo): bloqueia o dia todo
@@ -257,6 +261,16 @@ async function apiAgenda(req, env, url) {
           return json({ ok: false, erro: 'Esse horário acabou de ser reservado. Escolha outro.' }, 409);
         throw e;
       }
+      // Ponte instantânea site -> Google Agenda (Apps Script da Lili), se configurada.
+      // Falha aqui NUNCA derruba a reserva: o D1 é a fonte da verdade.
+      if (env.GCAL_PUSH_URL) {
+        try {
+          await fetch(env.GCAL_PUSH_URL, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: env.GCAL_PUSH_TOKEN || '', acao: 'criar', dia, hora, nome, telefone, assunto })
+          });
+        } catch {}
+      }
       return json({ ok: true, dia, hora, nome });
     }
 
@@ -327,11 +341,47 @@ async function apiPainel(req, env, url) {
     let b; try { b = await req.json(); } catch { return json({ ok: false, erro: 'Envio inválido.' }, 400); }
     const id = parseInt(b.id, 10);
     if (!id) return json({ ok: false, erro: 'Registro inválido.' }, 400);
+    // Guarda os dados antes de apagar, para avisar o Google Agenda do cancelamento.
+    const reg = await env.DB.prepare('SELECT dia, hora, nome FROM agendamentos WHERE rowid = ?').bind(id).first();
     await env.DB.prepare('DELETE FROM agendamentos WHERE rowid = ?').bind(id).run();
+    if (reg && env.GCAL_PUSH_URL) {
+      try {
+        await fetch(env.GCAL_PUSH_URL, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: env.GCAL_PUSH_TOKEN || '', acao: 'cancelar', dia: reg.dia, hora: reg.hora, nome: reg.nome })
+        });
+      } catch {}
+    }
     return json({ ok: true });
   }
 
   return json({ ok: false, erro: 'Rota não encontrada.' }, 404);
+}
+
+/* ---------------- YouTube: últimos vídeos do canal (RSS, sem chave) ------ */
+
+const YT_CANAL = 'UCVhg_pXYt3DkfWpr9-URAkw'; // @despachante100milhas9
+
+async function apiYoutube() {
+  try {
+    // 1º caminho: RSS oficial do canal (leve, estável, sem chave de API)
+    const r = await fetch('https://www.youtube.com/feeds/videos.xml?channel_id=' + YT_CANAL,
+      { cf: { cacheTtl: 1800, cacheEverything: true } });
+    const xml = r.ok ? await r.text() : '';
+    let videos = [...xml.matchAll(/<entry>[\s\S]*?<yt:videoId>([\w-]{11})<\/yt:videoId>[\s\S]*?<title>([^<]*)<\/title>[\s\S]*?<published>([^<]*)<\/published>/g)]
+      .map(m => ({ id: m[1], title: m[2], published: m[3] }));
+    // 2º caminho: Shorts nem sempre entram no RSS — raspa a página do canal
+    if (!videos.length) {
+      const p = await fetch('https://www.youtube.com/@despachante100milhas9/videos',
+        { headers: { 'User-Agent': 'Mozilla/5.0' }, cf: { cacheTtl: 1800, cacheEverything: true } });
+      const html = p.ok ? await p.text() : '';
+      const ids = [...new Set([...html.matchAll(/"videoId":"([\w-]{11})"/g)].map(m => m[1]))];
+      videos = ids.map(id => ({ id, title: '', published: '' }));
+    }
+    return json({ ok: true, canal: 'https://www.youtube.com/@despachante100milhas9', videos: videos.slice(0, 6) });
+  } catch {
+    return json({ ok: false, videos: [] });
+  }
 }
 
 export default {
@@ -342,6 +392,7 @@ export default {
       catch { return json({ ok: false, erro: 'Erro interno.' }, 500); }
     }
     if (url.pathname.startsWith('/api/agenda')) return apiAgenda(req, env, url);
+    if (url.pathname === '/api/youtube') return apiYoutube();
     return env.ASSETS.fetch(req);
   }
 };
