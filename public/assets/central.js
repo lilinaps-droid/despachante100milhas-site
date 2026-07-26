@@ -127,8 +127,6 @@
     // ---------- RESULTADOS ----------
     r_pcd: {
       fim:true, tom:'quente', canal:'pcd',
-      oferta:{href:'https://chk.eduzz.com/G92KOVRXWE', tag:'Caminho rápido', titulo:'Diagnóstico de Direitos PCD',
-        desc:'Relatório objetivo do seu caso, analisado pela nossa equipe e entregue no seu WhatsApp.', preco:'R$ 47'},
       link:{href:'/isencaopcd/simulador', txt:'Ver o diagnóstico detalhado do meu caso'},
       titulo:'Seu caso apresenta elementos que merecem análise especializada.',
       texto:'As condições que você descreveu estão entre as que costumam dar direito à isenção de IPI, ICMS e IPVA. <strong>Isso não é uma aprovação</strong> — quem aprova é o órgão, com base no laudo. Mas é caminho suficiente para valer a análise.<br><br><strong>E existe um prazo:</strong> as regras atuais valem até 31/12/2026.',
@@ -136,8 +134,6 @@
     },
     r_ir: {
       fim:true, tom:'quente', canal:'pcd',
-      oferta:{href:'https://chk.eduzz.com/G92KOVRXWE', tag:'Caminho rápido', titulo:'Diagnóstico de Direitos PCD',
-        desc:'Isenções e direitos do seu caso num relatório objetivo, analisado pela equipe, no seu WhatsApp.', preco:'R$ 47'},
       titulo:'Vale a pena olhar o seu caso.',
       texto:'A Lei 7.713/88 prevê isenção de Imposto de Renda para aposentados e pensionistas com doenças graves — e o entendimento dos tribunais é de que a isenção se mantém mesmo com a doença controlada. Pode haver, ainda, valores dos últimos 5 anos a recuperar.<br><br><strong>Não é promessa.</strong> É um caminho que precisa ser analisado com a sua documentação.',
       msg:'Olá Lili! Passei pela Central e quero analisar meu caso de isenção de Imposto de Renda.'
@@ -201,9 +197,6 @@
               '<div class="selo-r">'+n.titulo+'</div><p>'+n.texto+'</p>' +
             '</div>' +
             (linhas ? '<div class="resumo"><h4>O que eu já entendi do seu caso</h4>'+linhas+'</div>' : '') +
-            (n.oferta ? '<a class="oferta-lili" target="_blank" rel="noopener" href="'+n.oferta.href+'">' +
-              '<span class="of-tag">'+n.oferta.tag+'</span><b>'+n.oferta.titulo+'</b>' +
-              '<span class="of-desc">'+n.oferta.desc+'</span><span class="of-preco">'+n.oferta.preco+'</span></a>' : '') +
             (n.link ? '<a class="btn btn-roxo btn-bloco" href="'+n.link.href+'">'+n.link.txt+'</a>' : '') +
             '<a class="btn btn-ouro btn-bloco" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone='+zapNum+'&text='+encodeURIComponent(texto)+'">Continuar no WhatsApp — a Lili já sabe do seu caso</a>' +
             '<p class="aviso-legal">Esta é uma orientação preliminar de caráter geral, com base nas suas respostas. <strong>Não constitui parecer jurídico nem garantia de aprovação.</strong> Cada caso é analisado individualmente pela nossa equipe. A Despachante 100 Milhas é uma empresa privada de assessoria e não representa o DETRAN.</p>' +
