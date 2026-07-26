@@ -1755,43 +1755,9 @@ header{
   .menu .btn-cliente{display:block;text-align:center;margin-top:14px}
 }
 
-/* v16 — CABEÇALHO PREMIUM RECUPERADO (v12) + menus legíveis no escuro.
-   Histórico: o v15.2 embranquecia o header com !important porque o menu v15
-   tinha texto escuro (ilegível sobre o roxo). Aqui corrigimos a CAUSA: o
-   header volta ao roxo do v12 e os textos do menu ficam claros. */
-header{
-  background:linear-gradient(180deg,rgba(22,2,31,.97),rgba(43,6,64,.95));
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(212,175,55,.45);
-  box-shadow:0 6px 28px rgba(20,2,31,.5)
-}
-.menu>a,.menu .nav-top{color:#EDE4F6}
-.menu>a:hover,.menu>a[aria-current="page"]{color:#fff;border-color:var(--dourado)}
-.menu .nav-grupo:hover .nav-top,.menu .nav-grupo:focus-within .nav-top,
-.menu .nav-grupo.aberto .nav-top,.menu .nav-grupo.ativo .nav-top{color:#fff;border-color:var(--dourado)}
-/* dropdown premium escuro, contínuo com o header */
-.menu .nav-drop{
-  background:linear-gradient(180deg,rgba(38,5,58,.99),rgba(26,3,39,.99));
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 18px 48px rgba(10,1,16,.55)
-}
-.menu .nav-drop a{color:#E4D6F2}
-.menu .nav-drop a:hover,.menu .nav-drop a[aria-current="page"]{
-  background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 3px 0 0 var(--dourado)
-}
-/* Área do Cliente: roxo sólido com texto branco (pedido do dono) */
-.menu .btn-cliente{background:var(--roxo);color:#fff;border:1.6px solid rgba(255,255,255,.25)}
-.menu .btn-cliente:hover{background:var(--roxo-claro);color:#fff;box-shadow:0 8px 22px rgba(106,13,173,.5)}
-/* menu mobile: painel e divisórias no escuro (o v15 usava linhas claras de header branco) */
-@media(max-width:1024px){
-  .menu{background:linear-gradient(180deg,var(--roxo-fundo),var(--roxo-escuro))}
-}
-@media(max-width:720px){
-  .menu{background:var(--roxo-fundo);border-bottom:2px solid var(--dourado)}
-  .menu a{border-color:rgba(255,255,255,.12)}
-  .menu .nav-top{border-bottom:1px solid rgba(255,255,255,.12)}
-  .menu .nav-drop a{border-bottom:1px solid rgba(255,255,255,.08);color:#DCCFEA}
-}
+/* v15.2 — cabeçalho sólido: corrige menu ilegível no topo da home (escuro no escuro) */
+header{background:rgba(255,255,255,.97)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.menu .nav-top,.menu>a{color:var(--texto)}
 
 /* v15.2b — WhatsApp legível + logo header com destaque */
 .btn-zap{background:#25D366!important;color:#fff!important;font-weight:700!important}
