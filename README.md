@@ -19,7 +19,7 @@ Tudo é gerado por um único script:
 python3 gerar.py
 ```
 
-Ele reescreve os 13 `index.html` dentro de `public/`.
+Ele reescreve os 15 `index.html` dentro de `public/`.
 **Nunca edite os `index.html` à mão** — são sobrescritos.
 
 | O que mudar | Onde |
@@ -44,11 +44,12 @@ Ele reescreve os 13 `index.html` dentro de `public/`.
 4. **Zero rastreio antes do consentimento LGPD.**
 5. **Não publicar número que não pode ser comprovado.**
 
-## Páginas (13)
+## Páginas (15)
 
 `/` · `/central` · `/licenciamento` · `/ipva` · `/debitos` · `/transferencia`
-`/isencaopcd` · `/isencaopcd/2027` · `/impostoderenda` · `/cnh-suspensa`
-`/recursos` · `/quem-somos` · `/privacidade`
+`/isencaopcd` · `/isencaopcd/2027` · `/isencaopcd/simulador` · `/impostoderenda`
+`/cnh-suspensa` · `/recursos` · `/quem-somos` · `/privacidade`
+`/agenda` (área restrita da equipe)
 
 ## Rollback
 
