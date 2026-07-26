@@ -152,17 +152,7 @@
   ];
 
   function norm(x){ return (x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-  D.forEach(function(d){
-    d.k = norm(d.n + ' ' + d.c + ' ' + d.s.join(' '));
-    // Expande faixas de CID (ex.: "M15–M19") em códigos individuais,
-    // para quem digita o código exato do laudo (ex.: "M17") encontrar.
-    var fx = d.c.match(/([A-Za-z])(\d{2})\s*[–-]\s*[A-Za-z]?(\d{2})/);
-    if(fx){
-      var cods = [];
-      for(var ci = +fx[2]; ci <= +fx[3]; ci++){ cods.push(fx[1].toLowerCase() + (ci < 10 ? '0' : '') + ci); }
-      d.k += ' ' + cods.join(' ');
-    }
-  });
+  D.forEach(function(d){ d.k = norm(d.n + ' ' + d.c + ' ' + d.s.join(' ')); });
 
   var POP = ['amputacao','artrose','hernia de disco','problemas de coluna','acidente vascular','autismo','cegueira','parkinson'];
   var TAG = { v:'Costuma enquadrar', a:'Depende da análise do laudo' };
