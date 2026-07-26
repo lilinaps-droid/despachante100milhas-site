@@ -26,6 +26,7 @@
         {i:'moeda', t:'Sou aposentado ou pensionista', s:'Veja se faz sentido analisar a isenção de Imposto de Renda.', c:'Quero descobrir', ir:'ir_doenca'},
         {i:'balanca', t:'Recebi multa ou notificação da CNH', s:'Suspensão, cassação, pontos ou recurso.', c:'Analisar meu caso', ir:'cnh_tipo'},
         {i:'doc', t:'Preciso resolver documentos do veículo', s:'Transferência, IPVA, licenciamento, segunda via e regularização.', c:'Ver meu caminho', ir:'doc_tipo'},
+        {i:'moeda', t:'Quero me aposentar (PCD)', s:'Regras especiais de tempo e idade para pessoa com deficiência.', c:'Ver meu caminho', ir:'prev_tempo'},
         {i:'chat', t:'Não sei bem o que preciso', s:'Conte a sua situação e a Central ajuda a organizar.', c:'Conversar com a Central', ir:'geral'}
       ]
     },
@@ -89,6 +90,27 @@
       ]
     },
 
+    // ---- PREVIDÊNCIA PCD ----
+    prev_tempo: {
+      p: 'Há quanto tempo você contribui para o INSS?',
+      d: 'Com deficiência, o tempo exigido cai — a partir de 20 anos (mulher) e 25 (homem) no grau grave.',
+      o: [
+        {t:'Mais de 20 anos', ir:'prev_grau', set:{contribuicao:'mais de 20 anos'}},
+        {t:'Entre 10 e 20 anos', ir:'prev_grau', set:{contribuicao:'entre 10 e 20 anos'}},
+        {t:'Menos de 10 anos', ir:'prev_grau', set:{contribuicao:'menos de 10 anos'}},
+        {t:'Não sei ao certo', ir:'prev_grau', set:{contribuicao:'a levantar no CNIS'}}
+      ]
+    },
+    prev_grau: {
+      p: 'A deficiência acompanha você há muito tempo?',
+      d: 'O grau (leve, moderado ou grave) quem define é a perícia do INSS — aqui é só para orientar o caminho.',
+      o: [
+        {t:'Sim, desde sempre ou há muitos anos', ir:'r_prev', set:{deficiencia:'de longa data'}},
+        {t:'Começou depois que eu já trabalhava', ir:'r_prev', set:{deficiencia:'adquirida durante a vida de trabalho'}},
+        {t:'Prefiro explicar no WhatsApp', ir:'r_prev', set:{deficiencia:'a detalhar'}}
+      ]
+    },
+
     // ---- CNH ----
     cnh_tipo: {
       p: 'O que você recebeu?',
@@ -129,7 +151,7 @@
       fim:true, tom:'quente', canal:'pcd',
       link:{href:'/isencaopcd/simulador', txt:'Ver o diagnóstico detalhado do meu caso'},
       titulo:'Seu caso apresenta elementos que merecem análise especializada.',
-      texto:'As condições que você descreveu estão entre as que costumam dar direito à isenção de IPI, ICMS e IPVA. <strong>Isso não é uma aprovação</strong> — quem aprova é o órgão, com base no laudo. Mas é caminho suficiente para valer a análise.<br><br><strong>E existe um prazo:</strong> as regras atuais valem até 31/12/2026.',
+      texto:'As condições que você descreveu estão entre as que costumam dar direito à isenção de IPI, ICMS e IPVA. <strong>Isso não é uma aprovação</strong> — quem aprova é o órgão, com base no laudo. Mas é caminho suficiente para valer a análise.<br><br><strong>Próximos passos:</strong> ① laudo com CID e limitação funcional descrita ② documentos básicos (RG, CPF, endereço, CNH se dirigir) ③ análise do teto do carro.<br><br><strong>E existe um prazo:</strong> as regras atuais valem até 31/12/2026.',
       msg:'Olá Lili! Passei pela Central e quero a análise do meu caso de isenção PCD.'
     },
     r_ir: {
@@ -137,6 +159,13 @@
       titulo:'Vale a pena olhar o seu caso.',
       texto:'A Lei 7.713/88 prevê isenção de Imposto de Renda para aposentados e pensionistas com doenças graves — e o entendimento dos tribunais é de que a isenção se mantém mesmo com a doença controlada. Pode haver, ainda, valores dos últimos 5 anos a recuperar.<br><br><strong>Não é promessa.</strong> É um caminho que precisa ser analisado com a sua documentação.',
       msg:'Olá Lili! Passei pela Central e quero analisar meu caso de isenção de Imposto de Renda.'
+    },
+    r_prev: {
+      fim:true, tom:'quente', canal:'pcd',
+      link:{href:'/previdencia-pcd', txt:'Simular minha aposentadoria PCD agora'},
+      titulo:'Seu caso merece uma simulação de verdade.',
+      texto:'A aposentadoria da pessoa com deficiência (LC 142/2013) exige menos tempo de contribuição — e muita gente cumpre os requisitos sem saber. <strong>Não é promessa:</strong> o grau quem define é a perícia. Mas dá para simular agora e ver em que pé você está.<br><br><strong>Próximos passos:</strong> ① reunir laudos antigos e novos ② puxar o CNIS ③ simular as duas portas (tempo e idade).',
+      msg:'Olá Lili! Passei pela Central e quero analisar minha aposentadoria PCD.'
     },
     r_cnh: {
       fim:true, tom:'urgente',
@@ -238,7 +267,9 @@
       });
     }
 
-    pintar('inicio');
+    // Lili TOP: se a página já diz o assunto, a conversa começa nele.
+    var inicial = raiz.dataset.inicio && F[raiz.dataset.inicio] ? raiz.dataset.inicio : 'inicio';
+    pintar(inicial);
   }
 
   window.montarCentralLili = montar;

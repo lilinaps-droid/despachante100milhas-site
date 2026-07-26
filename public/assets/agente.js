@@ -56,7 +56,22 @@
   function abrir(){
     if(aberto) return;
     aberto = true;
-    if(!montada){ window.montarCentralLili(pan.querySelector('.lili-corpo')); montada = true; }
+    if(!montada){
+      var corpo = pan.querySelector('.lili-corpo');
+      // Lili TOP: em página de assunto claro, a conversa já começa nele
+      var mapa = [
+        [/^\/isencaopcd\/simulador/, null],            // simuladores: fluxo próprio, entrada geral
+        [/^\/isencaopcd|^\/carros-pcd/, 'pcd_quem'],
+        [/^\/impostoderenda/, 'ir_doenca'],
+        [/^\/previdencia-pcd/, 'prev_tempo'],
+        [/^\/cnh-suspensa|^\/recursos/, 'cnh_tipo'],
+        [/^\/licenciamento|^\/ipva|^\/debitos|^\/transferencia/, 'doc_tipo']
+      ];
+      for(var mi=0; mi<mapa.length; mi++){
+        if(mapa[mi][0].test(location.pathname)){ if(mapa[mi][1]) corpo.dataset.inicio = mapa[mi][1]; break; }
+      }
+      window.montarCentralLili(corpo); montada = true;
+    }
     pan.classList.add('aberto');
     fundo.classList.add('aberto');
     lan.setAttribute('aria-expanded','true');
