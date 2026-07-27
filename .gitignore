@@ -6,3 +6,11 @@ public_backup_*/
 .wrangler/
 _backup_tmp/
 _git_locks_movidos/
+
+# artefatos temporarios e backups (nao versionar)
+.fuse_hidden*
+_backup_*.tgz
+__pycache__/
+*.bak
+*.bak-*
+*.tgz
