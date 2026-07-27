@@ -201,8 +201,8 @@ section{padding:72px 0}
 
 /* ---------- LISTAS ---------- */
 .lista{list-style:none;display:grid;gap:12px}
-.lista li{display:flex;gap:12px;align-items:flex-start;font-size:.99rem}
-.lista li::before{content:"✓";color:var(--dourado);font-weight:800;flex:none;margin-top:1px}
+.lista li{position:relative;padding-left:26px;font-size:.99rem;line-height:1.5}
+.lista li::before{content:"✓";position:absolute;left:0;top:1px;color:var(--dourado);font-weight:800}
 .pilulas{display:flex;flex-wrap:wrap;gap:8px}
 .pilula{background:#fff;border:1px solid var(--linha);border-radius:100px;padding:8px 16px;font-size:.9rem;font-weight:500}
 .sec-escura .pilula{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff}
@@ -1488,7 +1488,7 @@ header{
 .burger:hover{background:rgba(255,255,255,.1)}
 @media(max-width:1180px){ .menu{gap:12px} .menu a{font-size:.8rem} }
 /* com 7 divisões o menu recolhe mais cedo */
-@media(max-width:1024px){
+@media(max-width:1150px){
   .menu{
     display:none;position:absolute;top:100%;left:0;right:0;
     background:var(--roxo-fundo);flex-direction:column;align-items:stretch;gap:0;
@@ -1501,7 +1501,7 @@ header{
   .burger{display:block}
   .nav{position:relative}
 }
-@media(max-width:720px){ .menu{background:var(--roxo-fundo)} .menu a{border-color:rgba(255,255,255,.1)} }
+@media(max-width:1150px){ .menu{background:var(--roxo-fundo)} .menu a{border-color:rgba(255,255,255,.1)} }
 
 /* Rodapé: logo direta no roxo (o branco é da própria placa) */
 .foot-logo-img{height:44px;width:auto;flex:none}
