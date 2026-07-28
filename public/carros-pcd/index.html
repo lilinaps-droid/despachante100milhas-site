@@ -25,7 +25,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/assets/estilo.css?v=46">
+<link rel="stylesheet" href="/assets/estilo.css?v=43">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -97,111 +97,101 @@
 .cp-atualizado{background:#f3ebfb;color:var(--roxo);font-weight:600;padding:6px 13px;border-radius:30px}
 .cp-aviso-full{background:#fff;border:1px dashed #d9c9ee;border-radius:14px;padding:15px 18px;margin-top:14px;font-size:.8rem;color:var(--texto-suave);line-height:1.55}
 .cp-aviso-full b{color:var(--roxo)}
-/* ===== Calculadora IPVA PCD — passo a passo ===== */
-.cp-calc{background:linear-gradient(160deg,#f3ebfb,#efe6fb);padding:46px 0 50px}
-.calc-head{text-align:center;max-width:720px;margin:0 auto 26px}
-.calc-eyebrow{display:inline-block;background:var(--roxo);color:#fff;font-family:'Montserrat';font-weight:700;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:6px 14px;border-radius:30px;margin-bottom:14px}
-.calc-head h2{font-family:'Montserrat';font-weight:800;font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.15;color:var(--roxo-fundo)}
-.calc-head h2 em{font-style:normal;color:var(--roxo)}
-.calc-head>p{color:var(--texto-suave);margin:12px auto 0;font-size:1.02rem;line-height:1.55}
-/* stepper */
-.calc-steps{display:flex;align-items:center;justify-content:center;gap:0;max-width:640px;margin:0 auto 22px;padding:0;list-style:none}
-.cs-step{display:flex;align-items:center;gap:9px;color:var(--texto-suave);font-family:'Montserrat';font-weight:700;font-size:.82rem;position:relative}
-.cs-step:not(:last-child){flex:1}
-.cs-step:not(:last-child)::after{content:"";flex:1;height:2px;background:#d9c7ee;margin:0 10px;border-radius:2px;transition:.25s}
-.cs-num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#e6d8f6;color:var(--roxo-fundo);font-weight:800;font-size:.9rem;transition:.25s}
-.cs-txt{white-space:nowrap}
-.cs-step.on .cs-num{background:var(--roxo);color:#fff;box-shadow:0 4px 12px rgba(106,13,173,.35)}
-.cs-step.on{color:var(--roxo-fundo)}
-.cs-step.done .cs-num{background:var(--dourado);color:#2B0640}
-.cs-step.done:not(:last-child)::after{background:var(--dourado)}
-@media(max-width:560px){.cs-txt{display:none}.cs-step:not(:last-child)::after{margin:0 6px}}
-/* card + panels */
-.calc-card{background:#fff;border-radius:20px;padding:30px 28px;box-shadow:0 14px 40px rgba(58,7,100,.14);border-top:6px solid var(--dourado);max-width:760px;margin:0 auto}
-.calc-panel{display:none;animation:calcIn .3s ease}
-.calc-panel.on{display:block}
-@keyframes calcIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.cp-step-label{font-family:'Montserrat';font-weight:700;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dourado-escuro);margin-bottom:8px}
-.calc-q{font-family:'Montserrat';font-weight:800;font-size:1.35rem;color:var(--roxo-fundo);line-height:1.2}
-.calc-hint{color:var(--texto-suave);font-size:.92rem;line-height:1.55;margin:8px 0 20px}
-/* passo 1 — escolha */
-.calc-choice{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:560px){.calc-choice{grid-template-columns:1fr}}
-.cc-opt{text-align:left;background:#faf6ff;border:2px solid #e6d8f6;border-radius:14px;padding:20px 18px;cursor:pointer;font-family:inherit;transition:.18s;display:flex;flex-direction:column;gap:6px}
-.cc-opt:hover{border-color:var(--roxo);transform:translateY(-2px);box-shadow:0 10px 24px rgba(106,13,173,.12)}
-.cc-opt.sel{border-color:var(--roxo);background:#fff;box-shadow:0 0 0 3px rgba(106,13,173,.15)}
-.cc-ic{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--roxo-meio,#8a2be2),var(--roxo-fundo));display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:4px}
-.cc-ic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8}
-.cc-opt b{font-family:'Montserrat';font-weight:800;font-size:1.05rem;color:var(--roxo-fundo)}
-.cc-opt>span:last-child{color:var(--texto-suave);font-size:.85rem;line-height:1.45}
-/* passo 2 — campos */
-.calc-fields{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
-.calc-field{flex:1;min-width:200px}
-.calc-field label{display:block;font-family:'Montserrat';font-size:.84rem;font-weight:700;margin-bottom:7px;color:var(--roxo-fundo)}
-.calc-inwrap{position:relative;display:flex;align-items:center}
-.calc-cifra{position:absolute;left:14px;font-family:'Montserrat';font-weight:700;color:var(--roxo);font-size:1.05rem;pointer-events:none}
-.calc-field input,.calc-field select{width:100%;padding:15px 14px;border:1.5px solid #e2d5f0;border-radius:12px;font-size:1.15rem;font-family:'Montserrat';font-weight:700;color:var(--texto);background:#fff}
-.calc-field input{padding-left:44px}
-.calc-field input:focus,.calc-field select:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 3px rgba(106,13,173,.12)}
-.calc-chk{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;font-weight:500;margin:18px 0 4px;color:var(--roxo-fundo);cursor:pointer;background:#faf6ff;border:1px solid #e6d8f6;border-radius:12px;padding:13px 15px}
-.calc-chk input{width:19px;height:19px;margin-top:1px;flex:0 0 19px;accent-color:var(--roxo)}
-.calc-nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
-.calc-back{background:transparent;border:0;color:var(--roxo);font-family:'Montserrat';font-weight:700;font-size:.92rem;cursor:pointer;padding:12px 6px}
-.calc-back:hover{text-decoration:underline}
-.calc-go{margin-left:auto;background:linear-gradient(135deg,var(--dourado-claro),var(--dourado) 60%,var(--dourado-escuro));color:#2B0640;border:0;border-radius:30px;padding:15px 32px;font-family:'Montserrat';font-weight:800;font-size:1.02rem;cursor:pointer;box-shadow:0 8px 20px rgba(212,175,55,.35);transition:.15s}
-.calc-go:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(212,175,55,.45)}
-.calc-zap{margin-left:auto;display:inline-flex;align-items:center;gap:8px;background:var(--roxo);color:#fff;text-decoration:none;border-radius:30px;padding:14px 26px;font-family:'Montserrat';font-weight:700;font-size:.95rem;transition:.15s}
-.calc-zap:hover{background:var(--roxo-fundo)}
-@media(max-width:560px){.calc-go,.calc-zap{margin-left:0;width:100%;justify-content:center;text-align:center}.calc-nav{flex-direction:column-reverse}.calc-back{width:100%;text-align:center}}
-/* passo 3 — resultado */
-.calc-msg{background:#fff5f5;border:1px solid #f3c9c9;color:#b2222c;border-radius:12px;padding:14px 16px;font-size:.92rem;font-weight:600}
-.res-hero{border-radius:16px;padding:22px 24px;color:#fff;text-align:center;background:linear-gradient(135deg,var(--roxo-fundo),var(--roxo-escuro))}
-.res-hero.ok{background:linear-gradient(135deg,#0f7a4d,#0a5d3a)}
-.res-hero.hi{background:linear-gradient(135deg,#7a1f2b,#5d1520)}
-.res-lbl{display:block;font-family:'Montserrat';font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;opacity:.9}
-.res-val{display:block;font-family:'Montserrat';font-weight:800;font-size:clamp(2.2rem,7vw,3.1rem);line-height:1.05;margin:6px 0 4px;color:var(--dourado-claro)}
-.res-hero.ok .res-val{color:#8ff5c0}
-.res-sub{display:block;font-size:.95rem;opacity:.95;line-height:1.5;max-width:460px;margin:0 auto}
-.res-sub b{color:#fff}
-/* faixa visual */
-.res-band{display:flex;gap:6px;margin:20px 0 4px}
-.res-band .rb{flex:1;border-radius:10px;padding:11px 10px;text-align:center;border:2px solid transparent;background:#f3ebfb;transition:.2s}
-.res-band .rb small{display:block;font-size:.68rem;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:.02em}
-.res-band .rb b{display:block;font-family:'Montserrat';font-size:.9rem;color:var(--roxo-fundo);margin-top:3px}
-.res-band .rb.act[data-c="ok"]{background:#e3f7ec;border-color:#0f7a4d}
-.res-band .rb.act[data-c="mid"]{background:#fff4e0;border-color:var(--dourado-escuro)}
-.res-band .rb.act[data-c="hi"]{background:#fce8ea;border-color:#b2222c}
-.res-band .rb.act::after{content:"◄ seu carro";display:block;font-size:.62rem;font-weight:800;color:var(--roxo-fundo);margin-top:5px;letter-spacing:.02em}
-/* a conta */
-.res-conta{margin-top:22px;border:1px solid #ece4f6;border-radius:14px;overflow:hidden}
-.res-conta h4{font-family:'Montserrat';font-weight:800;font-size:1rem;color:#fff;background:var(--roxo);margin:0;padding:12px 16px;display:flex;align-items:center;gap:8px}
-.rc-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px;border-top:1px solid #f0eaf8;font-size:.92rem}
-.rc-row:nth-child(2){border-top:0}
-.rc-row .rc-k{color:var(--texto-suave)}
-.rc-row .rc-k small{display:block;font-size:.76rem;opacity:.85}
-.rc-row .rc-v{font-family:'Montserrat';font-weight:700;color:var(--roxo-fundo);white-space:nowrap;text-align:right}
-.rc-row.rc-total{background:#faf6ff;border-top:2px solid var(--dourado)}
-.rc-row.rc-total .rc-k{font-family:'Montserrat';font-weight:800;color:var(--roxo-fundo)}
-.rc-row.rc-total .rc-v{font-size:1.35rem;color:var(--roxo)}
-.rc-row.rc-total.ok .rc-v{color:#0f7a4d}
-/* a lei — painel permanente */
-.calc-lei{max-width:760px;margin:26px auto 0;background:#fff;border:1px solid #ece4f6;border-radius:18px;padding:24px 26px;box-shadow:0 6px 24px rgba(106,13,173,.06)}
-.calc-lei h3{font-family:'Montserrat';font-weight:800;font-size:1.15rem;color:var(--roxo-fundo)}
-.calc-lei>p{color:var(--texto-suave);font-size:.92rem;line-height:1.55;margin:6px 0 16px}
-.calc-faixas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:640px){.calc-faixas{grid-template-columns:1fr}}
-.cf{border-radius:12px;padding:15px 15px;border:1.5px solid #ece4f6;background:#faf6ff}
-.cf[data-faixa="ok"]{border-color:#bfe6cf;background:#eef9f2}
-.cf[data-faixa="mid"]{border-color:#f0dcae;background:#fdf7ea}
-.cf[data-faixa="hi"]{border-color:#f0c9ce;background:#fdeef0}
-.cf-tag{display:inline-block;font-family:'Montserrat';font-weight:700;font-size:.72rem;color:var(--roxo-fundo);background:rgba(255,255,255,.7);border-radius:20px;padding:4px 11px;margin-bottom:8px}
-.cf>b{display:block;font-family:'Montserrat';font-weight:800;font-size:1.05rem;color:var(--roxo-fundo)}
-.cf[data-faixa="ok"]>b{color:#0f7a4d}
-.cf[data-faixa="hi"]>b{color:#b2222c}
-.cf-desc{display:block;color:var(--texto-suave);font-size:.85rem;line-height:1.5;margin-top:5px}
-.simu-legal{max-width:760px;margin:16px auto 0;font-size:.74rem;color:var(--texto-suave);line-height:1.55;text-align:center}
+.cp-calc{background:linear-gradient(160deg,#f3ebfb,#efe6fb)}
+.cp-calc-card{background:#fff;border-radius:18px;padding:26px 24px;box-shadow:0 10px 34px rgba(58,7,100,.12);border-top:5px solid var(--dourado)}
+.cp-calc-card h2{font-family:'Montserrat';font-weight:800;font-size:1.35rem;color:var(--roxo-fundo)}
+.cp-calc-card>p{color:var(--texto-suave);margin:6px 0 18px;font-size:.95rem}
+.simu-tipo{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.s-tab{background:#f3ebfb;color:var(--roxo-fundo);border:1.5px solid #e2d5f0;border-radius:30px;padding:9px 16px;font-family:'Montserrat';font-weight:700;font-size:.85rem;cursor:pointer}
+.s-tab.ativo{background:var(--roxo);color:#fff;border-color:var(--roxo)}
+.simu-row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.simu-field{flex:1;min-width:200px}
+.simu-field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;color:var(--roxo-fundo)}
+.simu-field input,.simu-field select{width:100%;padding:13px 14px;border:1.5px solid #e2d5f0;border-radius:10px;font-size:1.05rem;font-family:'Montserrat';color:var(--texto);background:#fff}
+.simu-chk{display:flex;align-items:center;gap:9px;font-size:.88rem;font-weight:500;margin:14px 0 4px;color:var(--roxo-fundo)}
+.simu-chk input{width:18px;height:18px}
+#s-btn{background:linear-gradient(135deg,var(--dourado-claro),var(--dourado) 60%,var(--dourado-escuro));color:#2B0640;border:0;border-radius:30px;padding:14px 30px;font-family:'Montserrat';font-weight:700;font-size:1rem;cursor:pointer;height:50px}
+.cp-calc-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.simu-out{margin-top:16px}
+.s-msg{background:#f3ebfb;border-radius:10px;padding:12px 14px;font-size:.9rem;color:var(--roxo-fundo)}
+.s-res{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--roxo-fundo);color:#fff;border:1px solid rgba(212,175,55,.5);border-radius:12px;padding:14px 18px}
+.s-res .s-lbl{font-size:.78rem;opacity:.85;text-transform:uppercase;letter-spacing:.04em}
+.s-res .s-val{font-family:'Montserrat';font-weight:800;font-size:1.7rem;color:var(--dourado-claro)}
+.s-res.ok .s-val{color:#7ff0b5}
+.s-faixa{margin-top:10px;font-size:.88rem;color:var(--texto-suave);line-height:1.5}
+.simu-legal{margin-top:14px;font-size:.72rem;color:var(--texto-suave);line-height:1.5}
 @media(max-width:980px){.cp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.cp-grid{grid-template-columns:1fr}.cp-hero{padding:34px 0 30px}}
+
+/* ===== VITRINE PREMIUM v6 — fundo branco, foto oficial protagonista ===== */
+.cp-vitrine{background:linear-gradient(180deg,#ffffff 0%,#faf8fd 60%,#f3eef9 100%)}
+.cp-vitrine .wrap{max-width:1280px}
+.cp-filtros,.pc-filtros{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:4px 0 18px}
+.pc-fil{background:#fff;border:1.5px solid #e6ddf1;color:#4a3d63;border-radius:30px;padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;transition:.15s;box-shadow:0 1px 2px rgba(43,6,64,.04)}
+.pc-fil:hover{border-color:#8b3fd0;color:#2B0640;transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,63,208,.16)}
+.pc-fil:focus-visible{outline:2px solid #8b3fd0;outline-offset:2px}
+.pc-fil.on{background:linear-gradient(135deg,#6A0DAD,#3D0A5C);color:#fff;border-color:#6A0DAD;box-shadow:0 6px 16px rgba(106,13,173,.28)}
+.pc-fab{margin-left:auto;background:#fff;border:1.5px solid #e6ddf1;color:#4a3d63;border-radius:30px;padding:9px 14px;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer}
+
+.cp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:6px}
+@media(max-width:1180px){.cp-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:820px){.cp-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+@media(max-width:430px){.cp-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+.pc{position:relative;background:#fff;border:1px solid #eee7f5;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(43,6,64,.06);transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s}
+.pc:hover{transform:translateY(-8px);box-shadow:0 26px 50px rgba(43,6,64,.18)}
+.pc-media{position:relative;aspect-ratio:1200/680;background:linear-gradient(180deg,#ffffff 0%,#f6f7fa 100%);overflow:hidden}
+.pc-img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-seal{position:absolute;top:12px;left:12px;z-index:3;display:inline-flex;align-items:center;gap:5px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.6px;padding:7px 12px;border-radius:9px;line-height:1;text-transform:uppercase;box-shadow:0 6px 16px rgba(43,6,64,.18)}
+.pc-seal-gold{background:linear-gradient(135deg,#F6E39A,#D4AF37 55%,#A87F1E);color:#3a2b06;border:1px solid rgba(255,255,255,.35)}
+.pc-seal-roxo{background:linear-gradient(135deg,#8a2be0,#4a0d6b);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pc-seal-lilas{background:rgba(255,255,255,.9);color:#6A0DAD;border:1px solid rgba(106,13,173,.28);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pc-fav{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid #eadff6;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;box-shadow:0 3px 10px rgba(43,6,64,.10)}
+.pc-fav svg{width:19px;height:19px;fill:none;stroke:#9a8caa;stroke-width:2}
+.pc-fav:hover{transform:scale(1.08)}
+.pc-fav.on svg{fill:#e0396f;stroke:#e0396f}
+.pc-info{padding:15px 16px 16px;display:flex;flex-direction:column;flex:1}
+.pc-brand{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:2.4px;color:#B8942B;text-transform:uppercase}
+.pc-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.34rem;line-height:1.18;color:#1b1330;margin:5px 0 10px;letter-spacing:-.3px}
+.pc-price{margin-top:2px}
+.pc-old{font-family:'DM Sans',sans-serif;font-size:.84rem;color:#a99fb8;text-decoration:line-through}
+.pc-now{font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.3rem;line-height:1;color:#4a0d6b;letter-spacing:-1.4px;margin:1px 0 3px}
+.pc-plabel{font-family:'DM Sans',sans-serif;font-size:.74rem;color:#8b8598;line-height:1.45}
+.pc-eco{display:inline-flex;align-items:center;gap:6px;margin:11px 0 3px;background:#e8f7ee;color:#0f7a42;border:1px solid #cdeed9;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;padding:7px 12px;border-radius:9px}
+.pc-eco b{font-weight:800}
+.pc-eco-ic{font-size:.9rem;line-height:1}
+.pc-chips{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 13px}
+.pc-chip{display:inline-flex;align-items:center;gap:6px;background:#f6f2fb;color:#4a3d63;border:1px solid #ece2f7;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.74rem;padding:6px 10px;border-radius:8px}
+.pc-chip i{display:inline-flex;width:14px;height:14px;color:#8b5cc7}
+.pc-chip i svg{width:14px;height:14px}
+.pc-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:15px 16px;border-radius:12px;background:linear-gradient(135deg,#7b1fc9 0%,#5a0f96 55%,#3D0A5C 100%);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.4px;text-decoration:none;overflow:hidden;box-shadow:0 10px 24px rgba(90,15,150,.32);transition:transform .18s, box-shadow .18s, filter .18s}
+.pc-btn::before{content:"";position:absolute;top:0;left:-120%;width:70%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:left .55s}
+.pc-btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(90,15,150,.42);filter:brightness(1.05)}
+.pc-btn:hover::before{left:130%}
+.pc-btn:active{transform:translateY(0)}
+.pc-btn:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}
+.pc-arrow{transition:transform .2s}
+.pc-btn:hover .pc-arrow{transform:translateX(4px)}
+.pc-actions{display:flex;gap:10px;margin-top:11px}
+.pc-act{flex:1;background:#fff;border:1px solid #e9e0f4;color:#6a5c86;border-radius:10px;padding:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.76rem;cursor:pointer;transition:.15s}
+.pc-act:hover{border-color:#8b3fd0;color:#4a0d6b}
+.pc-act.on{background:#f1e7fb;border-color:#8b3fd0;color:#4a0d6b}
+.pc-auth{display:flex;align-items:center;gap:6px;margin-top:12px;padding-top:11px;border-top:1px solid #f1ecf7;font-family:'DM Sans',sans-serif;font-size:.72rem;color:#8b8598}
+.pc-star{width:13px;height:13px;fill:#D4AF37}
+.pc-det{margin-top:10px}
+.pc-det summary{list-style:none;cursor:pointer;text-align:center;color:#8b7fa0;font-size:.76rem;font-weight:600;padding:2px}
+.pc-det summary::-webkit-details-marker{display:none}
+.pc-det-in{margin-top:9px;border-top:1px dashed #ece2f7;padding-top:9px}
+.pc-det-in>div{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:3px 0;color:#8b8598}
+.pc-det-in>div b{color:#1b1330}
+.pc-det-in p{font-size:.72rem;color:#8b8598;margin:8px 0 10px;line-height:1.5}
+.pc-det-in .btn{width:100%;text-align:center;font-size:.8rem;padding:10px}
+.cp-vazio{grid-column:1/-1}
+/* compare bar */
+#pc-cmpbar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(120%);z-index:60;background:#2B0640;color:#fff;border:1px solid rgba(212,175,55,.4);border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 16px 40px rgba(43,6,64,.4);font-family:'DM Sans',sans-serif;font-size:.86rem;transition:transform .25s}
+#pc-cmpbar.show{transform:translateX(-50%) translateY(0)}
+#pc-cmpbar b{color:#F0D97B}
+#pc-cmpbar a{background:linear-gradient(135deg,#F0D97B,#D4AF37);color:#2B0640;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.8rem}
 </style>
 </head>
 <body data-pilar="pcd" data-canal="pcd">
@@ -212,7 +202,7 @@
     <img src="/assets/logo.webp" alt="Despachante 100 Milhas" width="160" height="46">
   </a>
   <button class="burger" aria-label="Abrir menu" aria-expanded="false" id="burger"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <nav class="menu" id="menu"><a href="/">Início</a><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Documento do Veículo</button><div class="nav-drop"><a href="/licenciamento">Licenciamento e CRLV</a><a href="/transferencia">Transferência</a><a href="/debitos">Débitos e IPVA</a><a href="/veiculo-0km">Veículo 0km e Emplacamento</a><a href="/atpv-e">ATPV-e e Comunicação de Venda</a><a href="/segunda-via">2ª Via de Recibo e Placa</a><a href="/placa-mercosul">Placa antiga para Mercosul</a><a href="/placa-especial">Placa de Colecionador/Personalizada</a><a href="/alteracoes">Alteração (cor, motor, chassi)</a><a href="/leilao">Veículo de Leilão</a><a href="/documento-veiculo">Ver tudo do documento</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Isenção PCD</button><div class="nav-drop"><a href="/isencaopcd">Como funciona (IPI, ICMS, IPVA)</a><a href="/carros-pcd" aria-current="page">Carros PCD</a><a href="/isencaopcd/simulador">Simulador de Direitos</a><a href="/isencaopcd/simulador-cid">Consulta por CID</a><a href="/isencaopcd/simulador-ipva">Calculadora de IPVA</a><a href="/direitos-pcd">Direitos do PCD</a><a href="/isencaopcd/2027">O que muda em 2027</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Multas e CNH</button><div class="nav-drop"><a href="/recursos">Recurso de Multa</a><a href="/multas-autossuspensivas">Multas Autossuspensivas</a><a href="/multas-comprador">Multas do Comprador</a><a href="/indicacao-condutor">Indicação de Condutor</a><a href="/bafometro">Bafômetro e Lei Seca</a><a href="/provisoria">Multa na CNH Provisória</a><a href="/cnh-suspensa">CNH Suspensa ou Cassada</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Previdência & IR</button><div class="nav-drop"><a href="/impostoderenda">Isenção de Imposto de Renda</a><a href="/previdencia-pcd">Aposentadoria PCD</a><a href="/previdencia-pcd#calculadora">Calculadora Previdenciária</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">A 100 Milhas</button><div class="nav-drop"><a href="/quem-somos">Quem somos</a><a href="/artigos">Artigos da Lili</a><a href="/videos">Vídeos</a><a href="/central">Central da Lili</a><a href="/privacidade">Política de Privacidade</a></div></div><a class="btn-cliente" href="/app" target="_blank" rel="noopener">Área do Cliente</a><a class="btn-zap" href="https://api.whatsapp.com/send?phone=5513978144035&text=%23site%0A%0AOl%C3%A1%2C%20estou%20no%20site%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>WhatsApp</a></nav>
+  <nav class="menu" id="menu"><a href="/">Início</a><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Documento do Veículo</button><div class="nav-drop"><a href="/licenciamento">Licenciamento e CRLV</a><a href="/transferencia">Transferência</a><a href="/debitos">Débitos e IPVA</a></div></div><div class="nav-grupo ativo"><button type="button" class="nav-top" aria-expanded="false">Isenção PCD</button><div class="nav-drop"><a href="/isencaopcd">Como funciona a isenção</a><a href="/carros-pcd" aria-current="page">Carros PCD</a><a href="/carros-pcd#calculadora-ipva">Calculadora de IPVA</a><a href="/isencaopcd/simulador">Simulador de Direitos</a><a href="/isencaopcd/simulador-cid">Consulta por CID</a><a href="/isencaopcd/2027">O que muda em 2027</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Multas e Pontos</button><div class="nav-drop"><a href="/recursos">Recurso de Multa</a><a href="/recursos#etapas">Defesa Prévia · JARI · CETRAN</a><a href="/recursos#vicios">O que derruba uma multa</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">CNH</button><div class="nav-drop"><a href="/cnh-suspensa">CNH Suspensa ou Cassada</a><a href="/cnh-suspensa#diferenca">Suspensa × Cassada</a><a href="/cnh-suspensa#duvidas">Dúvidas de pontos e prazos</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">Previdência &amp; IR</button><div class="nav-drop"><a href="/impostoderenda">Isenção de Imposto de Renda</a><a href="/previdencia-pcd">Aposentadoria PCD</a><a href="/previdencia-pcd#calculadora">Calculadora Previdenciária</a></div></div><div class="nav-grupo"><button type="button" class="nav-top" aria-expanded="false">A 100 Milhas</button><div class="nav-drop"><a href="/quem-somos">Quem somos</a><a href="/artigos">Artigos da Lili</a><a href="/videos">Vídeos</a><a href="/central">Central da Lili</a><a href="/privacidade">Política de Privacidade</a></div></div><a class="btn-cliente" href="/app" target="_blank" rel="noopener">Área do Cliente</a><a class="btn-zap" href="https://api.whatsapp.com/send?phone=5513978144035&text=%23site%0A%0AOl%C3%A1%2C%20estou%20no%20site%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>WhatsApp</a></nav>
 </div>
 </header>
 <main id="conteudo">
@@ -248,363 +238,324 @@
 <section class="cp-vitrine" id="vitrine">
   <div class="wrap">
     <div class="cabeca centro"><span class="placa">Vitrine</span><h2>Modelos com isenção PCD</h2></div>
-    <div class="cp-filtros" id="cp-filtros" role="group" aria-label="Filtros de carros">
-      <button type="button" class="cp-fil on" data-f="todos">Todos</button>
-      <button type="button" class="cp-fil" data-f="p1">até R$ 90 mil</button>
-      <button type="button" class="cp-fil" data-f="p2">R$ 90 mil a R$ 100 mil</button>
-      <button type="button" class="cp-fil" data-f="p3">R$ 100 mil a R$ 120 mil</button>
-      <button type="button" class="cp-fil" data-f="suv">SUV</button>
-      <button type="button" class="cp-fil" data-f="hatch">Hatch</button>
-      <button type="button" class="cp-fil" data-f="sedan">Sedã</button>
-      <button type="button" class="cp-fil" data-f="automatico">Automático</button>
-      <button type="button" class="cp-fil" data-f="eletrico">Elétrico</button>
+    <div class="pc-filtros" id="cp-filtros" role="group" aria-label="Filtros de carros">
+      <button type="button" class="pc-fil on" data-f="todos">Todos</button>
+      <button type="button" class="pc-fil" data-f="suv">SUV</button>
+      <button type="button" class="pc-fil" data-f="hatch">Hatch</button>
+      <button type="button" class="pc-fil" data-f="sedan">Sedã</button>
+      <button type="button" class="pc-fil" data-f="eletrico">Elétrico</button>
+      <button type="button" class="pc-fil" data-f="hibrido">Híbrido</button>
+      <button type="button" class="pc-fil" data-f="p90">até R$ 90 mil</button>
+      <button type="button" class="pc-fil" data-f="p100">até R$ 100 mil</button>
+      <button type="button" class="pc-fil" data-f="p120">até R$ 120 mil</button>
+      <button type="button" class="pc-fil" data-f="vendidos">Mais vendidos</button>
+      <button type="button" class="pc-fil" data-s="economia">↓ Maior economia</button>
+      <select class="pc-fab" id="pc-fab" aria-label="Fabricante"><option value="">Fabricante</option></select>
     </div>
     <div class="cp-grid" id="cp-grid">
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="99000">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/tracker.webp" alt="Tracker LS 1.0 Turbo Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Chevrolet</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Chevrolet</div>
-          <h3 class="cp-modelo">Tracker LS 1.0 Turbo Automático</h3>
-          <div class="cp-equip">Automático · SUV</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.900</div>
-            <div class="cp-pcd">R$ 99.000</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.996/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Tracker%20LS%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.900</b></div><div><span>Valor estimado no PCD</span><b>R$ 99.000</b></div><div><span>IPVA estimado</span><b>~R$ 1.996/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Tracker%20LS%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="1" data-preco="99000" data-eco="20900" data-marca="Chevrolet" data-nome="Tracker LS 1.0 Turbo Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-gold">★ Mais vendido</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/tracker.webp" alt="Chevrolet Tracker LS 1.0 Turbo Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Chevrolet</div>
+          <h3 class="pc-name">Tracker LS 1.0 Turbo Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.900</div><div class="pc-now">R$ 99.000</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.996/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 20.900</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Tracker%20LS%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Tracker LS 1.0 Turbo Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.900</b></div><div><span>Valor estimado no PCD</span><b>R$ 99.000</b></div><div><span>Você economiza</span><b>R$ 20.900</b></div><div><span>IPVA estimado</span><b>~R$ 1.996/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="104393">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/fastback.webp" alt="Fastback Turbo 200 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Fiat</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Fiat</div>
-          <h3 class="cp-modelo">Fastback Turbo 200 Automático</h3>
-          <div class="cp-equip">Automático · SUV</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 104.393</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Fastback%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.393</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Fastback%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="104393" data-eco="15597" data-marca="Fiat" data-nome="Fastback Turbo 200 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/fastback.webp" alt="Fiat Fastback Turbo 200 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Fiat</div>
+          <h3 class="pc-name">Fastback Turbo 200 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 104.393</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 15.597</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Fastback%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Fastback Turbo 200 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.393</b></div><div><span>Você economiza</span><b>R$ 15.597</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="101132">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/pulse.webp" alt="Pulse Turbo 200 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Fiat</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Fiat</div>
-          <h3 class="cp-modelo">Pulse Turbo 200 Automático</h3>
-          <div class="cp-equip">Automático · SUV</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 101.132</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Pulse%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 101.132</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Pulse%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="1" data-preco="101132" data-eco="18858" data-marca="Fiat" data-nome="Pulse Turbo 200 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-gold">★ Mais vendido</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/pulse.webp" alt="Fiat Pulse Turbo 200 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Fiat</div>
+          <h3 class="pc-name">Pulse Turbo 200 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 101.132</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 18.858</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Pulse%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Pulse Turbo 200 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 101.132</b></div><div><span>Você economiza</span><b>R$ 18.858</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="99990">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/tcross.webp" alt="T-Cross Sense Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Volkswagen</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Volkswagen</div>
-          <h3 class="cp-modelo">T-Cross Sense Automático</h3>
-          <div class="cp-equip">Automático · SUV · vem com multimídia</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 99.990</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20T-Cross%20Sense%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 99.990</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20T-Cross%20Sense%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="1" data-preco="99990" data-eco="20000" data-marca="Volkswagen" data-nome="T-Cross Sense Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-gold">★ Mais vendido</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/tcross.webp" alt="Volkswagen T-Cross Sense Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Volkswagen</div>
+          <h3 class="pc-name">T-Cross Sense Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 99.990</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 20.000</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20T-Cross%20Sense%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="T-Cross Sense Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 99.990</b></div><div><span>Você economiza</span><b>R$ 20.000</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="93930">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/polo.webp" alt="Polo Sense 1.0 TSI Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Volkswagen</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Volkswagen</div>
-          <h3 class="cp-modelo">Polo Sense 1.0 TSI Automático</h3>
-          <div class="cp-equip">Automático · Hatch</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 114.780</div>
-            <div class="cp-pcd">R$ 93.930</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.791/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Polo%20Sense%201.0%20TSI%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 114.780</b></div><div><span>Valor estimado no PCD</span><b>R$ 93.930</b></div><div><span>IPVA estimado</span><b>~R$ 1.791/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Polo%20Sense%201.0%20TSI%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="1" data-preco="93930" data-eco="20850" data-marca="Volkswagen" data-nome="Polo Sense 1.0 TSI Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-gold">★ Mais vendido</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/polo.webp" alt="Volkswagen Polo Sense 1.0 TSI Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Volkswagen</div>
+          <h3 class="pc-name">Polo Sense 1.0 TSI Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 114.780</div><div class="pc-now">R$ 93.930</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.791/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 20.850</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Polo%20Sense%201.0%20TSI%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Polo Sense 1.0 TSI Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 114.780</b></div><div><span>Valor estimado no PCD</span><b>R$ 93.930</b></div><div><span>Você economiza</span><b>R$ 20.850</b></div><div><span>IPVA estimado</span><b>~R$ 1.791/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="105422">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/creta.webp" alt="Creta Action 1.0 Turbo Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Hyundai</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Hyundai</div>
-          <h3 class="cp-modelo">Creta Action 1.0 Turbo Automático</h3>
-          <div class="cp-equip">Automático · SUV · vem com roda de liga leve</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 105.422</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Creta%20Action%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 105.422</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Creta%20Action%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="105422" data-eco="14568" data-marca="Hyundai" data-nome="Creta Action 1.0 Turbo Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/creta.webp" alt="Hyundai Creta Action 1.0 Turbo Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Hyundai</div>
+          <h3 class="pc-name">Creta Action 1.0 Turbo Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 105.422</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 14.568</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Creta%20Action%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Creta Action 1.0 Turbo Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 105.422</b></div><div><span>Você economiza</span><b>R$ 14.568</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="98822">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/basalt.webp" alt="Basalt Feel Turbo 200 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Citroën</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Citroën</div>
-          <h3 class="cp-modelo">Basalt Feel Turbo 200 Automático</h3>
-          <div class="cp-equip">Automático · SUV</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 98.822</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Basalt%20Feel%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 98.822</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Basalt%20Feel%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="98822" data-eco="21168" data-marca="Citroën" data-nome="Basalt Feel Turbo 200 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/basalt.webp" alt="Citroën Basalt Feel Turbo 200 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Citroën</div>
+          <h3 class="pc-name">Basalt Feel Turbo 200 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 98.822</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 21.168</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Basalt%20Feel%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Basalt Feel Turbo 200 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 98.822</b></div><div><span>Você economiza</span><b>R$ 21.168</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="86419">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/p208.webp" alt="208 Active Turbo 200 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Peugeot</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Peugeot</div>
-          <h3 class="cp-modelo">208 Active Turbo 200 Automático</h3>
-          <div class="cp-equip">Automático · Hatch</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 115.990</div>
-            <div class="cp-pcd">R$ 86.419</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.840/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20208%20Active%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 115.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 86.419</b></div><div><span>IPVA estimado</span><b>~R$ 1.840/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20208%20Active%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="86419" data-eco="29571" data-marca="Peugeot" data-nome="208 Active Turbo 200 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/p208.webp" alt="Peugeot 208 Active Turbo 200 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Peugeot</div>
+          <h3 class="pc-name">208 Active Turbo 200 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 115.990</div><div class="pc-now">R$ 86.419</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.840/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 29.571</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20208%20Active%20Turbo%20200%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="208 Active Turbo 200 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 115.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 86.419</b></div><div><span>Você economiza</span><b>R$ 29.571</b></div><div><span>IPVA estimado</span><b>~R$ 1.840/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="sedan" data-eletrico="0" data-preco="97999">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/citysedan.webp" alt="City Sedan LX CVT Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Honda</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Honda</div>
-          <h3 class="cp-modelo">City Sedan LX CVT Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Sedã</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.400</div>
-            <div class="cp-pcd">R$ 97.999</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.976/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20City%20Sedan%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.400</b></div><div><span>Valor estimado no PCD</span><b>R$ 97.999</b></div><div><span>IPVA estimado</span><b>~R$ 1.976/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20City%20Sedan%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="sedan" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="97999" data-eco="21401" data-marca="Honda" data-nome="City Sedan LX CVT Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/citysedan.webp" alt="Honda City Sedan LX CVT Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Honda</div>
+          <h3 class="pc-name">City Sedan LX CVT Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.400</div><div class="pc-now">R$ 97.999</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.976/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 21.401</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Sedã</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20City%20Sedan%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="City Sedan LX CVT Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.400</b></div><div><span>Valor estimado no PCD</span><b>R$ 97.999</b></div><div><span>Você economiza</span><b>R$ 21.401</b></div><div><span>IPVA estimado</span><b>~R$ 1.976/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="97999">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/cityhatch.webp" alt="City Hatch LX CVT Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Honda</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Honda</div>
-          <h3 class="cp-modelo">City Hatch LX CVT Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Hatch</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.400</div>
-            <div class="cp-pcd">R$ 97.999</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.976/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20City%20Hatch%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.400</b></div><div><span>Valor estimado no PCD</span><b>R$ 97.999</b></div><div><span>IPVA estimado</span><b>~R$ 1.976/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20City%20Hatch%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="97999" data-eco="21401" data-marca="Honda" data-nome="City Hatch LX CVT Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/cityhatch.webp" alt="Honda City Hatch LX CVT Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Honda</div>
+          <h3 class="pc-name">City Hatch LX CVT Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.400</div><div class="pc-now">R$ 97.999</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.976/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 21.401</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20City%20Hatch%20LX%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="City Hatch LX CVT Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.400</b></div><div><span>Valor estimado no PCD</span><b>R$ 97.999</b></div><div><span>Você economiza</span><b>R$ 21.401</b></div><div><span>IPVA estimado</span><b>~R$ 1.976/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="sedan" data-eletrico="0" data-preco="94290">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/versa.webp" alt="Versa Sense 1.6 CVT Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Nissan</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Nissan</div>
-          <h3 class="cp-modelo">Versa Sense 1.6 CVT Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Sedã</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 119.990</div>
-            <div class="cp-pcd">R$ 94.290</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 2.000/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Versa%20Sense%201.6%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 94.290</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Versa%20Sense%201.6%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="sedan" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="94290" data-eco="25700" data-marca="Nissan" data-nome="Versa Sense 1.6 CVT Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/versa.webp" alt="Nissan Versa Sense 1.6 CVT Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Nissan</div>
+          <h3 class="pc-name">Versa Sense 1.6 CVT Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 119.990</div><div class="pc-now">R$ 94.290</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 2.000/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 25.700</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Sedã</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Versa%20Sense%201.6%20CVT%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Versa Sense 1.6 CVT Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 119.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 94.290</b></div><div><span>Você economiza</span><b>R$ 25.700</b></div><div><span>IPVA estimado</span><b>~R$ 2.000/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="1" data-preco="108000">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/dolphinmini.webp" alt="Dolphin Mini GL — 100% elétrico" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>BYD</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">BYD</div>
-          <h3 class="cp-modelo">Dolphin Mini GL — 100% elétrico</h3>
-          <div class="cp-equip">Automático · Hatch · 100% elétrico</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 115.990</div>
-            <div class="cp-pcd">R$ 108.000</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.840/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Dolphin%20Mini%20GL%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 115.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 108.000</b></div><div><span>IPVA estimado</span><b>~R$ 1.840/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Dolphin%20Mini%20GL%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="1" data-hibrido="0" data-vendido="0" data-preco="108000" data-eco="7990" data-marca="BYD" data-nome="Dolphin Mini GL — 100% elétrico">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/dolphinmini.webp" alt="BYD Dolphin Mini GL — 100% elétrico 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">BYD</div>
+          <h3 class="pc-name">Dolphin Mini GL — 100% elétrico</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 115.990</div><div class="pc-now">R$ 108.000</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.840/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 7.990</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Elétrico</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Dolphin%20Mini%20GL%20%E2%80%94%20100%25%20el%C3%A9trico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Dolphin Mini GL — 100% elétrico">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 115.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 108.000</b></div><div><span>Você economiza</span><b>R$ 7.990</b></div><div><span>IPVA estimado</span><b>~R$ 1.840/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="88664">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/argodrive.webp" alt="Argo Drive 1.3 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Fiat</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Fiat</div>
-          <h3 class="cp-modelo">Argo Drive 1.3 Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Hatch</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 108.990</div>
-            <div class="cp-pcd">R$ 88.664</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.560/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Argo%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 108.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 88.664</b></div><div><span>IPVA estimado</span><b>~R$ 1.560/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Argo%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="88664" data-eco="20326" data-marca="Fiat" data-nome="Argo Drive 1.3 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/argodrive.webp" alt="Fiat Argo Drive 1.3 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Fiat</div>
+          <h3 class="pc-name">Argo Drive 1.3 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 108.990</div><div class="pc-now">R$ 88.664</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.560/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 20.326</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Argo%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Argo Drive 1.3 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 108.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 88.664</b></div><div><span>Você economiza</span><b>R$ 20.326</b></div><div><span>IPVA estimado</span><b>~R$ 1.560/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="sedan" data-eletrico="0" data-preco="95378">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/cronos.webp" alt="Cronos Drive 1.3 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Fiat</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Fiat</div>
-          <h3 class="cp-modelo">Cronos Drive 1.3 Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Sedã</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 118.990</div>
-            <div class="cp-pcd">R$ 95.378</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.960/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Cronos%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 118.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 95.378</b></div><div><span>IPVA estimado</span><b>~R$ 1.960/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Cronos%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="sedan" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="95378" data-eco="23612" data-marca="Fiat" data-nome="Cronos Drive 1.3 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/cronos.webp" alt="Fiat Cronos Drive 1.3 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Fiat</div>
+          <h3 class="pc-name">Cronos Drive 1.3 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 118.990</div><div class="pc-now">R$ 95.378</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.960/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 23.612</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Sedã</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Cronos%20Drive%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Cronos Drive 1.3 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 118.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 95.378</b></div><div><span>Você economiza</span><b>R$ 23.612</b></div><div><span>IPVA estimado</span><b>~R$ 1.960/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="92559">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/c3.webp" alt="C3 You 1.0 Turbo Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Citroën</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Citroën</div>
-          <h3 class="cp-modelo">C3 You 1.0 Turbo Automático</h3>
-          <div class="cp-equip">Automático · Hatch</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 112.590</div>
-            <div class="cp-pcd">R$ 92.559</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.704/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20C3%20You%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 112.590</b></div><div><span>Valor estimado no PCD</span><b>R$ 92.559</b></div><div><span>IPVA estimado</span><b>~R$ 1.704/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20C3%20You%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="92559" data-eco="20031" data-marca="Citroën" data-nome="C3 You 1.0 Turbo Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-lilas">💜 Recomendado</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/c3.webp" alt="Citroën C3 You 1.0 Turbo Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Citroën</div>
+          <h3 class="pc-name">C3 You 1.0 Turbo Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 112.590</div><div class="pc-now">R$ 92.559</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.704/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 20.031</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20C3%20You%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="C3 You 1.0 Turbo Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 112.590</b></div><div><span>Valor estimado no PCD</span><b>R$ 92.559</b></div><div><span>Você economiza</span><b>R$ 20.031</b></div><div><span>IPVA estimado</span><b>~R$ 1.704/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="104799">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/onix.webp" alt="Onix LT 1.0 Turbo Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Chevrolet</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Chevrolet</div>
-          <h3 class="cp-modelo">Onix LT 1.0 Turbo Automático</h3>
-          <div class="cp-equip">Automático · Hatch · vem com multimídia MyLink</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 121.940</div>
-            <div class="cp-pcd">R$ 104.799</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 4.878/ano</b><span>sem isenção (acima de R$ 120 mil) · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Onix%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 121.940</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.799</b></div><div><span>IPVA estimado</span><b>~R$ 4.878/ano</b></div><p>Acima de R$ 120 mil não há isenção de IPVA. Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Onix%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="1" data-preco="104799" data-eco="17141" data-marca="Chevrolet" data-nome="Onix LT 1.0 Turbo Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-gold">★ Mais vendido</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/onix.webp" alt="Chevrolet Onix LT 1.0 Turbo Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Chevrolet</div>
+          <h3 class="pc-name">Onix LT 1.0 Turbo Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 121.940</div><div class="pc-now">R$ 104.799</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 4.878/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 17.141</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Onix%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Onix LT 1.0 Turbo Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 121.940</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.799</b></div><div><span>Você economiza</span><b>R$ 17.141</b></div><div><span>IPVA estimado</span><b>~R$ 4.878/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="sedan" data-eletrico="0" data-preco="103406">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/onixplus.webp" alt="Onix Plus LT 1.0 Turbo Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Chevrolet</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Chevrolet</div>
-          <h3 class="cp-modelo">Onix Plus LT 1.0 Turbo Automático</h3>
-          <div class="cp-equip">Automático · Sedã</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 127.340</div>
-            <div class="cp-pcd">R$ 103.406</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 5.094/ano</b><span>sem isenção (acima de R$ 120 mil) · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Onix%20Plus%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 127.340</b></div><div><span>Valor estimado no PCD</span><b>R$ 103.406</b></div><div><span>IPVA estimado</span><b>~R$ 5.094/ano</b></div><p>Acima de R$ 120 mil não há isenção de IPVA. Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Onix%20Plus%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="sedan" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="103406" data-eco="23934" data-marca="Chevrolet" data-nome="Onix Plus LT 1.0 Turbo Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/onixplus.webp" alt="Chevrolet Onix Plus LT 1.0 Turbo Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Chevrolet</div>
+          <h3 class="pc-name">Onix Plus LT 1.0 Turbo Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 127.340</div><div class="pc-now">R$ 103.406</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 5.094/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 23.934</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Sedã</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Onix%20Plus%20LT%201.0%20Turbo%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Onix Plus LT 1.0 Turbo Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 127.340</b></div><div><span>Valor estimado no PCD</span><b>R$ 103.406</b></div><div><span>Você economiza</span><b>R$ 23.934</b></div><div><span>IPVA estimado</span><b>~R$ 5.094/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-
-
-      <article class="cp-card" data-tipo="suv" data-eletrico="0" data-preco="104727">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/kardian.webp" alt="Kardian Evolution Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Renault</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Renault</div>
-          <h3 class="cp-modelo">Kardian Evolution Automático</h3>
-          <div class="cp-equip">Automático (EDC) · SUV compacto</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 127.590</div>
-            <div class="cp-pcd">R$ 104.727</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 5.104/ano</b><span>sem isenção (acima de R$ 120 mil) · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Kardian%20Evolution%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 127.590</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.727</b></div><div><span>IPVA estimado</span><b>~R$ 5.104/ano</b></div><p>Acima de R$ 120 mil não há isenção de IPVA. Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Kardian%20Evolution%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="suv" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="104727" data-eco="22863" data-marca="Renault" data-nome="Kardian Evolution Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/kardian.webp" alt="Renault Kardian Evolution Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Renault</div>
+          <h3 class="pc-name">Kardian Evolution Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 127.590</div><div class="pc-now">R$ 104.727</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 5.104/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 22.863</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>SUV</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Kardian%20Evolution%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Kardian Evolution Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 127.590</b></div><div><span>Valor estimado no PCD</span><b>R$ 104.727</b></div><div><span>Você economiza</span><b>R$ 22.863</b></div><div><span>IPVA estimado</span><b>~R$ 5.104/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="sedan" data-eletrico="0" data-preco="153942">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/corolla.webp" alt="Corolla GLI Híbrido 1.8 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Toyota</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Toyota</div>
-          <h3 class="cp-modelo">Corolla GLI Híbrido 1.8 Automático</h3>
-          <div class="cp-equip">Híbrido · Sedã · isenção de IPVA em SP (2026)</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 196.810</div>
-            <div class="cp-pcd">R$ 153.942</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA: <b>Isento em SP (2026)</b><span>híbrido com isenção de IPVA</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Corolla%20GLI%20H%C3%ADbrido%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 196.810</b></div><div><span>Valor estimado no PCD</span><b>R$ 153.942</b></div><div><span>IPVA</span><b>Isento em SP (2026)</b></div><p>Híbrido com isenção de IPVA em SP. Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Corolla%20GLI%20H%C3%ADbrido%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="sedan" data-eletrico="0" data-hibrido="1" data-vendido="0" data-preco="153942" data-eco="42868" data-marca="Toyota" data-nome="Corolla GLI Híbrido 1.8 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/corolla.webp" alt="Toyota Corolla GLI Híbrido 1.8 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Toyota</div>
+          <h3 class="pc-name">Corolla GLI Híbrido 1.8 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 196.810</div><div class="pc-now">R$ 153.942</div><div class="pc-plabel">valor estimado no PCD · híbrido com isenção de IPVA</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 42.868</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Híbrido</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Sedã</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Corolla%20GLI%20H%C3%ADbrido%201.8%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Corolla GLI Híbrido 1.8 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 196.810</b></div><div><span>Valor estimado no PCD</span><b>R$ 153.942</b></div><div><span>Você economiza</span><b>R$ 42.868</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
-      <article class="cp-card" data-tipo="hatch" data-eletrico="0" data-preco="84990">
-        <div class="cp-foto"><img loading="lazy" src="/assets/carros/argotrekking.webp" alt="Argo Trekking 1.3 Automático" onerror="this.parentNode.innerHTML='<div class=&quot;cp-ph&quot;>Fiat</div>'"></div>
-        <div class="cp-body">
-          <div class="cp-marca">Fiat</div>
-          <h3 class="cp-modelo">Argo Trekking 1.3 Automático</h3>
-          <div class="cp-equip">Automático (CVT) · Hatch · visual aventureiro</div>
-          <div class="cp-precos">
-            <div class="cp-pub">de R$ 106.990</div>
-            <div class="cp-pcd">R$ 84.990</div>
-            <div class="cp-pcd-lbl">valor estimado no PCD*</div>
-            <div class="cp-ipva">IPVA estimado: <b>~R$ 1.480/ano</b><span>isenção parcial · estimado, SP</span></div>
-          </div>
-          <a class="cp-cta" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Argo%20Trekking%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro</a>
-          <details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in"><div><span>Valor público</span><b>R$ 106.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 84.990</b></div><div><span>IPVA estimado</span><b>~R$ 1.480/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1!%20Vi%20o%20Argo%20Trekking%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Falar no WhatsApp</a><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></div></details>
+      <article class="pc" data-tipo="hatch" data-eletrico="0" data-hibrido="0" data-vendido="0" data-preco="84990" data-eco="22000" data-marca="Fiat" data-nome="Argo Trekking 1.3 Automático">
+        <div class="pc-media"><span class="pc-seal pc-seal-roxo">Oferta</span><button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button><img class="pc-img" loading="lazy" width="1200" height="760" src="/assets/carros/argotrekking.webp" alt="Fiat Argo Trekking 1.3 Automático 0 km — foto oficial"></div>
+        <div class="pc-info">
+          <div class="pc-brand">Fiat</div>
+          <h3 class="pc-name">Argo Trekking 1.3 Automático</h3>
+          <div class="pc-price"><div class="pc-old">De R$ 106.990</div><div class="pc-now">R$ 84.990</div><div class="pc-plabel">valor estimado no PCD · IPVA ~R$ 1.480/ano</div></div>
+          <div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>R$ 22.000</b></div>
+          <div class="pc-chips"><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></i>Automático</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg></i>Flex</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg></i>5 lugares</span><span class="pc-chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></i>Hatch</span></div>
+          <a class="pc-btn" target="_blank" rel="noopener" href="https://wa.me/5513978144035?text=Ol%C3%A1%21%20Vi%20o%20Argo%20Trekking%201.3%20Autom%C3%A1tico%20no%20site%20e%20quero%20saber%20sobre%20a%20isen%C3%A7%C3%A3o%20PCD.">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>
+          <div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="Argo Trekking 1.3 Automático">Compartilhar</button></div>
+          <div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>
+          <details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in"><div><span>Valor público</span><b>R$ 106.990</b></div><div><span>Valor estimado no PCD</span><b>R$ 84.990</b></div><div><span>Você economiza</span><b>R$ 22.000</b></div><div><span>IPVA estimado</span><b>~R$ 1.480/ano/ano</b></div><p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p><a class="btn btn-linha" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20consultar%20meu%20direito%20%C3%A0%20isen%C3%A7%C3%A3o%20PCD.">Consultar meu direito</a></div></details>
         </div>
       </article>
 
     </div>
-    <div class="cp-vazio" id="cp-vazio">Nenhum carro nesse filtro. Toque em <b>Todos</b> para ver a lista completa.</div>
+    <div class="cp-vazio" id="cp-vazio" style="display:none">Nenhum carro nesse filtro. Toque em <b>Todos</b> para ver a lista completa.</div>
     <div class="cp-meta">
       <span class="cp-atualizado">Atualizado em: julho/2026</span>
     </div>
@@ -614,100 +565,33 @@
 
 <section class="cp-calc" id="calculadora-ipva">
   <div class="wrap">
-    <div class="calc-head">
-      <span class="calc-eyebrow">Calculadora · São Paulo · 2026</span>
-      <h2>Calcule o seu <em>IPVA PCD</em> — passo a passo</h2>
-      <p>Em 3 passos você descobre quanto vai pagar (ou se é isento), com a conta detalhada linha a linha e a regra da lei que se aplica ao seu carro. Sem caixa-preta.</p>
+    <div class="cp-calc-card">
+      <h2>Calcule uma estimativa do IPVA PCD</h2>
+      <p>Informe o valor do veículo. Para carro 0km, o IPVA é proporcional ao mês da nota fiscal; para usado, calcula sobre o valor da tabela FIPE.</p>
+      <div class="simu-tipo">
+        <button type="button" class="s-tab ativo" data-t="novo">Carro 0km (novo)</button>
+        <button type="button" class="s-tab" data-t="usado">Carro usado</button>
+      </div>
+      <div class="simu-row">
+        <div class="simu-field"><label id="lbl-valor" for="s-valor">Valor da nota fiscal (R$)</label><input id="s-valor" type="text" inputmode="numeric" placeholder="Ex.: 110.000"></div>
+        <div class="simu-field" id="wrap-mes"><label for="s-mes">Mês da nota fiscal</label>
+          <select id="s-mes">
+            <option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option><option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option><option value="7" selected>Julho</option><option value="8">Agosto</option><option value="9">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+          </select>
+        </div>
+      </div>
+      <label class="simu-chk"><input id="s-hib" type="checkbox"> É híbrido com isenção de IPVA em SP (ex.: Corolla GLI 2026)</label>
+      <div class="cp-calc-btns">
+        <button type="button" id="s-btn">Calcular IPVA</button>
+        <a class="btn btn-roxo" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20IPVA%20PCD.">Falar com especialista</a>
+      </div>
+      <div class="simu-out" id="s-out"></div>
+      <p class="simu-legal">Alíquota de 4% em SP sobre o valor venal. Regra PCD: isenção total até R$ 70 mil; de R$ 70 mil a R$ 120 mil paga 4% só sobre o que passa de R$ 70 mil; acima de R$ 120 mil, sem isenção. Carro 0km paga proporcional aos meses do ano a partir da nota fiscal; carro usado paga o ano cheio sobre a FIPE. Estimativa — o valor venal oficial pode ser menor; confirme sempre o seu caso.</p>
     </div>
-
-    <ol class="calc-steps" id="calc-stepper">
-      <li class="cs-step on" data-step="1"><span class="cs-num">1</span><span class="cs-txt">Tipo do carro</span></li>
-      <li class="cs-step" data-step="2"><span class="cs-num">2</span><span class="cs-txt">Valor</span></li>
-      <li class="cs-step" data-step="3"><span class="cs-num">3</span><span class="cs-txt">Resultado + a conta</span></li>
-    </ol>
-
-    <div class="calc-card">
-      <!-- PASSO 1 — tipo -->
-      <div class="calc-panel on" data-panel="1">
-        <div class="cp-step-label">Passo 1 de 3</div>
-        <h3 class="calc-q">Seu carro é 0 km ou usado?</h3>
-        <p class="calc-hint">Isso muda a base da conta: <b>0 km</b> paga proporcional aos meses do ano, contando a partir do mês da nota fiscal; <b>usado</b> paga o ano cheio, calculado sobre o valor da tabela FIPE.</p>
-        <div class="calc-choice">
-          <button type="button" class="cc-opt" data-t="novo">
-            <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-5Z"/><path d="M5 13h14"/><circle cx="7.5" cy="16" r=".6" fill="currentColor" stroke="none"/><circle cx="16.5" cy="16" r=".6" fill="currentColor" stroke="none"/></svg></span>
-            <b>Carro 0 km (novo)</b>
-            <span>Comprado na concessionária. Paga proporcional aos meses do ano, a partir do mês da nota fiscal.</span>
-          </button>
-          <button type="button" class="cc-opt" data-t="usado">
-            <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-5Z"/><path d="M5 13h14"/><path d="M12 3.5v2M12 3.5l-1.4 1.2M12 3.5l1.4 1.2"/></svg></span>
-            <b>Carro usado</b>
-            <span>Já emplacado. Paga o ano cheio, calculado sobre o valor da tabela FIPE.</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- PASSO 2 — valor -->
-      <div class="calc-panel" data-panel="2">
-        <div class="cp-step-label">Passo 2 de 3 · <span id="calc-tipo-lbl">Carro 0 km</span></div>
-        <h3 class="calc-q" id="calc-q2">Qual o valor do carro na nota fiscal?</h3>
-        <p class="calc-hint" id="calc-hint2">Informe o valor cheio do veículo (o preço público). Não desconte nada — a conta já aplica sozinha a isenção da faixa PCD.</p>
-        <div class="calc-fields">
-          <div class="calc-field">
-            <label id="lbl-valor" for="s-valor">Valor da nota fiscal (R$)</label>
-            <div class="calc-inwrap"><span class="calc-cifra">R$</span><input id="s-valor" type="text" inputmode="numeric" placeholder="110.000"></div>
-          </div>
-          <div class="calc-field" id="wrap-mes">
-            <label for="s-mes">Mês da nota fiscal</label>
-            <select id="s-mes">
-              <option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option><option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option><option value="7" selected>Julho</option><option value="8">Agosto</option><option value="9">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
-            </select>
-          </div>
-        </div>
-        <label class="calc-chk"><input id="s-hib" type="checkbox"> <span>É híbrido com isenção de IPVA em SP (ex.: Corolla GLI 2026)</span></label>
-        <div class="calc-nav">
-          <button type="button" class="calc-back" data-goto="1">← Voltar</button>
-          <button type="button" id="s-btn" class="calc-go">Ver meu IPVA →</button>
-        </div>
-      </div>
-
-      <!-- PASSO 3 — resultado -->
-      <div class="calc-panel" data-panel="3">
-        <div class="cp-step-label">Passo 3 de 3 · Seu resultado</div>
-        <div class="simu-out" id="s-out"></div>
-        <div class="calc-nav">
-          <button type="button" class="calc-back" data-goto="2">← Recalcular</button>
-          <a class="calc-zap" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20IPVA%20PCD."><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2s-1 .2-3.2-.7-3.7-3.1-3.8-3.3-1-1.3-1-2.5.6-1.8.9-2 .5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9.1.3 0 .5-.2.4-.4.6-.3.4-.1.7 1 1.6 2 2.2c1.2.7 1.6.8 1.9.7s.6-.7.8-1 .5-.2.7-.1 1.6.8 1.8.9.4.2.5.3-.1.7-.3 1.3Z"/></svg> Falar com especialista</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- A LEI — painel permanente -->
-    <div class="calc-lei">
-      <h3>A regra da lei, sem letra miúda</h3>
-      <p>Em São Paulo o IPVA de carro de passeio é <b>4% ao ano</b> sobre o valor venal. Para PCD, o desconto depende de quanto vale o veículo — são 3 faixas:</p>
-      <div class="calc-faixas">
-        <div class="cf" data-faixa="ok">
-          <span class="cf-tag">Até R$ 70 mil</span>
-          <b>Isenção total</b>
-          <span class="cf-desc">Não paga nada de IPVA.</span>
-        </div>
-        <div class="cf" data-faixa="mid">
-          <span class="cf-tag">R$ 70 mil a R$ 120 mil</span>
-          <b>Isenção parcial</b>
-          <span class="cf-desc">Paga 4% só sobre o que passa de R$ 70 mil. Ex.: carro de R$ 100 mil → 4% sobre R$ 30 mil = R$ 1.200/ano.</span>
-        </div>
-        <div class="cf" data-faixa="hi">
-          <span class="cf-tag">Acima de R$ 120 mil</span>
-          <b>Sem isenção</b>
-          <span class="cf-desc">Paga 4% sobre o valor total, como qualquer carro.</span>
-        </div>
-      </div>
-    </div>
-
-    <p class="simu-legal">Estimativa com base na alíquota de 4% em SP. O valor venal oficial usado pela Sefaz costuma ser menor que o preço público, então o IPVA real tende a ser igual ou menor que o estimado. A isenção depende de análise do seu caso pelos órgãos competentes (Receita Federal, Sefaz-SP e Detran). A Despachante 100 Milhas é empresa privada de assessoria e não representa o Detran nem a Receita.</p>
   </div>
 </section>
 
+<div id="pc-cmpbar"><span>Comparar <b id="pc-cmpn">0</b> de 3</span><a id="pc-cmplink" href="#" target="_blank" rel="noopener">Comparar no WhatsApp</a></div>
 </main>
 <div class="wrap" style="padding:34px 0 6px" aria-label="Avaliacoes no Google"><script defer async src="https://cdn.trustindex.io/loader.js?1091ee077915738c76363a49964"></script></div>
 <div class="wrap" style="padding:6px 0 30px" aria-label="Instagram"><script defer async src="https://cdn.trustindex.io/loader-feed.js?ade8aa577e5873853a56944ff9d"></script></div>
@@ -747,199 +631,145 @@
 <a class="zap-flut" href="https://api.whatsapp.com/send?phone=5513978091064&text=%23site%0A%0AOl%C3%A1%2C%20quero%20atendimento%20sobre%20isen%C3%A7%C3%A3o%20PCD%20/%20Imposto%20de%20Renda." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.4.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
 
 <script>
-/* ===== Filtros da vitrine ===== */
+/* ===== Vitrine PREMIUM: render + filtros + ordenar + favoritar + comparar + compartilhar ===== */
 (function(){
-  var grid=document.getElementById('cp-grid');
-  if(!grid)return;
-  var cards=[].slice.call(grid.querySelectorAll('.cp-card'));
-  window.__cpRefresh=function(){cards=[].slice.call(grid.querySelectorAll('.cp-card'));};
-  var botoes=[].slice.call(document.querySelectorAll('#cp-filtros .cp-fil'));
-  var vazio=document.getElementById('cp-vazio');
-  function testa(card,f){
-    var p=parseInt(card.getAttribute('data-preco'),10)||0;
-    var tipo=card.getAttribute('data-tipo');
-    var eletrico=card.getAttribute('data-eletrico')==='1';
-    switch(f){
-      case 'todos':return true;
-      case 'p1':return p<=90000;
-      case 'p2':return p>90000&&p<=100000;
-      case 'p3':return p>100000&&p<=120000;
-      case 'suv':return tipo==='suv';
-      case 'hatch':return tipo==='hatch';
-      case 'sedan':return tipo==='sedan';
-      case 'automatico':return true;
-      case 'eletrico':return eletrico;
-      default:return true;
+  var grid=document.getElementById('cp-grid'); if(!grid) return;
+  var TIPO={suv:'SUV',hatch:'Hatch',sedan:'Sedã'};
+  var IC={cambio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 9h12"/><circle cx="6" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>',
+    fuel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h12M14 9h2.5a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>',
+    seat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 7a3 3 0 0 1 0 6M22 21c0-2.7-1.4-5-3.5-6.3"/></svg>',
+    body:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v4h-2M5 17H3v-4M7 17h10"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>'};
+  var VEND={'tracker':1,'onix':1,'polo':1,'pulse':1,'tcross':1};
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function dg(s){var d=String(s||'').replace(/\D/g,'');return d?parseInt(d,10):0;}
+  function brm(n){return 'R$ '+Number(n).toLocaleString('pt-BR');}
+  function comb(c){ if(c.eletrico)return 'Elétrico'; var t=(c.equip||'')+' '+c.modelo+' '+(c.ipva_nota||''); return /brido/i.test(t)?'Híbrido':'Flex'; }
+  function chip(ic,t){return '<span class="pc-chip"><i>'+IC[ic]+'</i>'+t+'</span>';}
+  function cardHTML(c){
+    var e=dg(c.preco_publico)-dg(c.preco_pcd), pub=String(c.preco_publico||'').replace(/^de\s*/,'');
+    var cb=comb(c), tp=TIPO[c.tipo]||c.tipo, key=(c.foto||'').split('/').pop().replace('.webp','');
+    var vend=VEND[key]?1:0, hib=cb==='Híbrido'?1:0;
+    var seal= vend?'<span class="pc-seal pc-seal-gold">★ Mais vendido</span>' : (e>=22000?'<span class="pc-seal pc-seal-roxo">Oferta</span>':'<span class="pc-seal pc-seal-lilas">💜 Recomendado</span>');
+    var ipva=c.ipva?('IPVA '+esc(c.ipva)):esc(c.ipva_nota||'IPVA isento');
+    var ecos=e>0?('<div class="pc-eco"><span class="pc-eco-ic">💰</span> Você economiza <b>'+brm(e)+'</b></div>'):'';
+    var zap='https://wa.me/5513978144035?text='+encodeURIComponent('Olá! Vi o '+c.modelo+' no site e quero saber sobre a isenção PCD.');
+    var cons='https://api.whatsapp.com/send?phone=5513978091064&text='+encodeURIComponent('#site\n\nOlá, quero consultar meu direito à isenção PCD.');
+    return '<article class="pc" data-tipo="'+esc(c.tipo)+'" data-eletrico="'+(c.eletrico?1:0)+'" data-hibrido="'+hib+'" data-vendido="'+vend+'" data-preco="'+(c.preco_filtro||0)+'" data-eco="'+e+'" data-marca="'+esc(c.marca)+'" data-nome="'+esc(c.modelo)+'">'
+      +'<div class="pc-media">'+seal+'<button class="pc-fav" type="button" aria-label="Favoritar" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></button>'
+      +'<img class="pc-img" loading="lazy" width="1200" height="760" src="'+esc(c.foto)+'" alt="'+esc(c.marca+' '+c.modelo+' 0 km — foto oficial')+'"></div>'
+      +'<div class="pc-info"><div class="pc-brand">'+esc(c.marca)+'</div><h3 class="pc-name">'+esc(c.modelo)+'</h3>'
+      +'<div class="pc-price"><div class="pc-old">De '+esc(pub)+'</div><div class="pc-now">'+esc(c.preco_pcd)+'</div><div class="pc-plabel">valor estimado no PCD · '+ipva+'</div></div>'
+      +ecos+'<div class="pc-chips">'+chip('cambio','Automático')+chip('fuel',cb)+chip('seat','5 lugares')+chip('body',tp)+'</div>'
+      +'<a class="pc-btn" target="_blank" rel="noopener" href="'+zap+'">Quero este carro <span class="pc-arrow" aria-hidden="true">→</span></a>'
+      +'<div class="pc-actions"><button class="pc-act pc-compare" type="button">Comparar</button><button class="pc-act pc-share" type="button" data-nome="'+esc(c.modelo)+'">Compartilhar</button></div>'
+      +'<div class="pc-auth"><svg viewBox="0 0 24 24" class="pc-star"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg> 4,9 no Google · +5.000 processos aprovados</div>'
+      +'<details class="pc-det"><summary>Ver detalhes e regras</summary><div class="pc-det-in">'
+      +'<div><span>Valor público</span><b>'+esc(pub)+'</b></div><div><span>Valor estimado no PCD</span><b>'+esc(c.preco_pcd)+'</b></div>'
+      +(e>0?'<div><span>Você economiza</span><b>'+brm(e)+'</b></div>':'')
+      +(c.ipva?'<div><span>IPVA estimado</span><b>'+esc(c.ipva)+'</b></div>':'')
+      +'<p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p>'
+      +'<a class="btn btn-linha" target="_blank" rel="noopener" href="'+cons+'">Consultar meu direito</a></div></details>'
+      +'</div></article>';
+  }
+  function wire(){
+    var cards=[].slice.call(grid.querySelectorAll('.pc'));
+    // favorite
+    grid.querySelectorAll('.pc-fav').forEach(function(b){ b.onclick=function(){ b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on')); };});
+    // compare
+    var sel=[];
+    var bar=document.getElementById('pc-cmpbar');
+    grid.querySelectorAll('.pc-compare').forEach(function(b){ b.onclick=function(){
+      var art=b.closest('.pc'), nome=art.getAttribute('data-nome');
+      if(b.classList.contains('on')){ b.classList.remove('on'); sel=sel.filter(function(x){return x!==nome;}); }
+      else { if(sel.length>=3){ return; } b.classList.add('on'); sel.push(nome); }
+      if(bar){ document.getElementById('pc-cmpn').textContent=sel.length; bar.classList.toggle('show', sel.length>0);
+        document.getElementById('pc-cmplink').href='https://api.whatsapp.com/send?phone=5513978091064&text='+encodeURIComponent('#site\n\nQuero comparar: '+sel.join(' × ')); }
+    };});
+    // share
+    grid.querySelectorAll('.pc-share').forEach(function(b){ b.onclick=function(){
+      var nome=b.getAttribute('data-nome'); var url='https://www.despachante100milhas.com.br/carros-pcd';
+      var txt=nome+' com isenção PCD na 100 Milhas — '+url;
+      if(navigator.share){ navigator.share({title:nome,text:'Vi este carro com isenção PCD na 100 Milhas',url:url}).catch(function(){}); }
+      else { window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank'); }
+    };});
+  }
+  function render(list){ grid.innerHTML=list.map(cardHTML).join(''); wire(); applyAll(); }
+  var CURF='todos', CURS='', CURFAB='';
+  function applyAll(){
+    var cards=[].slice.call(grid.querySelectorAll('.pc'));
+    var vaz=document.getElementById('cp-vazio'); var vis=0;
+    cards.forEach(function(c){
+      var p=parseInt(c.getAttribute('data-preco'),10)||0, tp=c.getAttribute('data-tipo');
+      var el=c.getAttribute('data-eletrico')==='1', hb=c.getAttribute('data-hibrido')==='1', vd=c.getAttribute('data-vendido')==='1', mk=c.getAttribute('data-marca');
+      var ok=true;
+      switch(CURF){case 'todos':ok=true;break;case 'suv':case 'hatch':case 'sedan':ok=(tp===CURF);break;
+        case 'eletrico':ok=el;break;case 'hibrido':ok=hb;break;
+        case 'p90':ok=p<=90000;break;case 'p100':ok=p<=100000;break;case 'p120':ok=p<=120000;break;
+        case 'vendidos':ok=vd;break;default:ok=true;}
+      if(ok&&CURFAB) ok=(mk===CURFAB);
+      c.style.display=ok?'':'none'; if(ok)vis++;
+    });
+    if(vaz)vaz.style.display=vis?'none':'block';
+    if(CURS==='economia'){
+      var arr=cards.slice().sort(function(a,b){return (parseInt(b.getAttribute('data-eco'))||0)-(parseInt(a.getAttribute('data-eco'))||0);});
+      arr.forEach(function(c){grid.appendChild(c);});
     }
   }
-  function aplica(f){
-    var visiveis=0;
-    cards.forEach(function(c){
-      var ok=testa(c,f);
-      c.style.display=ok?'':'none';
-      if(ok)visiveis++;
-    });
-    vazio.style.display=visiveis?'none':'block';
+  function bindFilters(){
+    var btns=[].slice.call(document.querySelectorAll('#cp-filtros .pc-fil'));
+    btns.forEach(function(b){ b.onclick=function(){
+      if(b.hasAttribute('data-s')){ CURS = (CURS==='economia')?'':'economia'; b.classList.toggle('on', CURS==='economia'); applyAll(); return; }
+      btns.forEach(function(x){ if(!x.hasAttribute('data-s'))x.classList.remove('on'); }); b.classList.add('on');
+      CURF=b.getAttribute('data-f'); applyAll();
+    };});
+    var fab=document.getElementById('pc-fab');
+    if(fab){ fab.onchange=function(){ CURFAB=fab.value; applyAll(); }; }
   }
-  botoes.forEach(function(b){
-    b.addEventListener('click',function(){
-      botoes.forEach(function(x){x.classList.remove('on');});
-      b.classList.add('on');
-      aplica(b.getAttribute('data-f'));
-    });
-  });
+  function fillFab(list){ var fab=document.getElementById('pc-fab'); if(!fab)return; var seen={}; list.forEach(function(c){ if(!seen[c.marca]){seen[c.marca]=1; var o=document.createElement('option'); o.value=c.marca; o.textContent=c.marca; fab.appendChild(o);} }); }
+  bindFilters(); wire(); applyAll();
+  if(window.fetch){ fetch('/dados/carros-pcd-2026.json').then(function(r){return r.json();}).then(function(j){ if(j&&j.carros&&j.carros.length){ render(j.carros); fillFab(j.carros); } }).catch(function(){}); }
 })();
 
-/* ===== Vitrine viva: preços da Lili via /dados/carros-pcd-2026.json =====
-   Se o JSON carregar, re-renderiza os cards (fonte única de preços).
-   Se falhar, os cards estáticos acima permanecem — zero regressão. */
+/* ===== Simulador de IPVA PCD ===== */
 (function(){
-  var grid=document.getElementById('cp-grid');
-  if(!grid||!window.fetch)return;
-  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
-  fetch('/dados/carros-pcd-2026.json').then(function(r){return r.json();}).then(function(j){
-    if(!j||!j.carros||!j.carros.length)return;
-    grid.innerHTML=j.carros.map(function(c){
-      var zap='https://wa.me/5513978144035?text='+encodeURIComponent('Olá! Vi o '+c.modelo+' no site e quero saber sobre a isenção PCD.');
-      var consulta='https://api.whatsapp.com/send?phone=5513978091064&text='+encodeURIComponent('#site\n\nOlá, quero consultar meu direito à isenção PCD.');
-      var ipva=c.ipva?('<div class="cp-ipva">IPVA estimado: <b>'+esc(c.ipva)+'</b>'+(c.ipva_nota?('<span>'+esc(c.ipva_nota)+'</span>'):'')+'</div>'):'';
-      return '<article class="cp-card" data-tipo="'+esc(c.tipo)+'" data-eletrico="'+(c.eletrico?'1':'0')+'" data-preco="'+(c.preco_filtro||0)+'">'
-        +'<div class="cp-foto"><img loading="lazy" src="'+esc(c.foto)+'" alt="'+esc(c.modelo)+'" onerror="this.parentNode.innerHTML=\'<div class=&quot;cp-ph&quot;>'+esc(c.marca)+'</div>\'"></div>'
-        +'<div class="cp-body"><div class="cp-marca">'+esc(c.marca)+'</div>'
-        +'<h3 class="cp-modelo">'+esc(c.modelo)+'</h3>'
-        +'<div class="cp-equip">'+esc(c.equip)+'</div>'
-        +'<div class="cp-precos"><div class="cp-pub">'+esc(c.preco_publico)+'</div>'
-        +'<div class="cp-pcd">'+esc(c.preco_pcd)+'</div>'
-        +'<div class="cp-pcd-lbl">'+esc(c.pcd_label)+'</div>'+ipva+'</div>'
-        +'<a class="cp-cta" target="_blank" rel="noopener" href="'+zap+'">Quero este carro</a>'
-        +'<details class="cp-det"><summary>Ver detalhes e regras</summary><div class="cp-det-in">'
-        +'<div><span>Valor público</span><b>'+esc((c.preco_publico||'').replace(/^de |^público /,''))+'</b></div>'
-        +'<div><span>Valor estimado no PCD</span><b>'+esc(c.preco_pcd)+'</b></div>'
-        +(c.ipva?('<div><span>IPVA estimado</span><b>'+esc(c.ipva)+'</b></div>'):'')
-        +'<p>Estimativa sujeita a atualização conforme legislação, valor venal e análise do seu caso.</p>'
-        +'<div class="cp-det-btns"><a class="btn btn-ouro" target="_blank" rel="noopener" href="'+zap+'">Falar no WhatsApp</a>'
-        +'<a class="btn btn-linha" target="_blank" rel="noopener" href="'+consulta+'">Consultar meu direito</a></div>'
-        +'</div></details></div></article>';
-    }).join('');
-    if(window.__cpRefresh)window.__cpRefresh();
-  }).catch(function(){});
-})();
-
-/* ===== Calculadora de IPVA PCD — passo a passo ===== */
-(function(){
-  var v=document.getElementById('s-valor'),mes=document.getElementById('s-mes'),wrapMes=document.getElementById('wrap-mes'),
-      lbl=document.getElementById('lbl-valor'),h=document.getElementById('s-hib'),btn=document.getElementById('s-btn'),
-      out=document.getElementById('s-out'),tipoLbl=document.getElementById('calc-tipo-lbl'),q2=document.getElementById('calc-q2'),
-      hint2=document.getElementById('calc-hint2');
+  var tabs=document.querySelectorAll('.s-tab'),v=document.getElementById('s-valor'),mes=document.getElementById('s-mes'),wrapMes=document.getElementById('wrap-mes'),lbl=document.getElementById('lbl-valor'),h=document.getElementById('s-hib'),btn=document.getElementById('s-btn'),out=document.getElementById('s-out');
   if(!btn)return;
-  var panels=document.querySelectorAll('.calc-panel'),steps=document.querySelectorAll('#calc-stepper .cs-step');
   var tipo='novo';
   var nomes=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  tabs.forEach(function(t){t.onclick=function(){tabs.forEach(function(x){x.classList.remove('ativo');});t.classList.add('ativo');tipo=t.getAttribute('data-t');
+    if(tipo==='novo'){lbl.textContent='Valor da nota fiscal (R$)';wrapMes.style.display='';}
+    else{lbl.textContent='Valor da tabela FIPE (R$)';wrapMes.style.display='none';}
+    out.innerHTML='';};});
   function num(s){return parseInt(String(s).replace(/\D/g,''),10)||0;}
   function br(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
-  function brk(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});}
-
-  function goStep(n){
-    panels.forEach(function(p){p.classList.toggle('on',+p.getAttribute('data-panel')===n);});
-    steps.forEach(function(s){var k=+s.getAttribute('data-step');s.classList.toggle('on',k===n);s.classList.toggle('done',k<n);});
-    var sec=document.getElementById('calculadora-ipva');
-    if(sec&&sec.getBoundingClientRect().top<0){sec.scrollIntoView({behavior:'smooth',block:'start'});}
+  function base(val){
+    if(h.checked) return {ipva:0,faixa:'Híbrido com isenção de IPVA em SP (2026) — <b>isento</b>.',cor:'ok'};
+    if(val<=70000) return {ipva:0,faixa:'Até R$ 70 mil: <b>isenção total</b> de IPVA para PCD.',cor:'ok'};
+    if(val<=120000) return {ipva:0.04*(val-70000),faixa:'De R$ 70 mil a R$ 120 mil: paga 4% só sobre o que passa de R$ 70 mil.',cor:'mid'};
+    return {ipva:0.04*val,faixa:'Acima de R$ 120 mil: <b>sem isenção</b> — paga 4% sobre o valor total.',cor:'hi'};
   }
-
-  function setTipo(t){
-    tipo=t;
-    if(t==='novo'){
-      lbl.textContent='Valor da nota fiscal (R$)';wrapMes.style.display='';
-      tipoLbl.textContent='Carro 0 km';q2.textContent='Qual o valor do carro na nota fiscal?';
-      hint2.innerHTML='Informe o valor cheio do veículo (o preço público). Não desconte nada — a conta já aplica sozinha a isenção da faixa PCD.';
-    }else{
-      lbl.textContent='Valor da tabela FIPE (R$)';wrapMes.style.display='none';
-      tipoLbl.textContent='Carro usado';q2.textContent='Qual o valor do carro na tabela FIPE?';
-      hint2.innerHTML='Informe o valor do veículo na tabela FIPE. A conta já aplica sozinha a isenção da faixa PCD.';
-    }
-  }
-  document.querySelectorAll('.cc-opt').forEach(function(o){
-    o.onclick=function(){
-      document.querySelectorAll('.cc-opt').forEach(function(x){x.classList.remove('sel');});
-      o.classList.add('sel');setTipo(o.getAttribute('data-t'));out.innerHTML='';goStep(2);setTimeout(function(){v.focus();},120);
-    };
-  });
-  document.querySelectorAll('.calc-back').forEach(function(b){b.onclick=function(){goStep(+b.getAttribute('data-goto'));};});
-
-  function faixaInfo(val){
-    if(val<=70000) return {key:'ok',nome:'Até R$ 70 mil — isenção total',base:0};
-    if(val<=120000) return {key:'mid',nome:'R$ 70 mil a R$ 120 mil — isenção parcial',base:val-70000};
-    return {key:'hi',nome:'Acima de R$ 120 mil — sem isenção',base:val};
-  }
-  function bandHtml(active){
-    var f=[['ok','Até 70 mil','Isento'],['mid','70–120 mil','Só o excedente'],['hi','+120 mil','4% cheio']];
-    var h='<div class="res-band">';
-    f.forEach(function(x){h+='<div class="rb'+(x[0]===active?' act':'')+'" data-c="'+x[0]+'"><small>'+x[1]+'</small><b>'+x[2]+'</b></div>';});
-    return h+'</div>';
-  }
-
   function calc(){
     var val=num(v.value);
-    if(val<1000){out.innerHTML='<div class="calc-msg">Digite um valor válido do carro, por exemplo 110.000.</div>';goStep(3);return;}
-    var hib=h.checked,f=faixaInfo(val),base=hib?0:f.base,ipvaAnual=0.04*base;
-    var cor=hib?'ok':f.key, faixaNome=hib?'Híbrido com isenção de IPVA em SP (2026)':f.nome;
-    var m=parseInt(mes.value,10),meses=tipo==='novo'?(13-m):12,total=ipvaAnual*meses/12;
-    var isento=total<=0;
-
-    var heroLbl=tipo==='novo'?'IPVA a pagar este ano':'IPVA do ano (sobre a FIPE)';
-    var heroVal=isento?'Isento':'R$ '+br(total);
-    var heroSub;
-    if(isento){
-      heroSub= hib
-        ? 'Este modelo é <b>híbrido com isenção de IPVA em SP (2026)</b> — não paga IPVA, independente do valor.'
-        : 'O carro está na faixa de <b>até R$ 70 mil</b>, então tem <b>isenção total</b> de IPVA para PCD.';
-    }else if(cor==='mid'){
-      heroSub='Isenção parcial: você paga 4% <b>só sobre a parte que passa de R$ 70 mil</b>.';
-    }else{
-      heroSub='Acima de R$ 120 mil <b>não há isenção</b> — paga 4% sobre o valor total, como qualquer carro.';
-    }
-    var html='<div class="res-hero '+cor+'"><span class="res-lbl">'+heroLbl+'</span><span class="res-val">'+heroVal+'</span><span class="res-sub">'+heroSub+'</span></div>';
-
-    if(hib){
-      html+='<p class="calc-hint" style="margin:16px 0 0">A isenção aqui vem da <b>regra do híbrido em SP (2026)</b>, não da faixa de valor.</p>';
-    }else{
-      html+=bandHtml(f.key);
-    }
-
-    var valLabel=tipo==='novo'?'Valor na nota fiscal':'Valor na tabela FIPE';
-    html+='<div class="res-conta"><h4>A conta, passo a passo</h4>';
-    html+='<div class="rc-row"><span class="rc-k">'+valLabel+'</span><span class="rc-v">R$ '+brk(val)+'</span></div>';
-    html+='<div class="rc-row"><span class="rc-k">Faixa da lei (PCD)</span><span class="rc-v">'+faixaNome+'</span></div>';
-    if(hib){
-      html+='<div class="rc-row"><span class="rc-k">Base de cálculo<small>isento por ser híbrido</small></span><span class="rc-v">R$ 0</span></div>';
-    }else if(f.key==='mid'){
-      html+='<div class="rc-row"><span class="rc-k">Base de cálculo<small>valor − R$ 70.000 (parte isenta)</small></span><span class="rc-v">R$ '+brk(base)+'</span></div>';
-    }else if(f.key==='ok'){
-      html+='<div class="rc-row"><span class="rc-k">Base de cálculo<small>isento até R$ 70.000</small></span><span class="rc-v">R$ 0</span></div>';
-    }else{
-      html+='<div class="rc-row"><span class="rc-k">Base de cálculo<small>valor total (sem isenção)</small></span><span class="rc-v">R$ '+brk(base)+'</span></div>';
-    }
-    html+='<div class="rc-row"><span class="rc-k">Alíquota do IPVA em SP</span><span class="rc-v">× 4%</span></div>';
-    html+='<div class="rc-row"><span class="rc-k">IPVA de um ano cheio</span><span class="rc-v">R$ '+br(ipvaAnual)+'</span></div>';
+    if(val<1000){out.innerHTML='<div class="s-msg">Digite um valor válido, ex.: 110.000.</div>';return;}
+    var b=base(val),html='';
     if(tipo==='novo'){
-      html+='<div class="rc-row"><span class="rc-k">Proporção do ano<small>0 km faturado em '+nomes[m-1]+': '+meses+' de 12 meses</small></span><span class="rc-v">× '+meses+'/12</span></div>';
-    }else{
-      html+='<div class="rc-row"><span class="rc-k">Proporção do ano<small>usado paga o ano cheio</small></span><span class="rc-v">× 12/12</span></div>';
+      var m=parseInt(mes.value,10),meses=13-m,prop=b.ipva*meses/12;
+      html='<div class="s-res '+b.cor+'"><span class="s-lbl">IPVA a pagar este ano ('+meses+'/12, a partir de '+nomes[m-1]+')</span><span class="s-val">R$ '+br(prop)+'</span></div>';
+      html+='<div class="s-faixa">'+b.faixa+' IPVA anual cheio: R$ '+br(b.ipva)+'. Como é 0km faturado em '+nomes[m-1]+', paga proporcional: '+meses+' de 12 meses.</div>';
+    } else {
+      html='<div class="s-res '+b.cor+'"><span class="s-lbl">IPVA do ano (sobre a FIPE)</span><span class="s-val">R$ '+br(b.ipva)+'</span></div>';
+      html+='<div class="s-faixa">'+b.faixa+' Carro usado paga o ano cheio, calculado sobre o valor da tabela FIPE.</div>';
     }
-    html+='<div class="rc-row rc-total'+(isento?' ok':'')+'"><span class="rc-k">Total a pagar</span><span class="rc-v">'+(isento?'R$ 0 (isento)':'R$ '+br(total))+'</span></div>';
-    html+='</div>';
-
     out.innerHTML=html;
-    goStep(3);
   }
   btn.onclick=calc;
   v.addEventListener('keydown',function(e){if(e.key==='Enter')calc();});
   v.addEventListener('input',function(){var n=num(v.value);v.value=n?n.toLocaleString('pt-BR'):'';});
 })();
 </script>
-<script src="/assets/analytics.js?v=46" defer></script>
-<script src="/assets/script.js?v=46" defer></script>
-<script src="/assets/central.js?v=46" defer></script>
-<script src="/assets/agente.js?v=46" defer></script>
+<script src="/assets/analytics.js?v=14" defer></script>
+<script src="/assets/script.js?v=19" defer></script>
+<script src="/assets/central.js?v=17" defer></script>
+<script src="/assets/agente.js?v=15" defer></script>
 </body>
 </html>
