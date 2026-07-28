@@ -104,6 +104,139 @@
   <a class="fx-item" href="/impostoderenda"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.6 9.6A2.4 2.4 0 0 1 12 8.2h.8a2 2 0 0 1 0 4h-1.6a2 2 0 0 0 0 4h.8a2.4 2.4 0 0 0 2.4-1.4"/></svg></span><span><b>IR e Previdência</b><small>Restituição, revisão e planejamento</small></span></a>
 </div></div>
 
+<!-- ===== RADAR 100 MILHAS — notícias na Home (inserido à mão; portar p/ gerar.py depois) ===== -->
+<style>
+.radar{padding:58px 0;background:linear-gradient(180deg,#faf8ff, #f3edfb)}
+.radar .wrap{max-width:1180px}
+.radar-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+.radar .placa{display:inline-flex;align-items:center;gap:8px}
+.radar h2{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.15rem);color:var(--roxo-fundo,#2a0a4a);letter-spacing:-.5px;margin:12px 0 6px}
+.radar h2 .pulse{color:var(--dourado,#D4AF37)}
+.radar .radar-sub{color:var(--texto-suave,#615a70);font-size:1.03rem;max-width:620px}
+.radar-ver{white-space:nowrap;font-weight:700;color:var(--roxo,#6A0DAD);font-family:Montserrat,sans-serif;font-size:.95rem}
+.radar-ver:hover{text-decoration:underline}
+.radar-filtros{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 24px}
+.radar-chip{border:1.6px solid #e3dcef;background:#fff;color:#6a6480;font-family:Montserrat,sans-serif;font-weight:700;font-size:.83rem;padding:8px 15px;border-radius:30px;cursor:pointer;transition:.16s}
+.radar-chip:hover{border-color:var(--roxo,#6A0DAD);color:var(--roxo,#6A0DAD)}
+.radar-chip.on{background:var(--roxo,#6A0DAD);border-color:var(--roxo,#6A0DAD);color:#fff}
+.radar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.radar-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.radar-grid{grid-template-columns:1fr}}
+.rn{display:flex;flex-direction:column;background:#fff;border:1px solid #ece6f5;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(74,13,120,.07);transition:.2s;text-decoration:none}
+.rn:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(74,13,120,.16);border-color:#d8cbef}
+.rn-cap{height:6px;width:100%}
+.rn-body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+.rn-tag{align-self:flex-start;color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.6px;text-transform:uppercase;padding:5px 11px;border-radius:20px}
+.rn-data{color:#948da6;font-size:.8rem;font-weight:600;margin:12px 0 7px}
+.rn h3{font-family:Montserrat,sans-serif;font-weight:700;font-size:1.12rem;line-height:1.32;color:#241636;margin:0}
+.rn p{color:var(--texto-suave,#615a70);font-size:.93rem;margin:9px 0 0;flex:1}
+.rn-cta{margin-top:15px;color:var(--roxo,#6A0DAD);font-family:Montserrat,sans-serif;font-weight:700;font-size:.9rem}
+.radar-nota{text-align:center;margin-top:26px;color:#948da6;font-size:.82rem}
+</style>
+<section class="radar" id="radar" aria-label="Radar 100 Milhas — notícias de trânsito, CNH, multas e PCD">
+  <div class="wrap">
+    <div class="radar-top">
+      <div>
+        <span class="placa">📡 Fique por dentro</span>
+        <h2>Radar <span class="pulse">100 Milhas</span></h2>
+        <p class="radar-sub">Mudou uma regra de CNH, IPVA, multa ou isenção PCD? A gente reúne aqui o que importa — explicado sem juridiquês.</p>
+      </div>
+      <a class="radar-ver" href="/artigos">Ver todos os artigos da Lili &rarr;</a>
+    </div>
+
+    <div class="radar-filtros" role="tablist">
+      <button type="button" class="radar-chip on" data-cat="tudo">Tudo</button>
+      <button type="button" class="radar-chip" data-cat="cnh">CNH &amp; Pontos</button>
+      <button type="button" class="radar-chip" data-cat="multas">Multas</button>
+      <button type="button" class="radar-chip" data-cat="leiseca">Lei Seca</button>
+      <button type="button" class="radar-chip" data-cat="pcd">Isenção PCD</button>
+      <button type="button" class="radar-chip" data-cat="documento">Documento</button>
+    </div>
+
+    <div class="radar-grid">
+      <a class="rn" data-cat="cnh" href="/cnh-suspensa">
+        <span class="rn-cap" style="background:#6A0DAD"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#6A0DAD">CNH &amp; Pontos</span>
+          <div class="rn-data">22 de jul. de 2026</div>
+          <h3>Novas regras da CNH em 2026: o que muda de verdade pra você</h3>
+          <p>Mudanças no processo de tirar e renovar a habilitação, com fiscalização do Senatran no Detran-SP. Veja o que afeta o seu caso.</p>
+          <span class="rn-cta">Entender e defender minha CNH &rarr;</span>
+        </div>
+      </a>
+      <a class="rn" data-cat="multas" href="/recursos">
+        <span class="rn-cap" style="background:#8E2DE2"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#8E2DE2">Multas &amp; Recurso</span>
+          <div class="rn-data">10 de jul. de 2026</div>
+          <h3>Prescrição de multa: quando a multa &ldquo;caduca&rdquo; e sai da CNH</h3>
+          <p>Existe prazo para o órgão notificar e cobrar. Passou do prazo, cabe recurso pedindo o cancelamento — e isso recupera pontos.</p>
+          <span class="rn-cta">Ver se a minha ainda vale &rarr;</span>
+        </div>
+      </a>
+      <a class="rn" data-cat="leiseca" href="/bafometro">
+        <span class="rn-cap" style="background:#9A6A00"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#9A6A00">Lei Seca</span>
+          <div class="rn-data">18 de jun. de 2026</div>
+          <h3>Peguei na Lei Seca: multa, suspensão e o efeito suspensivo</h3>
+          <p>Multa gravíssima e suspensão de 12 meses — mas com recurso e efeito suspensivo a pessoa costuma continuar dirigindo enquanto o processo corre.</p>
+          <span class="rn-cta">Analisar o meu caso &rarr;</span>
+        </div>
+      </a>
+      <a class="rn" data-cat="pcd" href="/isencaopcd">
+        <span class="rn-cap" style="background:#8E24AA"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#8E24AA">Isenção PCD</span>
+          <div class="rn-data">1 de jul. de 2026</div>
+          <h3>Isenção PCD 2026: as regras atuais valem até 31/12</h3>
+          <p>IPI, ICMS e IPVA garantidos até o fim de 2026; a partir de 2027 entram as regras do novo sistema tributário. Vale para condutor e não condutor.</p>
+          <span class="rn-cta">Verificar se tenho direito &rarr;</span>
+        </div>
+      </a>
+      <a class="rn" data-cat="documento" href="/debitos">
+        <span class="rn-cap" style="background:#2A6F97"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#2A6F97">Documento do Veículo</span>
+          <div class="rn-data">25 de jun. de 2026</div>
+          <h3>IPVA 2026 em SP: calendário, desconto à vista e parcelamento</h3>
+          <p>Datas por final de placa e como regularizar o IPVA atrasado — que impede o licenciamento — sem travar o documento do carro.</p>
+          <span class="rn-cta">Consultar e regularizar &rarr;</span>
+        </div>
+      </a>
+      <a class="rn" data-cat="documento" href="/quem-somos">
+        <span class="rn-cap" style="background:#B8860B"></span>
+        <div class="rn-body">
+          <span class="rn-tag" style="background:#B8860B">Alerta / Golpes</span>
+          <div class="rn-data">28 de mai. de 2026</div>
+          <h3>Golpe do falso despachante: como não cair e conferir quem é de verdade</h3>
+          <p>PIX para pessoa física, pressa e preço milagroso são bandeiras vermelhas. Veja como confirmar um despachante credenciado.</p>
+          <span class="rn-cta">Conhecer a 100 Milhas &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="radar-nota">Conteúdo informativo de caráter geral, com base na legislação vigente — não constitui parecer jurídico. Cada caso é analisado individualmente.</p>
+  </div>
+</section>
+<script>
+(function(){
+  var chips=document.querySelectorAll('.radar-chip'), cards=document.querySelectorAll('.radar-grid .rn');
+  if(!chips.length) return;
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      chips.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});
+      c.classList.add('on');c.setAttribute('aria-selected','true');
+      var cat=c.dataset.cat;
+      cards.forEach(function(card){
+        card.style.display=(cat==='tudo'||card.dataset.cat===cat)?'':'none';
+      });
+    });
+  });
+})();
+</script>
+<!-- ===== FIM RADAR 100 MILHAS ===== -->
+
 <!-- AGENDA DA LILI — ORIENTAÇÃO PCD (API própria no Worker, sem n8n) -->
 <section class="sec-clara" style="padding:56px 0">
   <div class="wrap">
