@@ -399,6 +399,29 @@ async function apiYoutube() {
   }
 }
 
+/* ---------------- LILI VIVA: ponte para o cérebro do app ----------------
+   O site conversa com a MESMA Lili viva do app (Cloudflare Workers AI, grátis)
+   por um proxy same-origin: o navegador fala só com o site (/api/lili) e o
+   site repassa para o Worker do app. Assim não há CORS, o cérebro é UM só e
+   nada é duplicado. É ADITIVO: não toca no D1 nem na agenda. */
+const LILI_CEREBRO = 'https://lili.despachante100milhas.com.br/api/chat';
+async function apiLili(req) {
+  try {
+    const corpo = await req.text();
+    const r = await fetch(LILI_CEREBRO, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: corpo
+    });
+    return new Response(r.body, {
+      status: r.status,
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  } catch (e) {
+    return json({ erro: 'ia_indisponivel' }, 502);
+  }
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -408,6 +431,7 @@ export default {
     }
     if (url.pathname.startsWith('/api/agenda')) return apiAgenda(req, env, url);
     if (url.pathname === '/api/youtube') return apiYoutube();
+    if (url.pathname === '/api/lili' && req.method === 'POST') return apiLili(req);
     return env.ASSETS.fetch(req);
   }
 };
