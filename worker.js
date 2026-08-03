@@ -15,12 +15,13 @@
       Google Agenda (Adicionar agenda -> De URL) e tudo aparece lá.
    ========================================================================= */
 
-// Horários de orientação (fuso de São Paulo)
-const HORARIOS = ['09:00','09:40','10:20','11:00','11:40','14:00','14:40','15:20','16:00','16:40'];
+// Horários de orientação (fuso de São Paulo) — grade REAL da Lili: blocos de 45 min,
+// das 10h às 16h45, com almoço 12:15–13:00. Confirmada pela Lili em 30/07/2026.
+const HORARIOS = ['10:00','10:45','11:30','13:00','13:45','14:30','15:15','16:00'];
+const SLOT_MIN = 45; // duração de cada atendimento (min)
 const DIAS_FUTUROS_MAX = 30; // não aceita agendar além de 30 dias
 
-// Dias em que a Lili atende: 3=quarta, 4=quinta, 5=sexta.
-// Segunda e terça ficam livres para perícia, cartório e órgão.
+// Dias em que a Lili atende: segunda a sexta (1=seg ... 5=sex).
 const DIAS_ATENDIMENTO = [1, 2, 3, 4, 5];
 
 function json(obj, status = 200) {
@@ -168,7 +169,7 @@ async function ocupadosDoGoogle(env, dia) {
 }
 
 function livreNoGoogle(hora, ocupados) {
-  const ini = minutosDe(hora), fim = ini + 40;
+  const ini = minutosDe(hora), fim = ini + SLOT_MIN;
   return !ocupados.some(([a, b]) => a < fim && b > ini);
 }
 
@@ -215,7 +216,7 @@ async function feedICS(env) {
       'UID:site-' + a.id + '@despachante100milhas.com.br',
       'DTSTAMP:' + agora,
       'DTSTART:' + icsUTC(a.dia, a.hora),
-      'DTEND:' + icsUTC(a.dia, a.hora, 40),
+      'DTEND:' + icsUTC(a.dia, a.hora, SLOT_MIN),
       'SUMMARY:' + icsEscape('Orientação — ' + a.nome),
       'DESCRIPTION:' + icsEscape('WhatsApp: ' + a.telefone + '\nAssunto: ' + (a.assunto || '—') + '\nAgendado pelo site.'),
       'END:VEVENT'
